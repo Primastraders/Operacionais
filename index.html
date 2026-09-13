@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang=pt-BR>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content=width=device-width,initial-scale=1>
+  <title>Primas Backtests Operacionais</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/primas-logo.png" alt="Primas Traders" class="brand-logo">
+      <div>
+        <h1>Primas Backtests</h1>
+        <p>Resultados por metodo, horario e mes em BRT</p>
+      </div>
+    </div>
+    <div class="status-pill"><span></span>Dados locais</div>
+  </header>
+
+  <main>
+    <nav class=method-tabs aria-label=Operacionais>
+      <button class="method-tab active" data-method="linhas_ouro_lote_dobrado">Linhas de Ouro <small>Lote dobrado</small></button>
+      <button class="method-tab" data-method="linhas_ouro_alvo_dobrado">Linhas de Ouro <small>Alvo dobrado</small></button>
+      <button class="method-tab" data-method="fimathe_raiz_pullback">Fimathe Raiz <small>Rompimento + pullback</small></button>
+    </nav>
+
+    <section class=summary-grid aria-label=Resumo do operacional>
+      <article class=metric-card>
+        <span>Operadas</span>
+        <strong id=totalOps>-</strong>
+        <small>entradas contabilizadas</small>
+      </article>
+      <article class=metric-card take>
+        <span>Gains</span>
+        <strong id=totalWins>-</strong>
+        <small>Take + Virada</small>
+      </article>
+      <article class=metric-card stop>
+        <span>Stops</span>
+        <strong id=totalStops>-</strong>
+        <small>perdas fechadas</small>
+      </article>
+      <article class=metric-card accuracy>
+        <span>Assertividade do periodo</span>
+        <strong id=accuracy>-</strong>
+        <small id="periodMeta">geral dos horarios</small>
+      </article>
+      <article class=metric-card accuracy>
+        <span>Assertividade geral</span>
+        <strong id="overallAccuracy">-</strong>
+        <small>todos os meses do metodo</small>
+      </article>
+    </section>
+
+    <section class=toolbar>
+      <div class=field>
+        <label for=monthFilter>Periodo</label>
+        <select id="monthFilter"></select>
+      </div>
+      <div class=field>
+        <label for=setupFilter>Horario</label>
+        <select id="setupFilter"></select>
+      </div>
+      <div class=field>
+        <label for=resultFilter>Resultado</label>
+        <select id="resultFilter">
+          <option value=TODOS>Todos</option>
+          <option value=Take>Take</option>
+          <option value=Virada>Virada</option>
+          <option value=Stop>Stop</option>
+        </select>
+      </div>
+      <div class=field grow>
+        <label for=searchInput>Buscar data</label>
+        <input id="searchInput" type=search placeholder=Ex:29/06/2026>
+      </div>
+    </section>
+
+    <section class=content-grid>
+      <article class=panel>
+        <div class=panel-head>
+          <h2>Assertividade Por Horario</h2>
+          <p id="rankingLabel">Os horarios abaixo estao em Brasilia.</p>
+        </div>
+        <div id=ranking class=ranking></div>
+      </article>
+
+      <article class=panel>
+        <div class=panel-head>
+          <h2>Distribuicao</h2>
+          <p id=distributionLabel>-</p>
+        </div>
+        <div class=bars>
+          <div class=bar-row><span>Take</span><div><i id=barTake></i></div><b id=barTakeText>-</b></div>
+          <div class=bar-row><span>Virada</span><div><i id=barVirada></i></div><b id=barViradaText>-</b></div>
+          <div class=bar-row><span>Stop</span><div><i id=barStop></i></div><b id=barStopText>-</b></div>
+        </div>
+      </article>
+    </section>
+
+    <section class=panel table-panel>
+      <div class=panel-head table-head>
+        <div>
+          <h2>Planilha Por Data</h2>
+          <p id=tableCaption>-</p>
+        </div>
+        <button id=copyBtn type=button>Copiar tabela</button>
+      </div>
+      <div class=table-wrap>
+        <table>
+          <thead id=tableHead></thead>
+          <tbody id=tableBody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <template id=emptyTemplate>
+    <div class=empty-state>
+      <strong>Dados ainda nao carregados</strong>
+      <p>Quando voce subir esse operacional no Supabase ou colocar o CSV na pasta data, ele aparece aqui.</p>
+    </div>
+  </template>
+
+  <script src=app.js></script>
+</body>
+</html>
