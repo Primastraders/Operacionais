@@ -1,7 +1,7 @@
 const METHODS = {
   linhas_ouro_lote_dobrado: { name: 'Linhas de Ouro', detail: 'Lote dobrado', source: 'data/linhas_ouro_lote_dobrado.csv', ready: true },
   linhas_ouro_alvo_dobrado: { name: 'Linhas de Ouro', detail: 'Alvo dobrado', source: 'data/linhas_ouro_alvo_dobrado.csv', ready: false },
-  fimathe_raiz_pullback: { name: 'Fimathe Raiz', detail: 'Rompimento vela + pullback', source: 'data/fimathe_raiz_pullback.csv', ready: false }
+  fimathe_raiz_pullback: { name: 'Fimathe Raiz', detail: 'Rompimento vela + pullback', source: 'data/fimathe_raiz_pullback.csv', ready: true }
 };
 
 const MESES = ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -268,3 +268,4 @@ function showError(error) {
 }
 
 loadMethod(state.method).catch(showError);
+
