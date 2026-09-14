@@ -17,7 +17,7 @@ const BROKERS = {
     name: 'Hantec',
     methods: {
       linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_hantec.csv', ready: true, detail: 'Normal - virada no 4.8 | MT5 +6 para BRT' },
-      linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest Hantec' },
+      linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
     }
   }
@@ -335,6 +335,7 @@ function showError(error) {
 
 renderBrokerOptions();
 loadMethod(state.method).catch(showError);
+
 
 
 
