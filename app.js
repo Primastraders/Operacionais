@@ -122,7 +122,8 @@ function renderMonthOptions() {
 }
 
 function renderSetupOptions() {
-  els.setupFilter.innerHTML = '<option value="TODOS">Top 10 melhores horarios</option>' + state.headers.slice(1).map(header => '<option value="' + header + '">' + header + '</option>').join('');
+  const topHeaders = topRankingHeaders(10);
+  els.setupFilter.innerHTML = '<option value="TODOS">Top 10 melhores horarios</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
 }
 
 function renderSummary(rows) {
