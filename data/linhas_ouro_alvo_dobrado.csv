@@ -1,4 +1,4 @@
-Linhas de Ouro - Alvo dobrado - Exness - 01/05/2026 a 11/09/2026 - Virada mira nivel 8.6 - COM VIRADA - COLUNAS EM BRT
+Linhas de Ouro - Alvo dobrado - Exness - 01/05/2026 a 14/09/2026 - Virada mira nivel 8.6 - COM VIRADA - COLUNAS EM BRT
 DATA;XAU H1M1 03H;XAU H1M1 09H;XAU H1M5 05H;XAU H1M5 19H;USTEC H1M1 09H
 01/05/2026;Take;Take;Take;;Virada
 03/05/2026;;;;Take;
@@ -115,3 +115,5 @@ DATA;XAU H1M1 03H;XAU H1M1 09H;XAU H1M5 05H;XAU H1M5 19H;USTEC H1M1 09H
 09/09/2026;Stop;Take;Stop;Take;Virada
 10/09/2026;Take;Take;Take;Stop;Take
 11/09/2026;Take;Stop;Stop;;Take
+13/09/2026;;;;Virada;
+14/09/2026;Take;Sem ativacao;Take;;Sem ativacao
