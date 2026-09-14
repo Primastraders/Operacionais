@@ -142,9 +142,9 @@ function renderSummary(rows) {
 
 function renderRanking(rows) {
   const setups = state.headers.slice(1).map(header => ({ header, ...countResults(rows, header) })).sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops);
-  els.rankingLabel.textContent = selectedPeriodLabel() + ' | 20 horarios em Brasilia';
+  els.rankingLabel.textContent = 'Top 10 | ' + selectedPeriodLabel() + ' | horarios em Brasilia';
   if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
-  els.ranking.innerHTML = setups.map(item =>
+  els.ranking.innerHTML = setups.slice(0, 10).map(item =>
     '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
   ).join('');
 }
