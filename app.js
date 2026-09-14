@@ -73,6 +73,13 @@ function percent(value) {
   return value.toFixed(2) + '%';
 }
 
+function displayHeader(header) {
+  return header
+    .replace('USTEC', 'NAS')
+    .replace('H1M1', 'M1')
+    .replace('H1M5', 'M5');
+}
+
 function countResults(rows, setup = 'TODOS') {
   const totals = { Take: 0, Virada: 0, Stop: 0, empty: 0, ops: 0, wins: 0, accuracy: 0 };
   const setups = setup === 'TODOS' ? state.headers.slice(1) : [setup];
@@ -135,10 +142,10 @@ function renderSummary(rows) {
 
 function renderRanking(rows) {
   const setups = state.headers.slice(1).map(header => ({ header, ...countResults(rows, header) })).sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops);
-  els.rankingLabel.textContent = selectedPeriodLabel() + ' | horarios em Brasilia';
+  els.rankingLabel.textContent = 'Top 5 | ' + selectedPeriodLabel() + ' | horarios em Brasilia';
   if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
-  els.ranking.innerHTML = setups.map(item =>
-    '<div class="rank-row"><div class="rank-name">' + item.header + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
+  els.ranking.innerHTML = setups.slice(0, 5).map(item =>
+    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
   ).join('');
 }
 
@@ -181,7 +188,7 @@ function renderTable(rows) {
   const selectedResult = els.resultFilter.value;
   const visibleHeaders = setup === 'TODOS' ? state.headers : ['DATA', setup];
   const visibleRows = visibleTableRows(rows, setup, selectedResult);
-  els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + header + '</th>').join('') + '</tr>';
+  els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + displayHeader(header) + '</th>').join('') + '</tr>';
   els.tableBody.innerHTML = visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderBadge(row[header])) + '</td>').join('') + '</tr>').join('');
   els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + visibleRows.length + ' datas exibidas | ' + selectedPeriodLabel() + '</span>';
   Array.from(document.querySelectorAll('.month-tab')).forEach(btn => {
