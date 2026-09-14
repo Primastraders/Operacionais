@@ -873,3 +873,98 @@ td:not(:first-child) {
     grid-template-columns: 1fr;
   }
 }
+
+/* Ajuste visual 14/09: tabela acomodada e marca centralizada */
+.topbar {
+  position: relative;
+  justify-content: center;
+  padding: 20px 28px;
+}
+
+.brand {
+  justify-content: center;
+  gap: 18px;
+  text-align: left;
+}
+
+.brand-logo {
+  width: 180px;
+  height: 76px;
+  object-fit: contain;
+  object-position: center center;
+  padding: 6px 12px;
+}
+
+.status-pill {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.table-panel {
+  overflow: visible;
+}
+
+.table-wrap {
+  overflow: visible;
+  max-height: none;
+  margin: 14px -16px 0;
+}
+
+.table-wrap table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.table-wrap th,
+.table-wrap td {
+  padding: 8px 8px;
+}
+
+.table-wrap th:first-child,
+.table-wrap td:first-child {
+  width: 112px;
+  min-width: 112px;
+}
+
+.table-wrap th:not(:first-child),
+.table-wrap td:not(:first-child) {
+  width: auto;
+  min-width: 0;
+  max-width: none;
+}
+
+.table-wrap th {
+  position: static;
+}
+
+.badge {
+  width: min(86px, 100%);
+  min-width: 0;
+  margin: 0 auto;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    justify-content: flex-start;
+  }
+
+  .brand {
+    justify-content: flex-start;
+  }
+
+  .status-pill {
+    position: static;
+    transform: none;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .table-wrap table {
+    min-width: 760px;
+  }
+}
