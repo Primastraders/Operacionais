@@ -183,9 +183,9 @@ function renderMonthTabs() {
   return '<div class="month-tabs"><button class="month-tab' + (els.monthFilter.value === 'TODOS' ? ' active' : '') + '" data-month="TODOS">Todos</button>' + tabs + '</div>';
 }
 
-function topTableHeaders(rows) {
+function topTableHeaders() {
   return state.headers.slice(1)
-    .map(header => ({ header, ...countResults(rows, header) }))
+    .map(header => ({ header, ...countResults(state.rows, header) }))
     .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops)
     .slice(0, 5)
     .map(item => item.header);
@@ -194,11 +194,11 @@ function topTableHeaders(rows) {
 function renderTable(rows) {
   const setup = els.setupFilter.value || 'TODOS';
   const selectedResult = els.resultFilter.value;
-  const visibleHeaders = setup === 'TODOS' ? ['DATA', ...topTableHeaders(rows)] : ['DATA', setup];
+  const visibleHeaders = setup === 'TODOS' ? ['DATA', ...topTableHeaders()] : ['DATA', setup];
   const visibleRows = visibleTableRows(rows, setup, selectedResult);
   els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + displayHeader(header) + '</th>').join('') + '</tr>';
   els.tableBody.innerHTML = visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderBadge(row[header])) + '</td>').join('') + '</tr>').join('');
-  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + visibleRows.length + ' datas exibidas | ' + selectedPeriodLabel() + (setup === 'TODOS' ? ' | top 5 horarios na planilha' : '') + '</span>';
+  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + visibleRows.length + ' datas exibidas | ' + selectedPeriodLabel() + (setup === 'TODOS' ? ' | top 5 fixos do Todos' : '') + '</span>';
   Array.from(document.querySelectorAll('.month-tab')).forEach(btn => {
     btn.addEventListener('click', () => {
       els.monthFilter.value = btn.dataset.month;
