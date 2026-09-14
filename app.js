@@ -154,8 +154,9 @@ function topRankingHeaders(limit = 10) {
 }
 
 function renderRanking(rows) {
-  const setups = topRankingItems(10);
-  els.rankingLabel.textContent = 'Top 10 fixos | Todos os meses | horarios em Brasilia';
+  const fixedHeaders = topRankingHeaders(10);
+  const setups = fixedHeaders.map(header => ({ header, ...countResults(rows, header) }));
+  els.rankingLabel.textContent = 'Top 10 geral | ' + selectedPeriodLabel() + ' | horarios em Brasilia';
   if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
   els.ranking.innerHTML = setups.map(item =>
     '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
