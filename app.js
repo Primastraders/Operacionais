@@ -1,13 +1,33 @@
 const METHODS = {
-  linhas_ouro_lote_dobrado: { name: 'Linhas de Ouro', detail: 'Normal - virada no 4.8', source: 'data/linhas_ouro_lote_dobrado.csv', ready: true },
-  linhas_ouro_alvo_dobrado: { name: 'Linhas de Ouro', detail: 'Alvo dobrado - virada no 8.6', source: 'data/linhas_ouro_alvo_dobrado.csv', ready: true },
-  fimathe_raiz_pullback: { name: 'Fimathe Raiz', detail: 'Rompimento vela + pullback', source: 'data/fimathe_raiz_pullback.csv', ready: true }
+  linhas_ouro_lote_dobrado: { name: 'Linhas de Ouro', detail: 'Normal - virada no 4.8' },
+  linhas_ouro_alvo_dobrado: { name: 'Linhas de Ouro', detail: 'Alvo dobrado - virada no 8.6' },
+  fimathe_raiz_pullback: { name: 'Fimathe Raiz', detail: 'Rompimento vela + pullback' }
+};
+
+const BROKERS = {
+  exness: {
+    name: 'Exness',
+    methods: {
+      linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_lote_dobrado.csv', ready: true },
+      linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_alvo_dobrado.csv', ready: true },
+      fimathe_raiz_pullback: { source: 'data/fimathe_raiz_pullback.csv', ready: true }
+    }
+  },
+  hantec: {
+    name: 'Hantec',
+    methods: {
+      linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_hantec.csv', ready: true, detail: 'Normal - virada no 4.8 | MT5 +6 para BRT' },
+      linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest Hantec' },
+      fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
+    }
+  }
 };
 
 const MESES = ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-const state = { method: 'linhas_ouro_lote_dobrado', rows: [], headers: [], availableMonths: [] };
+const state = { broker: 'exness', method: 'linhas_ouro_lote_dobrado', rows: [], headers: [], availableMonths: [] };
 
 const els = {
+  brokerFilter: document.getElementById('brokerFilter'),
   tabs: Array.from(document.querySelectorAll('.method-tab')),
   methodName: document.getElementById('methodName'),
   methodMeta: document.getElementById('methodMeta'),
@@ -36,6 +56,21 @@ const els = {
   copyBtn: document.getElementById('copyBtn'),
   emptyTemplate: document.getElementById('emptyTemplate')
 };
+
+function currentBroker() {
+  return BROKERS[state.broker] || BROKERS.exness;
+}
+
+function currentMethod(methodKey = state.method) {
+  const base = METHODS[methodKey];
+  const brokerMethod = currentBroker().methods[methodKey] || {};
+  return { ...base, ...brokerMethod };
+}
+
+function renderBrokerOptions() {
+  els.brokerFilter.innerHTML = Object.entries(BROKERS).map(([key, broker]) => '<option value="' + key + '">' + broker.name + '</option>').join('');
+  els.brokerFilter.value = state.broker;
+}
 
 function parseCsv(text) {
   const lines = text.trim().split(/\r?\n/).filter(Boolean);
@@ -127,13 +162,13 @@ function renderSetupOptions() {
 }
 
 function renderSummary(rows) {
-  const method = METHODS[state.method];
+  const method = currentMethod();
   const setup = els.setupFilter.value || 'TODOS';
   const activeSetup = setup === 'TODOS' ? topRankingHeaders(10) : setup;
   const periodTotals = countResults(rows, activeSetup);
   const overallTotals = countResults(state.rows, activeSetup);
   if (els.methodName) els.methodName.textContent = method.name;
-  if (els.methodMeta) els.methodMeta.textContent = method.detail + ' | colunas em BRT';
+  if (els.methodMeta) els.methodMeta.textContent = currentBroker().name + ' | ' + method.detail + ' | colunas em BRT';
   els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 10 fixos' : setup);
   els.totalOps.textContent = periodTotals.ops;
   els.totalWins.textContent = periodTotals.wins;
@@ -224,7 +259,7 @@ function resetEmpty(method) {
   state.headers = ['DATA'];
   state.availableMonths = [];
   if (els.methodName) els.methodName.textContent = method.name;
-  if (els.methodMeta) els.methodMeta.textContent = method.detail + ' | aguardando dados';
+  if (els.methodMeta) els.methodMeta.textContent = currentBroker().name + ' | ' + method.detail + ' | aguardando dados';
   els.totalOps.textContent = '0';
   els.totalWins.textContent = '0';
   els.totalStops.textContent = '0';
@@ -245,7 +280,7 @@ function resetEmpty(method) {
 }
 
 async function loadMethod(methodKey) {
-  const method = METHODS[methodKey];
+  const method = currentMethod(methodKey);
   state.method = methodKey;
   els.tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.method === methodKey));
   if (!method.ready) { resetEmpty(method); return; }
@@ -283,6 +318,10 @@ async function copyTable() {
 }
 
 els.tabs.forEach(tab => tab.addEventListener('click', () => loadMethod(tab.dataset.method).catch(showError)));
+els.brokerFilter.addEventListener('change', () => {
+  state.broker = els.brokerFilter.value;
+  loadMethod(state.method).catch(showError);
+});
 els.monthFilter.addEventListener('change', renderAll);
 els.setupFilter.addEventListener('change', renderAll);
 els.resultFilter.addEventListener('change', renderAll);
@@ -294,7 +333,9 @@ function showError(error) {
   els.ranking.innerHTML = '<div class="empty-state"><strong>Erro ao carregar</strong><p>' + error.message + '</p></div>';
 }
 
+renderBrokerOptions();
 loadMethod(state.method).catch(showError);
+
 
 
 

@@ -1202,3 +1202,9 @@ main {
   height: calc(100% - 42px);
   align-content: center;
 }
+
+
+/* Ajuste 14/09: seletor de corretora */
+.toolbar {
+  grid-template-columns: 160px 190px 220px 170px 1fr;
+}
