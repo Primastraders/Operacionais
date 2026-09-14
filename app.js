@@ -164,10 +164,10 @@ function renderRanking(rows) {
 
 function renderDistribution(rows) {
   const setup = els.setupFilter.value || 'TODOS';
-  const activeSetup = setup === 'TODOS' ? topRankingHeaders(10) : setup;
+  const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
   const totals = countResults(rows, activeSetup);
   const max = Math.max(totals.Take, totals.Virada, totals.Stop, 1);
-  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 10 fixos' : setup);
+  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 5 fixos' : setup);
   els.barTake.style.width = (totals.Take / max * 100) + '%';
   els.barVirada.style.width = (totals.Virada / max * 100) + '%';
   els.barStop.style.width = (totals.Stop / max * 100) + '%';
@@ -294,6 +294,7 @@ function showError(error) {
 }
 
 loadMethod(state.method).catch(showError);
+
 
 
 
