@@ -82,7 +82,7 @@ function displayHeader(header) {
 
 function countResults(rows, setup = 'TODOS') {
   const totals = { Take: 0, Virada: 0, Stop: 0, empty: 0, ops: 0, wins: 0, accuracy: 0 };
-  const setups = setup === 'TODOS' ? state.headers.slice(1) : [setup];
+  const setups = Array.isArray(setup) ? setup : (setup === 'TODOS' ? state.headers.slice(1) : [setup]);
   rows.forEach(row => {
     setups.forEach(key => {
       const result = row[key];
@@ -122,17 +122,18 @@ function renderMonthOptions() {
 }
 
 function renderSetupOptions() {
-  els.setupFilter.innerHTML = '<option value="TODOS">Todos os horarios</option>' + state.headers.slice(1).map(header => '<option value="' + header + '">' + header + '</option>').join('');
+  els.setupFilter.innerHTML = '<option value="TODOS">Top 10 melhores horarios</option>' + state.headers.slice(1).map(header => '<option value="' + header + '">' + header + '</option>').join('');
 }
 
 function renderSummary(rows) {
   const method = METHODS[state.method];
   const setup = els.setupFilter.value || 'TODOS';
-  const periodTotals = countResults(rows, setup);
-  const overallTotals = countResults(state.rows, setup);
+  const activeSetup = setup === 'TODOS' ? topRankingHeaders(10) : setup;
+  const periodTotals = countResults(rows, activeSetup);
+  const overallTotals = countResults(state.rows, activeSetup);
   if (els.methodName) els.methodName.textContent = method.name;
   if (els.methodMeta) els.methodMeta.textContent = method.detail + ' | colunas em BRT';
-  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'todos os horarios' : setup);
+  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 10 fixos' : setup);
   els.totalOps.textContent = periodTotals.ops;
   els.totalWins.textContent = periodTotals.wins;
   els.totalStops.textContent = periodTotals.Stop;
@@ -140,20 +141,32 @@ function renderSummary(rows) {
   els.overallAccuracy.textContent = percent(overallTotals.accuracy);
 }
 
+function topRankingItems(limit = 10) {
+  return state.headers.slice(1)
+    .map(header => ({ header, ...countResults(state.rows, header) }))
+    .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops)
+    .slice(0, limit);
+}
+
+function topRankingHeaders(limit = 10) {
+  return topRankingItems(limit).map(item => item.header);
+}
+
 function renderRanking(rows) {
-  const setups = state.headers.slice(1).map(header => ({ header, ...countResults(state.rows, header) })).sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops);
+  const setups = topRankingItems(10);
   els.rankingLabel.textContent = 'Top 10 fixos | Todos os meses | horarios em Brasilia';
   if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
-  els.ranking.innerHTML = setups.slice(0, 10).map(item =>
+  els.ranking.innerHTML = setups.map(item =>
     '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
   ).join('');
 }
 
 function renderDistribution(rows) {
   const setup = els.setupFilter.value || 'TODOS';
-  const totals = countResults(rows, setup);
+  const activeSetup = setup === 'TODOS' ? topRankingHeaders(10) : setup;
+  const totals = countResults(rows, activeSetup);
   const max = Math.max(totals.Take, totals.Virada, totals.Stop, 1);
-  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'todos os horarios' : setup);
+  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 10 fixos' : setup);
   els.barTake.style.width = (totals.Take / max * 100) + '%';
   els.barVirada.style.width = (totals.Virada / max * 100) + '%';
   els.barStop.style.width = (totals.Stop / max * 100) + '%';
@@ -167,11 +180,11 @@ function renderBadge(result) {
   return '<span class="badge ' + result + '">' + result + '</span>';
 }
 
-function visibleTableRows(rows, setup, selectedResult) {
+function visibleTableRows(rows, setup, selectedResult, visibleSetups) {
   return rows.filter(row => {
-    if (setup !== 'TODOS') return selectedResult === 'TODOS' || row[setup] === selectedResult;
+    const setups = setup === 'TODOS' ? visibleSetups : [setup];
     if (selectedResult === 'TODOS') return true;
-    return state.headers.slice(1).some(header => row[header] === selectedResult);
+    return setups.some(header => row[header] === selectedResult);
   });
 }
 
@@ -184,21 +197,18 @@ function renderMonthTabs() {
 }
 
 function topTableHeaders() {
-  return state.headers.slice(1)
-    .map(header => ({ header, ...countResults(state.rows, header) }))
-    .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops)
-    .slice(0, 5)
-    .map(item => item.header);
+  return topRankingHeaders(5);
 }
 
 function renderTable(rows) {
   const setup = els.setupFilter.value || 'TODOS';
   const selectedResult = els.resultFilter.value;
-  const visibleHeaders = setup === 'TODOS' ? ['DATA', ...topTableHeaders()] : ['DATA', setup];
-  const visibleRows = visibleTableRows(rows, setup, selectedResult);
+  const visibleSetups = setup === 'TODOS' ? topTableHeaders() : [setup];
+  const visibleHeaders = ['DATA', ...visibleSetups];
+  const visibleRows = visibleTableRows(rows, setup, selectedResult, visibleSetups);
   els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + displayHeader(header) + '</th>').join('') + '</tr>';
   els.tableBody.innerHTML = visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderBadge(row[header])) + '</td>').join('') + '</tr>').join('');
-  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + visibleRows.length + ' datas exibidas | ' + selectedPeriodLabel() + (setup === 'TODOS' ? ' | top 5 fixos do Todos' : '') + '</span>';
+  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + visibleRows.length + ' datas exibidas | ' + selectedPeriodLabel() + (setup === 'TODOS' ? ' | top 5 fixos dos melhores' : '') + '</span>';
   Array.from(document.querySelectorAll('.month-tab')).forEach(btn => {
     btn.addEventListener('click', () => {
       els.monthFilter.value = btn.dataset.month;
@@ -220,7 +230,7 @@ function resetEmpty(method) {
   els.overallAccuracy.textContent = '0.00%';
   els.periodMeta.textContent = 'sem dados';
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>';
-  els.setupFilter.innerHTML = '<option value="TODOS">Todos os horarios</option>';
+  els.setupFilter.innerHTML = '<option value="TODOS">Top 10 melhores horarios</option>';
   els.ranking.innerHTML = els.emptyTemplate.innerHTML;
   els.tableHead.innerHTML = '<tr><th>DATA</th></tr>';
   els.tableBody.innerHTML = '<tr><td>' + els.emptyTemplate.innerHTML + '</td></tr>';
@@ -283,6 +293,7 @@ function showError(error) {
 }
 
 loadMethod(state.method).catch(showError);
+
 
 
 
