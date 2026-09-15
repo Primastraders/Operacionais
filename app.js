@@ -112,6 +112,7 @@ function displayHeader(header) {
   return header
     .replace('USTEC', 'NAS')
     .replace('H1M1', 'M1')
+    .replace('H1M15', 'M15')
     .replace('H1M5', 'M5');
 }
 
@@ -157,19 +158,19 @@ function renderMonthOptions() {
 }
 
 function renderSetupOptions() {
-  const topHeaders = topRankingHeaders(10);
-  els.setupFilter.innerHTML = '<option value="TODOS">Top 10 melhores horarios</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
+  const topHeaders = topRankingHeaders(5);
+  els.setupFilter.innerHTML = '<option value="TODOS">Top 5 melhores horarios</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
 }
 
 function renderSummary(rows) {
   const method = currentMethod();
   const setup = els.setupFilter.value || 'TODOS';
-  const activeSetup = setup === 'TODOS' ? topRankingHeaders(10) : setup;
+  const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
   const periodTotals = countResults(rows, activeSetup);
   const overallTotals = countResults(state.rows, activeSetup);
   if (els.methodName) els.methodName.textContent = method.name;
   if (els.methodMeta) els.methodMeta.textContent = currentBroker().name + ' | ' + method.detail + ' | colunas em BRT';
-  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 10 fixos' : setup);
+  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 5 fixos' : setup);
   els.totalOps.textContent = periodTotals.ops;
   els.totalWins.textContent = periodTotals.wins;
   els.totalStops.textContent = periodTotals.Stop;
@@ -189,9 +190,9 @@ function topRankingHeaders(limit = 10) {
 }
 
 function renderRanking(rows) {
-  const fixedHeaders = topRankingHeaders(10);
+  const fixedHeaders = topRankingHeaders(5);
   const setups = fixedHeaders.map(header => ({ header, ...countResults(rows, header) }));
-  els.rankingLabel.textContent = 'Top 10 geral | ' + selectedPeriodLabel() + ' | horarios em Brasilia';
+  els.rankingLabel.textContent = 'Top 5 geral | ' + selectedPeriodLabel() + ' | horarios em Brasilia';
   if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
   els.ranking.innerHTML = setups.map(item =>
     '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
@@ -267,7 +268,7 @@ function resetEmpty(method) {
   els.overallAccuracy.textContent = '0.00%';
   els.periodMeta.textContent = 'sem dados';
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>';
-  els.setupFilter.innerHTML = '<option value="TODOS">Top 10 melhores horarios</option>';
+  els.setupFilter.innerHTML = '<option value="TODOS">Top 5 melhores horarios</option>';
   els.ranking.innerHTML = els.emptyTemplate.innerHTML;
   els.tableHead.innerHTML = '<tr><th>DATA</th></tr>';
   els.tableBody.innerHTML = '<tr><td>' + els.emptyTemplate.innerHTML + '</td></tr>';
