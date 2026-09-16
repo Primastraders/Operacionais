@@ -20,6 +20,14 @@ const BROKERS = {
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
     }
+  },
+  ftmo: {
+    name: 'FTMO',
+    methods: {
+      linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_ftmo.csv', ready: true, detail: 'Normal - virada no 4.8 | MT5 +6 para BRT | Top 5 FTMO' },
+      linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest FTMO alvo dobrado' },
+      fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest FTMO' }
+    }
   }
 };
 
