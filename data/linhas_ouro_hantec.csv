@@ -1,4 +1,4 @@
-Linhas de Ouro - Normal - Hantec XAU - Top 5 melhores horarios - 01/01/2026 a 14/09/2026 - MT5 +6 convertido para BRT - M1/M5/M15 - M15 formado por 12 velas M5 - Virada mira nivel 4.8 - COM VIRADA - COLUNAS EM BRT
+Linhas de Ouro - Normal - Hantec XAU - 5 horarios fixos - 01/01/2026 a 16/09/2026 (16/09 parcial ate 14:35 BRT) - MT5 +6 convertido para BRT - M1/M5/M15 - M15 formado por 12 velas M5 - Virada mira nivel 4.8 - COM VIRADA - COLUNAS EM BRT
 DATA;XAU H1M5 21H;XAU H1M15 14H;XAU H1M1 10H;XAU H1M1 12H;XAU H1M15 22H
 01/01/2026;Take;;;;Virada
 02/01/2026;;Take;Take;Virada;
@@ -216,5 +216,7 @@ DATA;XAU H1M5 21H;XAU H1M15 14H;XAU H1M1 10H;XAU H1M1 12H;XAU H1M15 22H
 09/09/2026;Take;Stop;Virada;Take;Take
 10/09/2026;Stop;Take;Virada;Virada;Stop
 11/09/2026;;Take;Virada;Stop;
-13/09/2026;;;;;Aberto
-14/09/2026;;Take;;;
+13/09/2026;Take;;;;Stop
+14/09/2026;Take;Take;Stop;Stop;Stop
+15/09/2026;Stop;Stop;Stop;Take;Take
+16/09/2026;;;Virada;Stop;
