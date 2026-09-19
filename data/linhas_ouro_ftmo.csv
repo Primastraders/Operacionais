@@ -1,4 +1,4 @@
-Linhas de Ouro - Normal - FTMO XAU - Top 5 melhores horarios - 01/05/2026 a 15/09/2026 - MT5 +6 convertido para BRT - M1/M5/M15 - M15 formado por 12 velas M5 - Virada mira nivel 4.8 - COM VIRADA - COLUNAS EM BRT
+Linhas de Ouro - Normal - FTMO XAU - 5 horarios fixos - 01/05/2026 a 18/09/2026 (18/09 parcial ate 17:49 BRT) - MT5 +6 convertido para BRT - M1/M5/M15 - M15 formado por 12 velas M5 - Virada mira nivel 4.8 - COM VIRADA - COLUNAS EM BRT
 DATA;XAU H1M5 21H;XAU H1M1 12H;XAU H1M1 22H;XAU H1M15 14H;XAU H1M15 22H
 01/05/2026;;Virada;;Take;
 03/05/2026;Stop;;Take;;Take
@@ -115,6 +115,9 @@ DATA;XAU H1M5 21H;XAU H1M1 12H;XAU H1M1 22H;XAU H1M15 14H;XAU H1M15 22H
 09/09/2026;Take;Take;Virada;Stop;Take
 10/09/2026;Stop;Virada;Virada;Take;Stop
 11/09/2026;;Stop;;Take;
-13/09/2026;Take;;Take;;Aberto
-14/09/2026;Take;Stop;Take;Take;Aberto
-15/09/2026;;Take;;Aberto;
+13/09/2026;Take;;Take;;Stop
+14/09/2026;Take;Stop;Take;Take;Stop
+15/09/2026;Stop;Take;Take;Stop;Take
+16/09/2026;Take;Stop;Stop;Take;Aberto
+17/09/2026;Take;Stop;Take;Stop;Stop
+18/09/2026;;Stop;;Sem ativacao;
