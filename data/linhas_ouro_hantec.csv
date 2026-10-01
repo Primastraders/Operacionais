@@ -1,4 +1,4 @@
-Linhas de Ouro - Normal - Hantec XAU - 5 horarios fixos - 01/01/2026 a 16/09/2026 (16/09 parcial ate 14:35 BRT) - MT5 +6 convertido para BRT - M1/M5/M15 - M15 formado por 12 velas M5 - Virada mira nivel 4.8 - COM VIRADA - COLUNAS EM BRT
+Linhas de Ouro - Normal - Hantec XAU - 5 horarios fixos - 01/01/2026 a 29/09/2026 - MT5 +6 convertido para BRT - M1/M5/M15 - M15 formado por 12 velas M5 - Virada mira nivel 4.8 - COM VIRADA - COLUNAS EM BRT
 DATA;XAU H1M5 21H;XAU H1M15 14H;XAU H1M1 10H;XAU H1M1 12H;XAU H1M15 22H
 01/01/2026;Take;;;;Virada
 02/01/2026;;Take;Take;Virada;
@@ -219,4 +219,15 @@ DATA;XAU H1M5 21H;XAU H1M15 14H;XAU H1M1 10H;XAU H1M1 12H;XAU H1M15 22H
 13/09/2026;Take;;;;Stop
 14/09/2026;Take;Take;Stop;Stop;Stop
 15/09/2026;Stop;Stop;Stop;Take;Take
-16/09/2026;;;Virada;Stop;
+16/09/2026;Take;Take;Virada;Stop;Virada
+17/09/2026;Take;Take;Stop;Stop;Stop
+18/09/2026;;Take;Virada;Stop;
+20/09/2026;Stop;;;;Take
+21/09/2026;Take;Take;Virada;Stop;Stop
+22/09/2026;Take;Virada;Stop;Stop;Take
+23/09/2026;Virada;Stop;Stop;Take;Stop
+24/09/2026;Take;Stop;Take;Stop;Stop
+25/09/2026;;Take;Take;Stop;
+27/09/2026;Take;;;;Take
+28/09/2026;Take;Aberto;Take;Stop;Aberto
+29/09/2026;;Take;Take;Take;
