@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visão geral do funcionamento da EA Primas Traders, sem exposição de parâmetros internos.">
+  <title>EA Primas Traders | Como funciona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #e2bf54;
+      --gold-light: #f2d36f;
+      --ink: #0b1427;
+      --surface: #172746;
+      --surface-2: #203457;
+      --line: #3b4d6c;
+      --text: #f5f7fb;
+      --muted: #b6c2d8;
+      --green: #80cea3;
+      --red: #ef8a80;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow {
+      color: var(--gold);
+      font: 600 11px/1.3 "JetBrains Mono", monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: min(760px, 92vh);
+      display: grid;
+      align-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(11,20,39,.98), rgba(11,20,39,.78)),
+        radial-gradient(circle at 77% 45%, rgba(226,191,84,.16), transparent 35%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(141,184,232,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(141,184,232,.055) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to right, transparent, #000 48%, #000);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 780px; padding: 88px 0 72px; }
+    .brand-logo {
+      width: 112px;
+      height: 112px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 28px;
+      border: 1px solid var(--line);
+      background: #102344;
+    }
+    .hero h1 {
+      margin: 18px 0 16px;
+      font: 400 clamp(64px, 11vw, 132px)/.86 "Bebas Neue", sans-serif;
+      text-transform: uppercase;
+    }
+    .hero h1 span { color: var(--gold-light); display: block; }
+    .hero p {
+      max-width: 660px;
+      margin: 0;
+      color: #c6ccd5;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+    .hero-note {
+      margin-top: 34px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 660px;
+      padding: 10px 14px;
+      border-left: 3px solid var(--gold);
+      background: rgba(32,52,87,.72);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    section { padding: 92px 0; border-bottom: 1px solid var(--line); }
+    .section-head { max-width: 760px; margin-bottom: 46px; }
+    h2 {
+      margin: 10px 0 14px;
+      font: 400 clamp(42px, 6vw, 68px)/1 "Bebas Neue", sans-serif;
+    }
+    .lead { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+    .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
+    .step {
+      min-height: 220px;
+      padding: 30px;
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .step:nth-child(3n) { border-right: 0; }
+    .step:nth-last-child(-n+3) { border-bottom: 0; }
+    .step-number {
+      color: var(--gold);
+      font: 600 12px/1 "JetBrains Mono", monospace;
+      margin-bottom: 32px;
+    }
+    .step h3 { margin: 0 0 12px; font-size: 17px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    .logic-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; }
+    .logic-main, .logic-side { border: 1px solid var(--line); background: var(--surface); }
+    .logic-main { padding: 38px; }
+    .logic-main h3 { margin: 0 0 14px; color: var(--gold-light); font-size: 23px; }
+    .logic-main p { margin: 0 0 18px; color: #c5ccd5; line-height: 1.75; }
+    .logic-side { display: grid; }
+    .state { padding: 25px 28px; border-bottom: 1px solid var(--line); }
+    .state:last-child { border-bottom: 0; }
+    .state strong { display: block; margin-bottom: 7px; font-size: 14px; }
+    .state span { color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .state.take strong { color: var(--green); }
+    .state.defense strong { color: var(--gold-light); }
+    .state.stop strong { color: var(--red); }
+
+    .protections { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .protection { padding: 28px; border: 1px solid var(--line); background: var(--surface-2); }
+    .protection h3 { margin: 0 0 10px; font-size: 16px; }
+    .protection p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    .boundary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .boundary > div { padding: 34px; }
+    .boundary > div + div { border-left: 1px solid var(--line); }
+    .boundary h3 { margin: 0 0 18px; font-size: 18px; }
+    .boundary ul { margin: 0; padding: 0; list-style: none; }
+    .boundary li { position: relative; padding: 9px 0 9px 22px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .boundary li::before { position: absolute; left: 0; font-weight: 700; }
+    .does li::before { content: "+"; color: var(--green); }
+    .does-not li::before { content: "−"; color: var(--red); }
+
+    .closing { background: var(--surface); }
+    .closing-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .closing h2 { margin-top: 0; color: var(--gold-light); }
+    .seal {
+      width: 170px;
+      aspect-ratio: 1;
+      border: 1px solid var(--gold);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--gold-light);
+      font: 400 27px/1 "Bebas Neue", sans-serif;
+      padding: 22px;
+    }
+
+    footer { padding: 32px 0; color: var(--muted); font-size: 12px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 820px) {
+      .shell { width: min(100% - 28px, 680px); }
+      .hero { min-height: 84vh; }
+      .brand-logo { width: 88px; height: 88px; }
+      section { padding: 68px 0; }
+      .flow { grid-template-columns: 1fr; }
+      .step, .step:nth-child(3n), .step:nth-last-child(-n+3) { border-right: 0; border-bottom: 1px solid var(--line); min-height: auto; }
+      .step:last-child { border-bottom: 0; }
+      .logic-grid, .protections, .boundary, .closing-inner { grid-template-columns: 1fr; }
+      .boundary > div + div { border-left: 0; border-top: 1px solid var(--line); }
+      .seal { width: 140px; }
+      .footer-row { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-content">
+      <img class="brand-logo" src="assets/primas-logo.png" alt="Primas Traders">
+      <div class="eyebrow">Primas Traders | Automação operacional</div>
+      <h1><span>EA Primas</span>Traders</h1>
+      <p>Uma visão clara de como a automação acompanha o mercado, reconhece o cenário operacional, executa as ordens e conduz cada ciclo até o encerramento.</p>
+      <div class="hero-note">Documento conceitual: parâmetros internos e configurações estratégicas não são exibidos.</div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="shell reveal">
+        <div class="section-head">
+          <div class="eyebrow">01 | Fluxo de trabalho</div>
+          <h2>Como a EA funciona</h2>
+          <p class="lead">A EA transforma uma rotina operacional previamente definida em uma sequência automática. Ela monitora, valida, executa e gerencia sem depender de comandos manuais durante o ciclo.</p>
+        </div>
+        <div class="flow">
+          <article class="step"><div class="step-number">01</div><h3>Observa a janela operacional</h3><p>A automação aguarda o momento previsto para iniciar a leitura. Fora dessa janela, permanece em monitoramento e não cria um novo ciclo.</p></article>
+          <article class="step"><div class="step-number">02</div><h3>Constrói a referência</h3><p>Com os dados recentes do mercado, identifica a estrutura que servirá como base para as decisões daquela operação.</p></article>
+          <article class="step"><div class="step-number">03</div><h3>Valida o cenário</h3><p>Antes de agir, verifica se a formação encontrada atende aos critérios internos de qualidade e segurança do método.</p></article>
+          <article class="step"><div class="step-number">04</div><h3>Prepara os dois sentidos</h3><p>A EA acompanha a possibilidade de rompimento para cima ou para baixo e aguarda que o próprio preço indique qual lado será ativado.</p></article>
+          <article class="step"><div class="step-number">05</div><h3>Gerencia a operação</h3><p>Depois da ativação, acompanha objetivo, proteção e condições de encerramento automaticamente, sem alterar a lógica no meio do caminho.</p></article>
+          <article class="step"><div class="step-number">06</div><h3>Finaliza e registra</h3><p>Ao concluir o ciclo, encerra as ordens relacionadas, registra o resultado e volta ao estado de espera para a próxima oportunidade.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell reveal">
+        <div class="section-head">
+          <div class="eyebrow">02 | Lógica operacional</div>
+          <h2>Entrada, defesa e encerramento</h2>
+          <p class="lead">A operação principal e a defesa fazem parte de um único ciclo. O resultado só é considerado concluído quando toda a sequência prevista chega ao fim.</p>
+        </div>
+        <div class="logic-grid">
+          <div class="logic-main">
+            <h3>O preço decide o sentido</h3>
+            <p>A EA não tenta adivinhar a direção antecipadamente. Ela prepara o cenário e espera a confirmação do movimento. Quando um lado é ativado, a gestão passa a acompanhar somente o ciclo correspondente.</p>
+            <p>Se a entrada principal atinge seu objetivo, o ciclo termina com Take. Se o mercado invalida essa entrada, a automação pode executar a defesa prevista no sentido oposto. Essa segunda etapa busca responder à mudança de direção sem exigir intervenção manual.</p>
+            <p>Se a defesa também for invalidada, o ciclo é encerrado em Stop. A EA não continua abrindo novas tentativas indefinidamente dentro da mesma estrutura.</p>
+          </div>
+          <div class="logic-side">
+            <div class="state take"><strong>Take</strong><span>A entrada principal alcança o objetivo e o ciclo é encerrado.</span></div>
+            <div class="state defense"><strong>Virada</strong><span>A primeira leitura é invalidada e a defesa prevista conclui o movimento oposto.</span></div>
+            <div class="state stop"><strong>Stop</strong><span>A entrada e a defesa são invalidadas; a automação encerra o ciclo e não insiste na mesma estrutura.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell reveal">
+        <div class="section-head">
+          <div class="eyebrow">03 | Controle automatizado</div>
+          <h2>O que acontece nos bastidores</h2>
+          <p class="lead">Sem expor parâmetros internos, estas são as responsabilidades que a automação assume durante a execução.</p>
+        </div>
+        <div class="protections">
+          <article class="protection"><h3>Dimensionamento coerente</h3><p>Converte a gestão definida para a conta em um volume compatível com o ativo e com a distância de proteção daquela operação.</p></article>
+          <article class="protection"><h3>Ordens relacionadas</h3><p>Mantém cada entrada, proteção e objetivo associados ao ciclo correto, evitando que uma operação interfira indevidamente em outra.</p></article>
+          <article class="protection"><h3>Resposta à mudança de direção</h3><p>Quando o primeiro cenário perde validade, executa a sequência de defesa prevista e acompanha o novo sentido até a conclusão.</p></article>
+          <article class="protection"><h3>Encerramento disciplinado</h3><p>Finaliza o ciclo conforme as regras internas e retorna ao monitoramento, sem criar entradas emocionais ou improvisadas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell reveal">
+        <div class="section-head">
+          <div class="eyebrow">04 | Limites</div>
+          <h2>O que a EA faz e o que ela não promete</h2>
+        </div>
+        <div class="boundary">
+          <div class="does">
+            <h3>A EA faz</h3>
+            <ul>
+              <li>Executa o mesmo processo sem hesitação ou atraso emocional.</li>
+              <li>Monitora o mercado e gerencia o ciclo automaticamente.</li>
+              <li>Aplica a lógica operacional de forma padronizada.</li>
+              <li>Registra resultados para acompanhamento e melhoria.</li>
+            </ul>
+          </div>
+          <div class="does-not">
+            <h3>A EA não faz</h3>
+            <ul>
+              <li>Não elimina Stops nem garante rentabilidade.</li>
+              <li>Não impede impacto de spread, slippage, gaps ou falhas de conexão.</li>
+              <li>Não substitui supervisão, gestão de capital ou escolha de ambiente adequado.</li>
+              <li>Não deve ser alterada durante uma operação sem procedimento técnico.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="shell closing-inner reveal">
+        <div>
+          <div class="eyebrow">05 | Princípio central</div>
+          <h2>Consistência antes de previsão</h2>
+          <p class="lead">A proposta da EA é repetir um processo validado com disciplina. Ela não procura acertar todas as operações; procura executar cada oportunidade da mesma maneira, permitindo que o desempenho seja avaliado ao longo de uma amostra completa.</p>
+        </div>
+        <div class="seal">Primas<br>Traders</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <span>EA Primas Traders | Visão geral de funcionamento</span>
+      <span>Material informativo. Resultados passados não garantem resultados futuros.</span>
+    </div>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
