@@ -1208,3 +1208,16 @@ main {
 .toolbar {
   grid-template-columns: 160px 190px 220px 170px 1fr;
 }
+
+.method-note {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.badge.Aberto {
+  background: var(--panel-2);
+  color: var(--gold-2);
+  border: 1px solid var(--line);
+}

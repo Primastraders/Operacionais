@@ -5,6 +5,18 @@ const METHODS = {
 };
 
 const BROKERS = {
+  axi: {
+    name: 'Axi',
+    methods: {
+      linhas_ouro_lote_dobrado: {
+        source: 'data/linhas_ouro_axi.csv', ready: true,
+        detail: 'Normal - virada no 4.8 | Top 5 historico 2026 | MT5 +5/+6 para BRT',
+        note: 'Janeiro a 08/10/2026; outubro parcial. Assertividade = (Take + Virada) / fechadas: alvo atingido nao significa necessariamente lucro. HK50 M2 15h e M5 15h tiveram resultado financeiro negativo no teste. Os tres setups das 15h podem operar juntos.'
+      },
+      linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest Axi alvo dobrado' },
+      fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Axi Fimathe Raiz' }
+    }
+  },
   exness: {
     name: 'Exness',
     methods: {
@@ -41,6 +53,8 @@ const els = {
   methodMeta: document.getElementById('methodMeta'),
   totalOps: document.getElementById('totalOps'),
   totalWins: document.getElementById('totalWins'),
+  winsLabel: document.getElementById('winsLabel'),
+  methodNote: document.getElementById('methodNote'),
   totalStops: document.getElementById('totalStops'),
   accuracy: document.getElementById('accuracy'),
   overallAccuracy: document.getElementById('overallAccuracy'),
@@ -119,9 +133,7 @@ function percent(value) {
 function displayHeader(header) {
   return header
     .replace('USTEC', 'NAS')
-    .replace('H1M1', 'M1')
-    .replace('H1M15', 'M15')
-    .replace('H1M5', 'M5');
+    .replace(/H1M(\d+)/g, 'M$1');
 }
 
 function countResults(rows, setup = 'TODOS') {
@@ -162,7 +174,7 @@ function renderMonthOptions() {
   const months = Array.from(new Set(state.rows.map(monthKey))).sort().reverse();
   state.availableMonths = months;
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>' + months.map(key => '<option value="' + key + '">' + monthLabel(key) + '</option>').join('');
-  if (months.length) els.monthFilter.value = months[0];
+  if (months.length) els.monthFilter.value = state.broker === 'axi' ? 'TODOS' : months[0];
 }
 
 function renderSetupOptions() {
@@ -172,6 +184,9 @@ function renderSetupOptions() {
 
 function renderSummary(rows) {
   const method = currentMethod();
+  els.winsLabel.textContent = state.broker === 'axi' ? 'Alvos atingidos' : 'Gains';
+  els.methodNote.textContent = method.note || '';
+  els.methodNote.hidden = !method.note;
   const setup = els.setupFilter.value || 'TODOS';
   const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
   const periodTotals = countResults(rows, activeSetup);
@@ -222,7 +237,8 @@ function renderDistribution(rows) {
 }
 
 function renderBadge(result) {
-  if (!result) return '<span class="empty-cell">-</span>';
+  if (!result || result === 'Sem ativacao') return '<span class="empty-cell" title="Sem entrada nesta sessao">-</span>';
+  if (result === 'Aberto') return '<span class="badge Aberto" title="Operacao ainda aberta no corte dos dados">Aberto</span>';
   return '<span class="badge ' + result + '">' + result + '</span>';
 }
 
@@ -264,6 +280,9 @@ function renderTable(rows) {
 }
 
 function resetEmpty(method) {
+  els.winsLabel.textContent = state.broker === 'axi' ? 'Alvos atingidos' : 'Gains';
+  els.methodNote.textContent = '';
+  els.methodNote.hidden = true;
   state.rows = [];
   state.headers = ['DATA'];
   state.availableMonths = [];
@@ -342,6 +361,8 @@ function showError(error) {
   els.ranking.innerHTML = '<div class="empty-state"><strong>Erro ao carregar</strong><p>' + error.message + '</p></div>';
 }
 
+const requestedBroker = new URLSearchParams(window.location.search).get('corretora');
+if (Object.prototype.hasOwnProperty.call(BROKERS, requestedBroker)) state.broker = requestedBroker;
 renderBrokerOptions();
 loadMethod(state.method).catch(showError);
 
