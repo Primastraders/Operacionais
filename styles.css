@@ -1221,3 +1221,26 @@ main {
   color: var(--gold-2);
   border: 1px solid var(--line);
 }
+
+@media (max-width: 980px) {
+  .toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .toolbar .grow {
+    grid-column: 1 / -1;
+  }
+
+  .content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rank-row {
+    grid-template-columns: 112px minmax(0, 1fr) 58px;
+  }
+
+  .content-grid > .panel,
+  .bars {
+    height: auto;
+  }
+}
