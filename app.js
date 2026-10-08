@@ -11,7 +11,7 @@ const BROKERS = {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_axi.csv', ready: true,
         detail: 'Normal - virada no 4.8 | Top 5 historico 2026 | MT5 +5/+6 para BRT',
-        note: 'Janeiro a 08/10/2026; outubro parcial. HK50 corrigido: margem de entrada 0,05 e folga do stop 0,02, em preco. Assertividade = (Take + Virada) / fechadas: alvo atingido nao significa necessariamente lucro. HK50 M2 15h e M5 15h tiveram resultado financeiro negativo no teste. Os tres setups das 15h podem operar juntos.'
+        note: 'Janeiro a 08/10/2026; outubro parcial. Margens corrigidas em preco: HK50 entrada 0,05 / folga do stop 0,02; JP225 entrada 0,25 / folga do stop 0,15. Assertividade = (Take + Virada) / fechadas: alvo atingido nao significa necessariamente lucro. HK50 M2 15h e M5 15h tiveram resultado financeiro negativo no teste. Os tres setups das 15h podem operar juntos.'
       },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest Axi alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Axi Fimathe Raiz' }

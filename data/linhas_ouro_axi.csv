@@ -1,4 +1,4 @@
-Axi - Linhas de Ouro tradicional - Top 5 historico 2026 - BRT - outubro parcial - HK50 entrada 0.05 stop 0.02
+Axi - Linhas de Ouro tradicional - Top 5 historico 2026 - BRT - outubro parcial - HK50 entrada 0.05 stop 0.02 - JP225 entrada 0.25 stop 0.15
 DATA;XAU H1M1 20H;HK50 H1M10 15H;HK50 H1M5 15H;HK50 H1M2 15H;JP225 H1M15 12H
 08/10/2026;;Aberto;Sem ativacao;Aberto;Aberto
 07/10/2026;Stop;Take;Take;Take;Stop
@@ -223,7 +223,7 @@ DATA;XAU H1M1 20H;HK50 H1M10 15H;HK50 H1M5 15H;HK50 H1M2 15H;JP225 H1M15 12H
 23/01/2026;;Take;Take;Take;Take
 22/01/2026;Virada;Stop;Take;Stop;Stop
 21/01/2026;Take;Take;Take;Take;Virada
-20/01/2026;Take;Take;Take;Take;Take
+20/01/2026;Take;Take;Take;Take;Virada
 19/01/2026;Take;Take;Take;Take;Take
 18/01/2026;Take;;;;
 16/01/2026;;Virada;Stop;Virada;Take
