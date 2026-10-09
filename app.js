@@ -28,7 +28,11 @@ const BROKERS = {
   hantec: {
     name: 'Hantec',
     methods: {
-      linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_hantec.csv', ready: true, detail: 'Normal - virada no 4.8 | MT5 +6 para BRT' },
+      linhas_ouro_lote_dobrado: {
+        source: 'data/linhas_ouro_hantec_xau_hk50.csv', ready: true,
+        detail: 'Normal - virada no 4.8 | XAU + HK50 | MT5 +6 para BRT',
+        note: 'Top 5 historico entre os XAU fixos anteriores e a varredura HK50, sem repetir ativo no mesmo horario. Cortes: XAU ate 07/10/2026 17:59 BRT; HK50 ate 09/10/2026 09:18 BRT. HK50: entrada 0,05 / folga do stop 0,02 em preco. Assertividade mede Take + Virada, nao necessariamente lucro. HK50 M10 15h: apenas +0,62R antes de comissao e swap; execucao em gaps ainda precisa de validacao.'
+      },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
     }
@@ -184,7 +188,7 @@ function renderSetupOptions() {
 
 function renderSummary(rows) {
   const method = currentMethod();
-  els.winsLabel.textContent = state.broker === 'axi' ? 'Alvos atingidos' : 'Gains';
+  els.winsLabel.textContent = state.broker === 'axi' || (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
   els.methodNote.textContent = method.note || '';
   els.methodNote.hidden = !method.note;
   const setup = els.setupFilter.value || 'TODOS';
