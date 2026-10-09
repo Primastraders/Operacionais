@@ -30,8 +30,8 @@ const BROKERS = {
     methods: {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_hantec_xau_hk50.csv', ready: true,
-        detail: 'Normal - virada no 4.8 | XAU + HK50 | MT5 +6 para BRT',
-        note: 'Top 5 historico entre os XAU fixos anteriores e a varredura HK50, sem repetir ativo no mesmo horario. Cortes: XAU ate 07/10/2026 17:59 BRT; HK50 ate 09/10/2026 09:18 BRT. HK50: entrada 0,05 / folga do stop 0,02 em preco. Assertividade mede Take + Virada, nao necessariamente lucro. HK50 M10 15h: apenas +0,62R antes de comissao e swap; execucao em gaps ainda precisa de validacao.'
+        detail: 'Normal - virada no 4.8 | XAU + HK50 | HK50 fuso historico corrigido',
+        note: 'Top 5 historico entre os XAU fixos anteriores e a varredura HK50, sem repetir ativo no mesmo horario. HK50 recalculado: servidor -5h antes de 08/03/2026 e -6h depois. Margens em preco: entrada 0,05 / folga do stop 0,02. Cortes: XAU ate 07/10/2026 17:59 BRT; HK50 ate 09/10/2026 09:18 BRT. XAU preservado: fuso anterior a marco ainda nao revalidado. Assertividade mede Take + Virada, nao necessariamente lucro. HK50 M5 15h: resultado financeiro -16,58R antes de comissao e swap. Execucao em gaps ainda precisa de validacao.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
