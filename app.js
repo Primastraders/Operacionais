@@ -20,7 +20,11 @@ const BROKERS = {
   exness: {
     name: 'Exness',
     methods: {
-      linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_lote_dobrado.csv', ready: true },
+      linhas_ouro_lote_dobrado: {
+        source: 'data/linhas_ouro_exness_girafa.csv', ready: true,
+        detail: 'Normal - virada no 4.8 | Girafa + candidatos anteriores | Horarios em BRT',
+        note: 'Top 5 fixo entre os candidatos anteriores e os tres melhores horarios de Girafa por retorno historico, sem repetir ativo no mesmo horario. Bases diferentes: Girafa de maio a 12/10/2026 20:59 BRT; demais ativos de maio a 14/09/2026. Fora da cobertura de cada base, vazio significa sem dados. Girafa: entrada 0,050 / folga do stop 0,010 em preco; servidor UTC+0 convertido para BRT (-3h). Spreads reais altos e baixos incluidos, sem filtro. Resultados antes de comissao e swap; alvo atingido nao significa necessariamente lucro. Selecao retrospectiva, nao comprovacao futura. Execucao em gaps e parametros precisam de validacao na EA.'
+      },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_alvo_dobrado.csv', ready: true },
       fimathe_raiz_pullback: { source: 'data/fimathe_raiz_pullback.csv', ready: true }
     }
@@ -178,7 +182,7 @@ function renderMonthOptions() {
   const months = Array.from(new Set(state.rows.map(monthKey))).sort().reverse();
   state.availableMonths = months;
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>' + months.map(key => '<option value="' + key + '">' + monthLabel(key) + '</option>').join('');
-  if (months.length) els.monthFilter.value = state.broker === 'axi' ? 'TODOS' : months[0];
+  if (months.length) els.monthFilter.value = state.broker === 'axi' || (state.broker === 'exness' && state.method === 'linhas_ouro_lote_dobrado') ? 'TODOS' : months[0];
 }
 
 function renderSetupOptions() {
@@ -188,7 +192,7 @@ function renderSetupOptions() {
 
 function renderSummary(rows) {
   const method = currentMethod();
-  els.winsLabel.textContent = state.broker === 'axi' || (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
+  els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
   els.methodNote.textContent = method.note || '';
   els.methodNote.hidden = !method.note;
   const setup = els.setupFilter.value || 'TODOS';
