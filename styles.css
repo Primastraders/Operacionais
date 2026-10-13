@@ -1254,14 +1254,14 @@ main {
 h1 { font-size: 28px; line-height: 1.1; letter-spacing: 0; }
 .topbar p { margin-top: 3px; font-size: 12px; }
 .status-pill { grid-column: 3; grid-row: 1; justify-self: end; position: static; transform: none; padding: 5px 9px; font-size: 11px; }
-main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
-.method-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-bottom: 10px; border: 0; }
-.method-tab { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.025); font-size: 14px; }
+main { width: min(1120px, calc(100% - 32px)); padding-top: 8px; }
+.method-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 10px; border: 0; }
+.method-tab { flex: 0 0 auto; min-height: 40px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.025); font-size: 14px; }
 .method-tab small { display: inline; margin: 0 0 0 8px; font-size: 12px; }
 .method-tab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
 .method-tab.active small { color: rgba(8,21,41,.76); }
 .summary-grid { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; margin-bottom: 10px; border: 0; background: transparent; }
-.metric-card { min-height: 76px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(18,40,75,.68); box-shadow: none; min-width: 0; }
+.metric-card { min-height: 68px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: rgba(18,40,75,.68); box-shadow: none; min-width: 0; }
 .metric-card:last-child { border-right: 1px solid var(--line); }
 .metric-card span { font-size: 10px; letter-spacing: 0; }
 .metric-card strong { margin-top: 4px; font-size: 24px; line-height: 1; }
@@ -1274,6 +1274,9 @@ main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
 .table-wrap table { width: 100%; min-width: 720px; table-layout: fixed; }
 .table-wrap th,.table-wrap td { padding: 5px 8px; }
 .table-wrap th:first-child,.table-wrap td:first-child { width: 96px; min-width: 96px; }
+.content-grid { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); align-items: start; }
+.content-grid > .panel { height: auto; }
+.bars { height: auto; align-content: start; padding-top: 8px; gap: 12px; }
 .method-note-disclosure { margin-bottom: 10px; color: var(--muted); font-size: 12px; }
 .method-note-disclosure[hidden] { display: none; }
 .method-note-disclosure summary { cursor: pointer; padding: 4px 0; }
@@ -1288,6 +1291,7 @@ main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
   .toolbar .grow { grid-column: span 2; }
 }
 @media (max-width: 760px) {
+  .method-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
   .summary-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .metric-card { border-bottom: 1px solid var(--line); }
   .method-tab { flex: 1; min-width: 0; padding: 8px; font-size: 12px; }
