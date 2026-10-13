@@ -33,9 +33,9 @@ const BROKERS = {
     name: 'Hantec',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_hantec_girafa.csv', ready: true,
+        source: 'data/linhas_ouro_hantec_catalogo.csv', metadata: 'data/linhas_ouro_hantec_catalogo_meta.json', ready: true,
         detail: 'Normal - virada no 4.8 | Girafa + XAU + HK50 | Ranking por assertividade historica',
-        note: 'Girafa: cinco melhores horarios por assertividade historica com retorno em R positivo, minimo 100 operacoes fechadas e apenas um TF por horario. Top 5 central compara esses horarios aos candidatos XAU e HK50 anteriores, preservados. Girafa de janeiro a 12/10/2026 17:59 BRT; entrada 0,050 / folga do stop 0,010 em preco. HK50 ate 09/10/2026 09:18 BRT; entrada 0,05 / folga do stop 0,02. Ambos: servidor -5h antes de 08/03/2026 e -6h depois. XAU ate 07/10/2026 17:59 BRT, fuso anterior a marco ainda nao revalidado. Outubro parcial. Spreads reais incluidos, sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h: 74 sessoes excluidas porque a margem ultrapassa o alvo; essa regra precisa existir na EA. Selecao retrospectiva; execucao em gaps ainda nao validada na EA.'
+        note: 'Cobertura: Girafa e HK50 com varredura de seis TFs; XAU somente os cinco horarios fixos ja publicados, nao uma nova varredura completa. Girafa e HK50: ranking por assertividade historica, minimo 100 fechadas e R positivo, apenas um TF por ativo/horario; filtros podem ter menos de cinco candidatos elegiveis. XAU preservado sem nova auditoria financeira. Girafa de janeiro a 12/10/2026 17:59 BRT, entrada 0,050 / folga do stop 0,010. HK50 ate 09/10/2026 09:18 BRT, entrada 0,05 / folga do stop 0,02. Margens em preco. Ambos: servidor -5h antes de 08/03/2026 e -6h depois. XAU ate 07/10/2026 17:59 BRT, fuso anterior a marco ainda nao revalidado. Outubro parcial; spreads reais sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h exclui 74 sessoes em que a margem ultrapassa o alvo; validar essa regra e execucao em gaps na EA. Selecao retrospectiva.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
@@ -52,10 +52,16 @@ const BROKERS = {
 };
 
 const MESES = ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-const state = { broker: 'exness', method: 'linhas_ouro_lote_dobrado', rows: [], headers: [], availableMonths: [] };
+const state = { broker: 'exness', method: 'linhas_ouro_lote_dobrado', rows: [], headers: [], availableMonths: [], rankingMetadata: {} };
 
 const els = {
   brokerFilter: document.getElementById('brokerFilter'),
+  assetFilter: document.getElementById('assetFilter'),
+  tfFilter: document.getElementById('tfFilter'),
+  rankReference: document.getElementById('rankReference'),
+  referenceTitle: document.getElementById('referenceTitle'),
+  referenceSetups: document.getElementById('referenceSetups'),
+  resetTfBtn: document.getElementById('resetTfBtn'),
   tabs: Array.from(document.querySelectorAll('.method-tab')),
   methodName: document.getElementById('methodName'),
   methodMeta: document.getElementById('methodMeta'),
@@ -188,6 +194,32 @@ function renderMonthOptions() {
 function renderSetupOptions() {
   const topHeaders = topRankingHeaders(5);
   els.setupFilter.innerHTML = '<option value="TODOS">Top 5 melhores horarios</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
+  els.setupFilter.value = 'TODOS';
+}
+
+function setupParts(header) {
+  const parts = displayHeader(header).split(' ');
+  return { asset: parts[0], tf: parts[1], hour: parts.at(-1) };
+}
+
+function renderAssetOptions() {
+  const assets = [...new Set(state.headers.slice(1).map(h => setupParts(h).asset))].sort();
+  els.assetFilter.innerHTML = '<option value="TODOS">Todos os ativos</option>' + assets.map(asset => '<option value="' + asset + '">' + asset + '</option>').join('');
+  els.assetFilter.value = 'TODOS';
+  renderTfOptions();
+}
+
+function renderTfOptions() {
+  const asset = els.assetFilter.value || 'TODOS', previous = els.tfFilter.value;
+  const order = ['M1', 'M2', 'M5', 'M10', 'M15', 'H4M10'];
+  const tfs = [...new Set(state.headers.slice(1).map(setupParts).filter(p => asset === 'TODOS' || p.asset === asset).map(p => p.tf))].sort((a,b) => order.indexOf(a)-order.indexOf(b));
+  els.tfFilter.innerHTML = '<option value="TODOS">Todos os TFs</option>' + tfs.map(tf => '<option value="' + tf + '">' + tf + '</option>').join('');
+  els.tfFilter.value = tfs.includes(previous) ? previous : 'TODOS';
+}
+
+function selectedRankingLabel() {
+  const asset = els.assetFilter.value || 'TODOS', tf = els.tfFilter.value || 'TODOS';
+  return (asset === 'TODOS' ? 'Todos os ativos' : asset) + ' | ' + (tf === 'TODOS' ? 'Todos os TFs' : tf);
 }
 
 function renderSummary(rows) {
@@ -209,10 +241,22 @@ function renderSummary(rows) {
   els.overallAccuracy.textContent = percent(overallTotals.accuracy);
 }
 
-function topRankingItems(limit = 10) {
+function topRankingItems(limit = 10, ignoreTf = false) {
+  const asset = els.assetFilter.value || 'TODOS', tf = ignoreTf ? 'TODOS' : (els.tfFilter.value || 'TODOS');
+  const seen = new Set();
   return state.headers.slice(1)
+    .filter(header => {
+      const p = setupParts(header), meta = state.rankingMetadata[header];
+      return (asset === 'TODOS' || p.asset === asset) && (tf === 'TODOS' || p.tf === tf) && (!meta || meta.eligible);
+    })
     .map(header => ({ header, ...countResults(state.rows, header) }))
+    .filter(item => item.ops > 0)
     .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops)
+    .filter(item => {
+      const p = setupParts(item.header), identity = p.asset + ' ' + p.hour;
+      if (seen.has(identity)) return false;
+      seen.add(identity); return true;
+    })
     .slice(0, limit);
 }
 
@@ -223,7 +267,10 @@ function topRankingHeaders(limit = 10) {
 function renderRanking(rows) {
   const fixedHeaders = topRankingHeaders(5);
   const setups = fixedHeaders.map(header => ({ header, ...countResults(rows, header) }));
-  els.rankingLabel.textContent = 'Top 5 geral | ' + selectedPeriodLabel() + ' | horarios em Brasilia';
+  els.rankingLabel.textContent = 'Top ' + fixedHeaders.length + ' | ' + selectedRankingLabel() + ' | ' + selectedPeriodLabel() + ' | BRT';
+  els.rankReference.hidden = !els.tfFilter.value || els.tfFilter.value === 'TODOS';
+  els.referenceTitle.textContent = 'Ranking geral - ' + (els.assetFilter.value === 'TODOS' ? 'Todos os ativos' : els.assetFilter.value);
+  els.referenceSetups.textContent = topRankingItems(5, true).map(item => displayHeader(item.header) + ' (' + percent(item.accuracy) + ')').join(' | ');
   if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
   els.ranking.innerHTML = setups.map(item =>
     '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
@@ -292,6 +339,7 @@ function resetEmpty(method) {
   els.methodNote.textContent = '';
   els.methodNote.hidden = true;
   state.rows = [];
+  state.rankingMetadata = {};
   state.headers = ['DATA'];
   state.availableMonths = [];
   if (els.methodName) els.methodName.textContent = method.name;
@@ -304,6 +352,8 @@ function resetEmpty(method) {
   els.periodMeta.textContent = 'sem dados';
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>';
   els.setupFilter.innerHTML = '<option value="TODOS">Top 5 melhores horarios</option>';
+  renderAssetOptions();
+  els.rankReference.hidden = true;
   els.ranking.innerHTML = els.emptyTemplate.innerHTML;
   els.tableHead.innerHTML = '<tr><th>DATA</th></tr>';
   els.tableBody.innerHTML = '<tr><td>' + els.emptyTemplate.innerHTML + '</td></tr>';
@@ -323,11 +373,19 @@ async function loadMethod(methodKey) {
   const response = await fetch(method.source, { cache: 'no-store' });
   if (!response.ok) throw new Error('Nao foi possivel carregar ' + method.source);
   const parsed = parseCsv(await response.text());
+  state.rankingMetadata = {};
+  if (method.metadata) {
+    const metadataResponse = await fetch(method.metadata, { cache: 'no-store' });
+    if (!metadataResponse.ok) throw new Error('Nao foi possivel carregar os criterios do ranking.');
+    state.rankingMetadata = await metadataResponse.json();
+  }
   state.headers = parsed.headers;
   state.rows = parsed.rows.sort((a, b) => parseDateBr(b.DATA) - parseDateBr(a.DATA));
   els.searchInput.value = '';
   els.resultFilter.value = 'TODOS';
   renderMonthOptions();
+  els.tfFilter.value = 'TODOS';
+  renderAssetOptions();
   renderSetupOptions();
   renderAll();
 }
@@ -359,6 +417,9 @@ els.brokerFilter.addEventListener('change', () => {
   loadMethod(state.method).catch(showError);
 });
 els.monthFilter.addEventListener('change', renderAll);
+els.assetFilter.addEventListener('change', () => { renderTfOptions(); renderSetupOptions(); renderAll(); });
+els.tfFilter.addEventListener('change', () => { renderSetupOptions(); renderAll(); });
+els.resetTfBtn.addEventListener('click', () => { els.tfFilter.value = 'TODOS'; renderSetupOptions(); renderAll(); });
 els.setupFilter.addEventListener('change', renderAll);
 els.resultFilter.addEventListener('change', renderAll);
 els.searchInput.addEventListener('input', renderAll);

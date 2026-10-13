@@ -53,7 +53,7 @@
       <article class=metric-card accuracy>
         <span>Assertividade geral</span>
         <strong id="overallAccuracy">-</strong>
-        <small>todos os meses do metodo</small>
+        <small>historico do ranking selecionado</small>
       </article>
     </section>
 
@@ -61,6 +61,14 @@
       <div class=field>
         <label for=brokerFilter>Corretora</label>
         <select id="brokerFilter"></select>
+      </div>
+      <div class=field>
+        <label for=assetFilter>Ativo</label>
+        <select id="assetFilter"><option value="TODOS">Todos os ativos</option></select>
+      </div>
+      <div class=field>
+        <label for=tfFilter>TF</label>
+        <select id="tfFilter"><option value="TODOS">Todos os TFs</option></select>
       </div>
       <div class=field>
         <label for=monthFilter>Periodo</label>
@@ -86,6 +94,10 @@
     </section>
 
     <p id="methodNote" class="method-note" hidden></p>
+    <section id="rankReference" class="rank-reference" hidden>
+      <div><strong id="referenceTitle"></strong><p id="referenceSetups"></p></div>
+      <button id="resetTfBtn" type="button">Voltar ao geral</button>
+    </section>
 
     <section class=content-grid>
       <article class=panel>
@@ -133,7 +145,7 @@
     </div>
   </template>
 
-  <script src="app.js?v=hantec-girafa-20261013"></script>
+  <script src="app.js?v=asset-tf-20261013"></script>
 </body>
 </html>
 

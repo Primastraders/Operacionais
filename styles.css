@@ -1206,7 +1206,18 @@ main {
 
 /* Ajuste 14/09: seletor de corretora */
 .toolbar {
-  grid-template-columns: 160px 190px 220px 170px 1fr;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.toolbar .grow { grid-column: span 2; }
+.rank-reference { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.rank-reference[hidden] { display: none; }
+.rank-reference strong { color: var(--gold-2); font-size: 13px; }
+.rank-reference p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.rank-reference button { flex: 0 0 auto; font-size: 12px; }
+@media (min-width: 1500px) {
+  .toolbar { grid-template-columns: 140px 140px 130px 175px 200px 145px minmax(140px, 1fr); }
+  .toolbar .grow { grid-column: auto; }
 }
 
 .method-note {
@@ -1234,6 +1245,8 @@ main {
   .content-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .rank-reference { align-items: flex-start; flex-direction: column; }
 
   .rank-row {
     grid-template-columns: 112px minmax(0, 1fr) 58px;
