@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=resultados-neutros-20261013">
+  <link rel="stylesheet" href="styles.css?v=painel-compacto-20261013">
 </head>
 <body>
   <header class="topbar">
@@ -93,7 +93,10 @@
       </div>
     </section>
 
-    <p id="methodNote" class="method-note" hidden></p>
+    <details id="methodNoteDisclosure" class="method-note-disclosure" hidden>
+      <summary>Premissas e limites do backtest</summary>
+      <p id="methodNote" class="method-note" hidden></p>
+    </details>
     <section id="rankReference" class="rank-reference" hidden>
       <div><strong id="referenceTitle"></strong><p id="referenceSetups"></p></div>
       <button id="resetTfBtn" type="button">Voltar ao geral</button>
@@ -145,7 +148,7 @@
     </div>
   </template>
 
-  <script src="app.js?v=hantec-jp225-fuso6-20261013"></script>
+  <script src="app.js?v=painel-compacto-20261013"></script>
 </body>
 </html>
 

@@ -1247,15 +1247,61 @@ main {
 .operation-detail summary { cursor: pointer; }
 .operation-detail small { display: block; margin-top: 8px; white-space: normal; overflow-wrap: anywhere; text-align: left; line-height: 1.5; }
 
+.topbar { justify-content: space-between; padding: 10px 16px; gap: 16px; }
+.brand { justify-content: flex-start; gap: 12px; min-width: 0; }
+.brand-logo { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; background: transparent; }
+h1 { font-size: 26px; line-height: 1.1; letter-spacing: 0; }
+.topbar p { margin-top: 3px; font-size: 12px; }
+.status-pill { position: static; transform: none; padding: 5px 9px; font-size: 11px; }
+main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
+.method-tabs { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 10px; border-bottom: 1px solid var(--line); }
+.method-tab { flex: 0 1 auto; min-height: 40px; padding: 8px 14px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; font-size: 14px; }
+.method-tab small { display: inline; margin: 0 0 0 8px; font-size: 12px; }
+.method-tab.active { background: rgba(201,168,76,.07); color: var(--gold-2); border-color: var(--gold); }
+.method-tab.active small { color: var(--muted); }
+.summary-grid { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 0; margin-bottom: 10px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.metric-card { min-height: 76px; padding: 10px 12px; border: 0; border-right: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; min-width: 0; }
+.metric-card:last-child { border-right: 0; }
+.metric-card span { font-size: 10px; letter-spacing: 0; }
+.metric-card strong { margin-top: 4px; font-size: 24px; line-height: 1; }
+.metric-card small { margin-top: 4px; font-size: 11px; overflow-wrap: anywhere; }
+.toolbar { gap: 8px; padding: 10px; margin-bottom: 8px; }
+.field { min-width: 0; gap: 4px; }
+.field label { font-size: 10px; letter-spacing: 0; }
+.toolbar select,.toolbar input { height: 34px; padding: 0 8px; font-size: 13px; border-radius: 4px; }
+.method-note-disclosure { margin-bottom: 10px; color: var(--muted); font-size: 12px; }
+.method-note-disclosure[hidden] { display: none; }
+.method-note-disclosure summary { cursor: pointer; padding: 4px 0; }
+.method-note-disclosure .method-note { margin: 6px 0 0; font-size: 12px; line-height: 1.5; }
+.method-note-disclosure summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media (min-width: 1180px) {
+  .toolbar { grid-template-columns: 115px 125px 95px 155px 195px 115px minmax(150px,1fr); }
+  .toolbar .grow { grid-column: auto; }
+}
+@media (max-width: 1179px) and (min-width: 681px) {
+  .toolbar { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .toolbar .grow { grid-column: span 2; }
+}
+@media (max-width: 760px) {
+  .summary-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .metric-card { border-bottom: 1px solid var(--line); }
+  .method-tab { flex: 1; min-width: 0; padding: 8px; font-size: 12px; }
+  .method-tab small { display: block; margin: 3px 0 0; font-size: 11px; }
+}
+@media (max-width: 540px) {
+  .topbar { padding: 10px 12px; }
+  .status-pill { display: none; }
+  .brand-logo { width: 38px; height: 38px; }
+  h1 { font-size: 23px; }
+  .topbar p { font-size: 11px; }
+  main { width: calc(100% - 24px); }
+  .summary-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .metric-card { min-height: 74px; }
+  .metric-card:last-child { grid-column: 1 / -1; }
+  .toolbar select,.toolbar input { height: 40px; }
+}
+
 @media (max-width: 980px) {
-  .toolbar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .toolbar .grow {
-    grid-column: 1 / -1;
-  }
-
   .content-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1270,4 +1316,9 @@ main {
   .bars {
     height: auto;
   }
+}
+
+@media (max-width: 680px) {
+  .toolbar { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .toolbar .grow { grid-column: 1 / -1; }
 }

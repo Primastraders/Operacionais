@@ -73,6 +73,7 @@ const els = {
   totalWins: document.getElementById('totalWins'),
   winsLabel: document.getElementById('winsLabel'),
   methodNote: document.getElementById('methodNote'),
+  methodNoteDisclosure: document.getElementById('methodNoteDisclosure'),
   totalStops: document.getElementById('totalStops'),
   accuracy: document.getElementById('accuracy'),
   overallAccuracy: document.getElementById('overallAccuracy'),
@@ -231,6 +232,8 @@ function renderSummary(rows) {
   els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness', 'ftmo'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
   els.methodNote.textContent = method.note || '';
   els.methodNote.hidden = !method.note;
+  els.methodNoteDisclosure.hidden = !method.note;
+  els.methodNoteDisclosure.open = false;
   const setup = els.setupFilter.value || 'TODOS';
   const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
   const periodTotals = countResults(rows, activeSetup);
@@ -367,6 +370,8 @@ function resetEmpty(method) {
   els.winsLabel.textContent = state.broker === 'axi' ? 'Alvos atingidos' : 'Gains';
   els.methodNote.textContent = '';
   els.methodNote.hidden = true;
+  els.methodNoteDisclosure.hidden = true;
+  els.methodNoteDisclosure.open = false;
   state.rows = [];
   state.rankingMetadata = {};
   state.headers = ['DATA'];
