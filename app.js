@@ -9,9 +9,9 @@ const BROKERS = {
     name: 'Axi',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_axi_girafa.csv', ready: true,
+        source: 'data/linhas_ouro_axi.csv', ready: true,
         detail: 'Normal - virada no 4.8 | Top 5 historico 2026 | MT5 +5/+6 para BRT',
-        note: 'Top 5 fixo entre os candidatos anteriores e os tres horarios de Girafa com retorno historico positivo, sem repetir ativo no mesmo horario. Bases diferentes: Girafa de maio a 13/10/2026 03:28 BRT; XAU e HK50 de janeiro a 08/10/2026. Antes de maio, Girafa sem dados, nao sem operacoes. Outubro parcial. Margens em preco: Girafa entrada 0,050 / folga do stop 0,010; HK50 entrada 0,05 / folga do stop 0,02. Spreads reais altos e baixos incluidos, sem filtro. Resultados antes de comissao e swap; alvo atingido nao significa necessariamente lucro. Selecao retrospectiva, nao validacao independente. Execucao em gaps e parametros precisam de validacao na EA.'
+        note: 'XAU, HK50 e JP225: candidatos historicos preservados ate 08/10/2026. Ranking por assertividade, sem repetir ativo no mesmo horario. Outubro parcial. HK50: entrada 0,05 / folga do stop 0,02 em preco. Spreads reais incluidos; resultados antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Selecao retrospectiva; execucao em gaps precisa de validacao na EA.'
       },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest Axi alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Axi Fimathe Raiz' }
@@ -21,9 +21,9 @@ const BROKERS = {
     name: 'Exness',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_exness_girafa.csv', ready: true,
-        detail: 'Normal - virada no 4.8 | Girafa + candidatos anteriores | Horarios em BRT',
-        note: 'Top 5 fixo entre os candidatos anteriores e os tres melhores horarios de Girafa por retorno historico, sem repetir ativo no mesmo horario. Bases diferentes: Girafa de maio a 12/10/2026 20:59 BRT; demais ativos de maio a 14/09/2026. Fora da cobertura de cada base, vazio significa sem dados. Girafa: entrada 0,050 / folga do stop 0,010 em preco; servidor UTC+0 convertido para BRT (-3h). Spreads reais altos e baixos incluidos, sem filtro. Resultados antes de comissao e swap; alvo atingido nao significa necessariamente lucro. Selecao retrospectiva, nao comprovacao futura. Execucao em gaps e parametros precisam de validacao na EA.'
+        source: 'data/linhas_ouro_lote_dobrado.csv', ready: true,
+        detail: 'Normal - virada no 4.8 | XAU + NAS | Horarios em BRT',
+        note: 'Candidatos XAU e NAS preservados, maio a 14/09/2026. Ranking por assertividade, sem repetir ativo no mesmo horario. Fora da cobertura, vazio significa sem dados. Resultados antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Selecao retrospectiva; execucao e parametros precisam de validacao na EA.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_alvo_dobrado.csv', ready: true },
       fimathe_raiz_pullback: { source: 'data/fimathe_raiz_pullback.csv', ready: true }
@@ -34,8 +34,8 @@ const BROKERS = {
     methods: {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_hantec_catalogo.csv', metadata: 'data/linhas_ouro_hantec_catalogo_meta.json', ready: true,
-        detail: 'Normal - virada no 4.8 | Girafa + XAU + HK50 | Ranking por assertividade historica',
-        note: 'Cobertura: Girafa e HK50 com varredura de seis TFs; XAU somente os cinco horarios fixos ja publicados, nao uma nova varredura completa. Girafa e HK50: ranking por assertividade historica, minimo 100 fechadas e R positivo, apenas um TF por ativo/horario; filtros podem ter menos de cinco candidatos elegiveis. XAU preservado sem nova auditoria financeira. Girafa de janeiro a 12/10/2026 17:59 BRT, entrada 0,050 / folga do stop 0,010. HK50 ate 09/10/2026 09:18 BRT, entrada 0,05 / folga do stop 0,02. Margens em preco. Ambos: servidor -5h antes de 08/03/2026 e -6h depois. XAU ate 07/10/2026 17:59 BRT, fuso anterior a marco ainda nao revalidado. Outubro parcial; spreads reais sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h exclui 74 sessoes em que a margem ultrapassa o alvo; validar essa regra e execucao em gaps na EA. Selecao retrospectiva.'
+        detail: 'Normal - virada no 4.8 | XAU + HK50 | Ranking por assertividade historica',
+        note: 'HK50 com varredura de seis TFs; XAU somente os cinco candidatos fixos anteriores. HK50: minimo 100 fechadas e R positivo; um TF por ativo/horario. XAU preservado sem nova auditoria financeira. Cortes: HK50 09/10/2026 09:18 BRT, XAU 07/10/2026 17:59 BRT. HK50 entrada 0,05 / folga do stop 0,02 em preco; servidor -5h antes de 08/03/2026 e -6h depois. Fuso XAU anterior a marco ainda nao revalidado. Outubro parcial; spreads reais sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Selecao retrospectiva; validar execucao em gaps na EA.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
@@ -45,9 +45,9 @@ const BROKERS = {
     name: 'FTMO',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_ftmo_girafa_catalogo.csv', metadata: 'data/linhas_ouro_ftmo_girafa_catalogo_meta.json', ready: true,
-        detail: 'Normal - virada no 4.8 | Girafa + XAU | Ranking por assertividade historica',
-        note: 'Girafa: Top 5 por assertividade historica, entre todos os TFs ou somente o TF escolhido, sem excluir retorno negativo e sem corte minimo de amostra. Apenas um TF por ativo/horario. Quantidade de operacoes e retorno em R devem ser considerados junto da assertividade. Varredura M1, M2, M5, M10, M15 e H4M10, janeiro a 12/10/2026 17:54 BRT; H4M10 pode ter amostra menor por mudanca de horario de verao. Entrada 0,050 / folga do stop 0,010 em preco. Servidor -5h antes de 08/03/2026 e -6h depois. Ranking fixo no historico completo; meses recalculam os resultados dos mesmos horarios. XAU: cinco candidatos fixos anteriores, maio a 18/09/2026 17:49 BRT, sem nova varredura ou auditoria financeira; nao duplicamos o horario 22h para preencher cinco. Fora da cobertura, vazio significa sem dados. Outubro parcial; spreads reais sem filtro; R antes de comissao e swap, nao reais. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h exclui 79 canais em que a margem ultrapassa o alvo. Validar canais sem expiracao e execucao em gaps na EA. Selecao retrospectiva, nao comprovacao futura ou de regras da mesa.'
+        source: 'data/linhas_ouro_ftmo.csv', ready: true,
+        detail: 'Normal - virada no 4.8 | XAU | Ranking por assertividade historica',
+        note: 'XAU: cinco candidatos fixos anteriores, maio a 18/09/2026 17:49 BRT, sem nova varredura ou auditoria financeira. Um TF por ativo/horario: nao duplicamos 22h para preencher cinco. Fora da cobertura, vazio significa sem dados. Ranking fixo no historico completo; meses recalculam os mesmos horarios. Assertividade mede Take + Virada, nao necessariamente lucro. Resultados antes de comissao e swap. Selecao retrospectiva, nao comprovacao futura ou de regras da mesa.'
       },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest FTMO alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest FTMO' }
