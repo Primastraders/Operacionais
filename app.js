@@ -9,9 +9,9 @@ const BROKERS = {
     name: 'Axi',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_axi.csv', ready: true,
+        source: 'data/linhas_ouro_axi_girafa.csv', ready: true,
         detail: 'Normal - virada no 4.8 | Top 5 historico 2026 | MT5 +5/+6 para BRT',
-        note: 'Janeiro a 08/10/2026; outubro parcial. Margens corrigidas em preco: HK50 entrada 0,05 / folga do stop 0,02; JP225 entrada 0,25 / folga do stop 0,15. Assertividade = (Take + Virada) / fechadas: alvo atingido nao significa necessariamente lucro. HK50 M2 15h e M5 15h tiveram resultado financeiro negativo no teste. Os tres setups das 15h podem operar juntos.'
+        note: 'Top 5 fixo entre os candidatos anteriores e os tres horarios de Girafa com retorno historico positivo, sem repetir ativo no mesmo horario. Bases diferentes: Girafa de maio a 13/10/2026 03:28 BRT; XAU e HK50 de janeiro a 08/10/2026. Antes de maio, Girafa sem dados, nao sem operacoes. Outubro parcial. Margens em preco: Girafa entrada 0,050 / folga do stop 0,010; HK50 entrada 0,05 / folga do stop 0,02. Spreads reais altos e baixos incluidos, sem filtro. Resultados antes de comissao e swap; alvo atingido nao significa necessariamente lucro. Selecao retrospectiva, nao validacao independente. Execucao em gaps e parametros precisam de validacao na EA.'
       },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest Axi alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Axi Fimathe Raiz' }
