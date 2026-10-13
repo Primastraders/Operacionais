@@ -1275,7 +1275,7 @@ main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
 .method-note-disclosure .method-note { margin: 6px 0 0; font-size: 12px; line-height: 1.5; }
 .method-note-disclosure summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 @media (min-width: 1180px) {
-  .toolbar { grid-template-columns: 115px 125px 95px 155px 195px 115px minmax(150px,1fr); }
+  .toolbar { grid-template-columns: 115px 125px 125px 155px 195px 115px minmax(150px,1fr); }
   .toolbar .grow { grid-column: auto; }
 }
 @media (max-width: 1179px) and (min-width: 681px) {
@@ -1320,5 +1320,6 @@ main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
 
 @media (max-width: 680px) {
   .toolbar { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .toolbar .grow { grid-column: 1 / -1; }
+  .toolbar .grow { grid-column: auto; }
+  .toolbar .setup-field { grid-column: 1 / -1; }
 }
