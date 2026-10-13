@@ -35,7 +35,7 @@ const BROKERS = {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_hantec_jp225.csv', metadata: 'data/linhas_ouro_hantec_jp225_meta.json', ready: true,
         detail: 'Normal - virada no 4.8 | XAU + HK50 + JP225 | Ranking por assertividade historica',
-        note: 'JP225: varredura M1, M2, M5, M10, M15 e H4M10, entrada 0,25 / folga stop 0,15 em preco; alvo principal 6,7 e virada 4,8 com lote 2x. Corte 12/10/2026 17:58 BRT. Top 5 por assertividade no historico completo, sem excluir prejuizo ou amostra pequena; um TF por ativo/horario. Alguns horarios sao sazonais por horario de verao e tem menos operacoes. Meses recalculam os mesmos horarios fixos. RR principal mediano da amostra de entradas, nao 1:1 exato. Spreads reais incluidos; comissao e swap desconhecidos e nao descontados. Assertividade mede Take + Virada, nao necessariamente lucro. Execucao e lote em gaps precisam de validacao na EA; nao comprova aprovacao em mesa. XAU preservado ate 07/10/2026 17:59 BRT, sem nova auditoria financeira ou de fuso anterior a marco. HK50 preservado ate 09/10/2026 09:18 BRT, entrada 0,05 / folga stop 0,02; seus candidatos mantem o criterio anterior de 100 fechadas e R positivo. Servidor -5h antes de 08/03 e -6h depois para JP225/HK50. Outubro parcial; fora da cobertura de cada ativo, vazio significa sem dados. Selecao retrospectiva.'
+        note: 'JP225 recalculado: servidor BRT+6 fixo conforme informado pelo usuario; fuso historico ainda nao confirmado independentemente. Pausa 18h-19h sem canal. H4M10 exige vela M10 na abertura exata do H4, sem usar vela posterior a pausa. Entrada 0,25 / folga stop 0,15 em preco; alvo principal 6,7 e virada 4,8, lote 2x. Corte 12/10/2026 17:58 BRT. Top 5 historico por assertividade, um TF por ativo/horario; meses mantem os mesmos horarios. RR principal mediano abaixo de 1:1, sem ajustar alvo ou margem. Bid/Ask reais; comissao e swap desconhecidos, nao descontados. Alvo atingido nao significa necessariamente lucro. Datas da tabela sao do canal; detalhes das entradas e saidas nos resultados. Canais sem expiracao; gaps e lote precisam de validacao na EA. XAU e HK50 preservados, sem recalculo nesta atualizacao. Outubro parcial. Simulacao retrospectiva, nao comprovacao de aprovacao em mesa.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
@@ -318,6 +318,14 @@ function renderBadge(result) {
   return '<span class="badge ' + result + '">' + result + '</span>';
 }
 
+function renderOperationCell(header, row) {
+  const detail=state.rankingMetadata[header]?.dailyDetails?.[parseDateBr(row.DATA).toISOString().slice(0,10)];
+  const badge=renderBadge(row[header]);
+  if (!detail) return badge;
+  const escaped=detail.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+  return '<details class="operation-detail"><summary>'+badge+'</summary><small>'+escaped+'</small></details>';
+}
+
 function visibleTableRows(rows, setup, selectedResult, visibleSetups) {
   return rows.filter(row => {
     const setups = setup === 'TODOS' ? visibleSetups : [setup];
@@ -345,7 +353,7 @@ function renderTable(rows) {
   const visibleHeaders = ['DATA', ...visibleSetups];
   const visibleRows = visibleTableRows(rows, setup, selectedResult, visibleSetups);
   els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + displayHeader(header) + '</th>').join('') + '</tr>';
-  els.tableBody.innerHTML = visibleSetups.length ? visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderBadge(row[header])) + '</td>').join('') + '</tr>').join('') : '<tr><td>Nenhum horario elegivel neste filtro.</td></tr>';
+  els.tableBody.innerHTML = visibleSetups.length ? visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderOperationCell(header,row)) + '</td>').join('') + '</tr>').join('') : '<tr><td>Nenhum horario elegivel neste filtro.</td></tr>';
   els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + (visibleSetups.length ? visibleRows.length + ' datas exibidas' : 'Nenhum horario elegivel') + ' | ' + selectedPeriodLabel() + (setup === 'TODOS' && visibleSetups.length ? ' | top ' + visibleSetups.length + ' fixos dos melhores' : '') + '</span>';
   Array.from(document.querySelectorAll('.month-tab')).forEach(btn => {
     btn.addEventListener('click', () => {

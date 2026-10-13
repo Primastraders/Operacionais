@@ -1237,6 +1237,10 @@ main {
   border: 1px solid var(--line);
 }
 
+.operation-detail { max-width: 280px; margin: 0 auto; }
+.operation-detail summary { cursor: pointer; }
+.operation-detail small { display: block; margin-top: 8px; white-space: normal; overflow-wrap: anywhere; text-align: left; line-height: 1.5; }
+
 @media (max-width: 980px) {
   .toolbar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
