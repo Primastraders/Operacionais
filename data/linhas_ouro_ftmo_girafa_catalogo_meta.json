@@ -1,0 +1,682 @@
+{
+  "XAU H1M5 21H": {
+    "pnlR": null,
+    "legacy": true,
+    "eligible": true
+  },
+  "XAU H1M1 12H": {
+    "pnlR": null,
+    "legacy": true,
+    "eligible": true
+  },
+  "XAU H1M1 22H": {
+    "pnlR": null,
+    "legacy": true,
+    "eligible": true
+  },
+  "XAU H1M15 14H": {
+    "pnlR": null,
+    "legacy": true,
+    "eligible": true
+  },
+  "XAU H1M15 22H": {
+    "pnlR": null,
+    "legacy": true,
+    "eligible": true
+  },
+  "Girafa H4M10 19H": {
+    "pnlR": -45.98640549520087,
+    "ops": 44,
+    "eligible": false
+  },
+  "Girafa H1M1 19H": {
+    "pnlR": -48.22094479281388,
+    "ops": 195,
+    "eligible": false
+  },
+  "Girafa H1M2 19H": {
+    "pnlR": -59.14527161891601,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M10 19H": {
+    "pnlR": -50.213562002802064,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M5 19H": {
+    "pnlR": -32.4875882426524,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 20H": {
+    "pnlR": 6.870377089894427,
+    "ops": 123,
+    "eligible": true
+  },
+  "Girafa H1M2 20H": {
+    "pnlR": 5.329152532464606,
+    "ops": 156,
+    "eligible": true
+  },
+  "Girafa H1M10 20H": {
+    "pnlR": 3.712181157120955,
+    "ops": 158,
+    "eligible": true
+  },
+  "Girafa H1M5 20H": {
+    "pnlR": -8.101070109200922,
+    "ops": 184,
+    "eligible": false
+  },
+  "Girafa H1M15 20H": {
+    "pnlR": -14.752234881178556,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 21H": {
+    "pnlR": -11.979324219729799,
+    "ops": 197,
+    "eligible": false
+  },
+  "Girafa H1M2 21H": {
+    "pnlR": -17.201234329890646,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M10 21H": {
+    "pnlR": -21.437537692934615,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M5 21H": {
+    "pnlR": -24.093225741467528,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M15 21H": {
+    "pnlR": -28.036529678800644,
+    "ops": 199,
+    "eligible": false
+  },
+  "Girafa H1M1 22H": {
+    "pnlR": -6.772860692138354,
+    "ops": 193,
+    "eligible": false
+  },
+  "Girafa H1M2 22H": {
+    "pnlR": 11.57650186708722,
+    "ops": 200,
+    "eligible": true
+  },
+  "Girafa H1M10 22H": {
+    "pnlR": 23.843302192946663,
+    "ops": 201,
+    "eligible": true
+  },
+  "Girafa H1M5 22H": {
+    "pnlR": 28.97442108560443,
+    "ops": 201,
+    "eligible": true
+  },
+  "Girafa H1M15 22H": {
+    "pnlR": -8.92389184687744,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 23H": {
+    "pnlR": -33.53723149579495,
+    "ops": 179,
+    "eligible": false
+  },
+  "Girafa H1M2 23H": {
+    "pnlR": -37.48715902279037,
+    "ops": 199,
+    "eligible": false
+  },
+  "Girafa H1M10 23H": {
+    "pnlR": -30.033661388175247,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H4M10 23H": {
+    "pnlR": -4.075927518747489,
+    "ops": 46,
+    "eligible": false
+  },
+  "Girafa H1M5 23H": {
+    "pnlR": -17.144185130587275,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 23H": {
+    "pnlR": -8.295394033769295,
+    "ops": 199,
+    "eligible": false
+  },
+  "Girafa H1M1 00H": {
+    "pnlR": -10.58158826889474,
+    "ops": 168,
+    "eligible": false
+  },
+  "Girafa H1M2 00H": {
+    "pnlR": -10.61019155969316,
+    "ops": 194,
+    "eligible": false
+  },
+  "Girafa H1M10 00H": {
+    "pnlR": -13.233068830157402,
+    "ops": 194,
+    "eligible": false
+  },
+  "Girafa H1M5 00H": {
+    "pnlR": -33.66578944502264,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 00H": {
+    "pnlR": -15.4683342086534,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 01H": {
+    "pnlR": -16.486112901725715,
+    "ops": 145,
+    "eligible": false
+  },
+  "Girafa H1M2 01H": {
+    "pnlR": -24.526731680378216,
+    "ops": 181,
+    "eligible": false
+  },
+  "Girafa H1M10 01H": {
+    "pnlR": -38.50849644043129,
+    "ops": 190,
+    "eligible": false
+  },
+  "Girafa H1M5 01H": {
+    "pnlR": -43.637412966426886,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 01H": {
+    "pnlR": -7.51022266129884,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 02H": {
+    "pnlR": -19.851346530014553,
+    "ops": 158,
+    "eligible": false
+  },
+  "Girafa H1M2 02H": {
+    "pnlR": -12.546480164153797,
+    "ops": 193,
+    "eligible": false
+  },
+  "Girafa H1M10 02H": {
+    "pnlR": -22.5051103459664,
+    "ops": 197,
+    "eligible": false
+  },
+  "Girafa H1M5 02H": {
+    "pnlR": -40.36471779593878,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M15 02H": {
+    "pnlR": -14.60494188678047,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 03H": {
+    "pnlR": -20.237938897502417,
+    "ops": 185,
+    "eligible": false
+  },
+  "Girafa H1M2 03H": {
+    "pnlR": -16.900265491408124,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M10 03H": {
+    "pnlR": -13.575816176025873,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H4M10 03H": {
+    "pnlR": 0.46860127962683473,
+    "ops": 46,
+    "eligible": false
+  },
+  "Girafa H1M5 03H": {
+    "pnlR": -0.5661461758943322,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 03H": {
+    "pnlR": -21.22471679489652,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 04H": {
+    "pnlR": -22.143536005227954,
+    "ops": 190,
+    "eligible": false
+  },
+  "Girafa H1M2 04H": {
+    "pnlR": -67.85590774002907,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M10 04H": {
+    "pnlR": -61.88525596179794,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M5 04H": {
+    "pnlR": -50.24015507753803,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M15 04H": {
+    "pnlR": -14.093176027489498,
+    "ops": 199,
+    "eligible": false
+  },
+  "Girafa H1M1 05H": {
+    "pnlR": -20.841329431772238,
+    "ops": 191,
+    "eligible": false
+  },
+  "Girafa H1M2 05H": {
+    "pnlR": -36.87018125400949,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M10 05H": {
+    "pnlR": -37.320649249865184,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M5 05H": {
+    "pnlR": -30.782359752997,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 05H": {
+    "pnlR": -21.93238008503232,
+    "ops": 198,
+    "eligible": false
+  },
+  "Girafa H1M1 06H": {
+    "pnlR": -35.942193008228976,
+    "ops": 164,
+    "eligible": false
+  },
+  "Girafa H1M2 06H": {
+    "pnlR": -51.624994357216075,
+    "ops": 196,
+    "eligible": false
+  },
+  "Girafa H1M10 06H": {
+    "pnlR": -51.273739766421514,
+    "ops": 198,
+    "eligible": false
+  },
+  "Girafa H1M5 06H": {
+    "pnlR": -31.029168279355464,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M15 06H": {
+    "pnlR": -15.239914153879793,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 07H": {
+    "pnlR": -29.158312817750755,
+    "ops": 152,
+    "eligible": false
+  },
+  "Girafa H1M2 07H": {
+    "pnlR": -42.248745867367965,
+    "ops": 188,
+    "eligible": false
+  },
+  "Girafa H1M10 07H": {
+    "pnlR": -47.91433201163938,
+    "ops": 192,
+    "eligible": false
+  },
+  "Girafa H4M10 07H": {
+    "pnlR": -12.853518122305523,
+    "ops": 46,
+    "eligible": false
+  },
+  "Girafa H1M5 07H": {
+    "pnlR": -39.99819793415205,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M15 07H": {
+    "pnlR": -43.27047543422823,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 08H": {
+    "pnlR": -45.019080922972,
+    "ops": 145,
+    "eligible": false
+  },
+  "Girafa H1M2 08H": {
+    "pnlR": -56.26250571082997,
+    "ops": 180,
+    "eligible": false
+  },
+  "Girafa H1M10 08H": {
+    "pnlR": -60.50414124364806,
+    "ops": 190,
+    "eligible": false
+  },
+  "Girafa H1M5 08H": {
+    "pnlR": -58.6929034521666,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M15 08H": {
+    "pnlR": -38.49790503942031,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M1 09H": {
+    "pnlR": -41.2252935855954,
+    "ops": 170,
+    "eligible": false
+  },
+  "Girafa H1M2 09H": {
+    "pnlR": -68.31911693655833,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M10 09H": {
+    "pnlR": -70.68209061168952,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M5 09H": {
+    "pnlR": -37.90629155378752,
+    "ops": 202,
+    "eligible": false
+  },
+  "Girafa H1M15 09H": {
+    "pnlR": -18.78603310850951,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 10H": {
+    "pnlR": -61.88646143560467,
+    "ops": 185,
+    "eligible": false
+  },
+  "Girafa H1M2 10H": {
+    "pnlR": -50.75904845457342,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M10 10H": {
+    "pnlR": -49.55906579241198,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M5 10H": {
+    "pnlR": -56.03341731491562,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M15 10H": {
+    "pnlR": -36.90388124094091,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 11H": {
+    "pnlR": -37.373213553763506,
+    "ops": 192,
+    "eligible": false
+  },
+  "Girafa H1M2 11H": {
+    "pnlR": -33.03526119259985,
+    "ops": 199,
+    "eligible": false
+  },
+  "Girafa H1M10 11H": {
+    "pnlR": -42.43117925651738,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H4M10 11H": {
+    "pnlR": 11.439426339664386,
+    "ops": 46,
+    "eligible": false
+  },
+  "Girafa H1M5 11H": {
+    "pnlR": -47.19943673499725,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 11H": {
+    "pnlR": -4.702439562600763,
+    "ops": 198,
+    "eligible": false
+  },
+  "Girafa H1M1 12H": {
+    "pnlR": -132.62443103056896,
+    "ops": 194,
+    "eligible": false
+  },
+  "Girafa H1M2 12H": {
+    "pnlR": -113.71851461363491,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M10 12H": {
+    "pnlR": -108.76925336570599,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M5 12H": {
+    "pnlR": -94.84618722795703,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 12H": {
+    "pnlR": -37.19941093527396,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 13H": {
+    "pnlR": -122.79259882962955,
+    "ops": 153,
+    "eligible": false
+  },
+  "Girafa H1M2 13H": {
+    "pnlR": -143.25387945834674,
+    "ops": 183,
+    "eligible": false
+  },
+  "Girafa H1M10 13H": {
+    "pnlR": -159.27822754351848,
+    "ops": 192,
+    "eligible": false
+  },
+  "Girafa H1M5 13H": {
+    "pnlR": -116.59424033077124,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M15 13H": {
+    "pnlR": -71.30053545954713,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 14H": {
+    "pnlR": -116.90131027876771,
+    "ops": 135,
+    "eligible": false
+  },
+  "Girafa H1M2 14H": {
+    "pnlR": -192.91929506317342,
+    "ops": 178,
+    "eligible": false
+  },
+  "Girafa H1M10 14H": {
+    "pnlR": -184.91633295099948,
+    "ops": 183,
+    "eligible": false
+  },
+  "Girafa H1M5 14H": {
+    "pnlR": -185.3086009271864,
+    "ops": 196,
+    "eligible": false
+  },
+  "Girafa H1M15 14H": {
+    "pnlR": -124.35322407145718,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 15H": {
+    "pnlR": -100.70220995886736,
+    "ops": 123,
+    "eligible": false
+  },
+  "Girafa H1M2 15H": {
+    "pnlR": -193.77979928940292,
+    "ops": 166,
+    "eligible": false
+  },
+  "Girafa H1M10 15H": {
+    "pnlR": -209.57616733156596,
+    "ops": 172,
+    "eligible": false
+  },
+  "Girafa H4M10 15H": {
+    "pnlR": -23.252441287923425,
+    "ops": 44,
+    "eligible": false
+  },
+  "Girafa H1M5 15H": {
+    "pnlR": -210.95135868044605,
+    "ops": 189,
+    "eligible": false
+  },
+  "Girafa H1M15 15H": {
+    "pnlR": -116.13900234689841,
+    "ops": 200,
+    "eligible": false
+  },
+  "Girafa H1M1 16H": {
+    "pnlR": -143.6584398451944,
+    "ops": 124,
+    "eligible": false
+  },
+  "Girafa H1M2 16H": {
+    "pnlR": -216.1652760310915,
+    "ops": 163,
+    "eligible": false
+  },
+  "Girafa H1M10 16H": {
+    "pnlR": -251.20439596387791,
+    "ops": 178,
+    "eligible": false
+  },
+  "Girafa H1M5 16H": {
+    "pnlR": -253.0919437387305,
+    "ops": 197,
+    "eligible": false
+  },
+  "Girafa H1M15 16H": {
+    "pnlR": -121.72256707991964,
+    "ops": 201,
+    "eligible": false
+  },
+  "Girafa H1M1 17H": {
+    "pnlR": -188.2753743273313,
+    "ops": 100,
+    "eligible": false
+  },
+  "Girafa H1M2 17H": {
+    "pnlR": -253.92011815344827,
+    "ops": 146,
+    "eligible": false
+  },
+  "Girafa H1M10 17H": {
+    "pnlR": -260.1418778821466,
+    "ops": 159,
+    "eligible": false
+  },
+  "Girafa H1M5 17H": {
+    "pnlR": -275.9009346124169,
+    "ops": 183,
+    "eligible": false
+  },
+  "Girafa H1M15 17H": {
+    "pnlR": -11.635422496256947,
+    "ops": 46,
+    "eligible": false
+  },
+  "Girafa H1M1 18H": {
+    "pnlR": -226.4116441629889,
+    "ops": 145,
+    "eligible": false
+  },
+  "Girafa H1M2 18H": {
+    "pnlR": -207.83834984050833,
+    "ops": 172,
+    "eligible": false
+  },
+  "Girafa H1M10 18H": {
+    "pnlR": -207.65544278681134,
+    "ops": 180,
+    "eligible": false
+  },
+  "Girafa H1M5 18H": {
+    "pnlR": -129.64934573103696,
+    "ops": 198,
+    "eligible": false
+  },
+  "Girafa H4M10 18H": {
+    "pnlR": -154.59329909056805,
+    "ops": 112,
+    "eligible": false
+  },
+  "Girafa H1M15 19H": {
+    "pnlR": -9.952334234918377,
+    "ops": 155,
+    "eligible": false
+  },
+  "Girafa H4M10 22H": {
+    "pnlR": 12.514870279296611,
+    "ops": 155,
+    "eligible": true
+  },
+  "Girafa H4M10 02H": {
+    "pnlR": -23.432475800219358,
+    "ops": 151,
+    "eligible": false
+  },
+  "Girafa H4M10 06H": {
+    "pnlR": -44.72292888562079,
+    "ops": 152,
+    "eligible": false
+  },
+  "Girafa H4M10 10H": {
+    "pnlR": -32.73240948498703,
+    "ops": 156,
+    "eligible": false
+  },
+  "Girafa H4M10 14H": {
+    "pnlR": -160.39334730640374,
+    "ops": 137,
+    "eligible": false
+  }
+}

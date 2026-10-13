@@ -44,7 +44,11 @@ const BROKERS = {
   ftmo: {
     name: 'FTMO',
     methods: {
-      linhas_ouro_lote_dobrado: { source: 'data/linhas_ouro_ftmo.csv', ready: true, detail: 'Normal - virada no 4.8 | MT5 +6 para BRT | Top 5 FTMO' },
+      linhas_ouro_lote_dobrado: {
+        source: 'data/linhas_ouro_ftmo_girafa_catalogo.csv', metadata: 'data/linhas_ouro_ftmo_girafa_catalogo_meta.json', ready: true,
+        detail: 'Normal - virada no 4.8 | Girafa + XAU | Ranking por assertividade historica',
+        note: 'Girafa: somente dois horarios distintos elegiveis (20h M1 e 22h M10); nao completamos cinco com horarios de retorno negativo. Varredura M1, M2, M5, M10, M15 e H4M10, janeiro a 12/10/2026 17:54 BRT. Entrada 0,050 / folga do stop 0,010 em preco. Servidor -5h antes de 08/03/2026 e -6h depois. Ranking por assertividade historica, minimo 100 fechadas e R positivo, apenas um TF por ativo/horario. XAU: cinco horarios fixos anteriores, maio a 18/09/2026 17:49 BRT, sem nova varredura ou auditoria financeira. Fora dessa cobertura, vazio significa sem dados. Outubro parcial; spreads reais sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h: 79 sessoes descartadas porque a margem ultrapassa o alvo. Canais sem expiracao; selecao retrospectiva. Validar regras e execucao em gaps na EA; nao comprova cumprimento das regras da mesa.'
+      },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest FTMO alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest FTMO' }
     }
@@ -188,12 +192,12 @@ function renderMonthOptions() {
   const months = Array.from(new Set(state.rows.map(monthKey))).sort().reverse();
   state.availableMonths = months;
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>' + months.map(key => '<option value="' + key + '">' + monthLabel(key) + '</option>').join('');
-  if (months.length) els.monthFilter.value = state.broker === 'axi' || (['exness', 'hantec'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'TODOS' : months[0];
+  if (months.length) els.monthFilter.value = state.broker === 'axi' || (['exness', 'hantec', 'ftmo'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'TODOS' : months[0];
 }
 
 function renderSetupOptions() {
   const topHeaders = topRankingHeaders(5);
-  els.setupFilter.innerHTML = '<option value="TODOS">Top 5 melhores horarios</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
+  els.setupFilter.innerHTML = '<option value="TODOS">' + (topHeaders.length ? 'Top ' + topHeaders.length + ' melhores horarios' : 'Nenhum horario elegivel') + '</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
   els.setupFilter.value = 'TODOS';
 }
 
@@ -224,7 +228,7 @@ function selectedRankingLabel() {
 
 function renderSummary(rows) {
   const method = currentMethod();
-  els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
+  els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness', 'ftmo'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
   els.methodNote.textContent = method.note || '';
   els.methodNote.hidden = !method.note;
   const setup = els.setupFilter.value || 'TODOS';
@@ -233,12 +237,12 @@ function renderSummary(rows) {
   const overallTotals = countResults(state.rows, activeSetup);
   if (els.methodName) els.methodName.textContent = method.name;
   if (els.methodMeta) els.methodMeta.textContent = currentBroker().name + ' | ' + method.detail + ' | colunas em BRT';
-  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 5 fixos' : setup);
+  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top ' + activeSetup.length + ' fixos' : setup);
   els.totalOps.textContent = periodTotals.ops;
   els.totalWins.textContent = periodTotals.wins;
   els.totalStops.textContent = periodTotals.Stop;
-  els.accuracy.textContent = percent(periodTotals.accuracy);
-  els.overallAccuracy.textContent = percent(overallTotals.accuracy);
+  els.accuracy.textContent = periodTotals.ops ? percent(periodTotals.accuracy) : '-';
+  els.overallAccuracy.textContent = overallTotals.ops ? percent(overallTotals.accuracy) : '-';
 }
 
 function topRankingItems(limit = 10, ignoreTf = false) {
@@ -271,7 +275,7 @@ function renderRanking(rows) {
   els.rankReference.hidden = !els.tfFilter.value || els.tfFilter.value === 'TODOS';
   els.referenceTitle.textContent = 'Ranking geral - ' + (els.assetFilter.value === 'TODOS' ? 'Todos os ativos' : els.assetFilter.value);
   els.referenceSetups.textContent = topRankingItems(5, true).map(item => displayHeader(item.header) + ' (' + percent(item.accuracy) + ')').join(' | ');
-  if (!setups.length) { els.ranking.innerHTML = els.emptyTemplate.innerHTML; return; }
+  if (!setups.length) { els.ranking.innerHTML = '<div class="empty-state"><strong>Nenhum horario elegivel neste filtro</strong><p>Sem candidatos que cumpram os criterios historicos do ranking.</p></div>'; return; }
   els.ranking.innerHTML = setups.map(item =>
     '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
   ).join('');
@@ -282,7 +286,7 @@ function renderDistribution(rows) {
   const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
   const totals = countResults(rows, activeSetup);
   const max = Math.max(totals.Take, totals.Virada, totals.Stop, 1);
-  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top 5 fixos' : setup);
+  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top ' + activeSetup.length + ' fixos' : setup);
   els.barTake.style.width = (totals.Take / max * 100) + '%';
   els.barVirada.style.width = (totals.Virada / max * 100) + '%';
   els.barStop.style.width = (totals.Stop / max * 100) + '%';
@@ -324,8 +328,8 @@ function renderTable(rows) {
   const visibleHeaders = ['DATA', ...visibleSetups];
   const visibleRows = visibleTableRows(rows, setup, selectedResult, visibleSetups);
   els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + displayHeader(header) + '</th>').join('') + '</tr>';
-  els.tableBody.innerHTML = visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderBadge(row[header])) + '</td>').join('') + '</tr>').join('');
-  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + visibleRows.length + ' datas exibidas | ' + selectedPeriodLabel() + (setup === 'TODOS' ? ' | top 5 fixos dos melhores' : '') + '</span>';
+  els.tableBody.innerHTML = visibleSetups.length ? visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderBadge(row[header])) + '</td>').join('') + '</tr>').join('') : '<tr><td>Nenhum horario elegivel neste filtro.</td></tr>';
+  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + (visibleSetups.length ? visibleRows.length + ' datas exibidas' : 'Nenhum horario elegivel') + ' | ' + selectedPeriodLabel() + (setup === 'TODOS' && visibleSetups.length ? ' | top ' + visibleSetups.length + ' fixos dos melhores' : '') + '</span>';
   Array.from(document.querySelectorAll('.month-tab')).forEach(btn => {
     btn.addEventListener('click', () => {
       els.monthFilter.value = btn.dataset.month;
