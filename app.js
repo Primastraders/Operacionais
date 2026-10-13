@@ -33,9 +33,9 @@ const BROKERS = {
     name: 'Hantec',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_hantec_catalogo.csv', metadata: 'data/linhas_ouro_hantec_catalogo_meta.json', ready: true,
-        detail: 'Normal - virada no 4.8 | XAU + HK50 | Ranking por assertividade historica',
-        note: 'HK50 com varredura de seis TFs; XAU somente os cinco candidatos fixos anteriores. HK50: minimo 100 fechadas e R positivo; um TF por ativo/horario. XAU preservado sem nova auditoria financeira. Cortes: HK50 09/10/2026 09:18 BRT, XAU 07/10/2026 17:59 BRT. HK50 entrada 0,05 / folga do stop 0,02 em preco; servidor -5h antes de 08/03/2026 e -6h depois. Fuso XAU anterior a marco ainda nao revalidado. Outubro parcial; spreads reais sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Selecao retrospectiva; validar execucao em gaps na EA.'
+        source: 'data/linhas_ouro_hantec_jp225.csv', metadata: 'data/linhas_ouro_hantec_jp225_meta.json', ready: true,
+        detail: 'Normal - virada no 4.8 | XAU + HK50 + JP225 | Ranking por assertividade historica',
+        note: 'JP225: varredura M1, M2, M5, M10, M15 e H4M10, entrada 0,25 / folga stop 0,15 em preco; alvo principal 6,7 e virada 4,8 com lote 2x. Corte 12/10/2026 17:58 BRT. Top 5 por assertividade no historico completo, sem excluir prejuizo ou amostra pequena; um TF por ativo/horario. Alguns horarios sao sazonais por horario de verao e tem menos operacoes. Meses recalculam os mesmos horarios fixos. RR principal mediano da amostra de entradas, nao 1:1 exato. Spreads reais incluidos; comissao e swap desconhecidos e nao descontados. Assertividade mede Take + Virada, nao necessariamente lucro. Execucao e lote em gaps precisam de validacao na EA; nao comprova aprovacao em mesa. XAU preservado ate 07/10/2026 17:59 BRT, sem nova auditoria financeira ou de fuso anterior a marco. HK50 preservado ate 09/10/2026 09:18 BRT, entrada 0,05 / folga stop 0,02; seus candidatos mantem o criterio anterior de 100 fechadas e R positivo. Servidor -5h antes de 08/03 e -6h depois para JP225/HK50. Outubro parcial; fora da cobertura de cada ativo, vazio significa sem dados. Selecao retrospectiva.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
@@ -276,6 +276,15 @@ function renderFinancialReturn(header, rows) {
   return '<small class="rank-return ' + (value < 0 ? 'negative' : 'positive') + '" title="' + label + '">' + (value > 0 ? '+' : '') + value.toFixed(2) + 'R' + (meta.dailyR ? '' : ' geral') + '</small>';
 }
 
+function renderPrincipalRR(header, rows) {
+  const daily = state.rankingMetadata[header]?.dailyRR;
+  if (!daily) return '';
+  const values = rows.map(row => daily[parseDateBr(row.DATA).toISOString().slice(0,10)]).filter(Number.isFinite).sort((a,b) => a-b);
+  if (!values.length) return '';
+  const i = Math.floor(values.length / 2), median = values.length % 2 ? values[i] : (values[i-1]+values[i])/2;
+  return '<small title="RR principal mediano das entradas no periodo, antes de comissao e swap">RR mediano 1:' + median.toFixed(2) + '</small>';
+}
+
 function renderRanking(rows) {
   const fixedHeaders = topRankingHeaders(5);
   const setups = fixedHeaders.map(header => ({ header, ...countResults(rows, header) }));
@@ -285,7 +294,7 @@ function renderRanking(rows) {
   els.referenceSetups.textContent = topRankingItems(5, true).map(item => displayHeader(item.header) + ' (' + percent(item.accuracy) + ')').join(' | ');
   if (!setups.length) { els.ranking.innerHTML = '<div class="empty-state"><strong>Nenhum horario elegivel neste filtro</strong><p>Sem candidatos que cumpram os criterios historicos do ranking.</p></div>'; return; }
   els.ranking.innerHTML = setups.map(item =>
-    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S | ' + item.ops + ' op.</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + renderFinancialReturn(item.header, rows) + '</div></div>'
+    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S | ' + item.ops + ' op.</small>' + renderPrincipalRR(item.header, rows) + '</div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + renderFinancialReturn(item.header, rows) + '</div></div>'
   ).join('');
 }
 
@@ -445,7 +454,12 @@ function showError(error) {
 const requestedBroker = new URLSearchParams(window.location.search).get('corretora');
 if (Object.prototype.hasOwnProperty.call(BROKERS, requestedBroker)) state.broker = requestedBroker;
 renderBrokerOptions();
-loadMethod(state.method).catch(showError);
+loadMethod(state.method).then(() => {
+  const asset = new URLSearchParams(window.location.search).get('ativo');
+  if (asset && Array.from(els.assetFilter.options).some(option => option.value === asset)) {
+    els.assetFilter.value = asset; renderTfOptions(); renderSetupOptions(); renderAll();
+  }
+}).catch(showError);
 
 
 
