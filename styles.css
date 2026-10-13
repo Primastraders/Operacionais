@@ -1247,28 +1247,33 @@ main {
 .operation-detail summary { cursor: pointer; }
 .operation-detail small { display: block; margin-top: 8px; white-space: normal; overflow-wrap: anywhere; text-align: left; line-height: 1.5; }
 
-.topbar { justify-content: space-between; padding: 10px 16px; gap: 16px; }
-.brand { justify-content: flex-start; gap: 12px; min-width: 0; }
-.brand-logo { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; background: transparent; }
-h1 { font-size: 26px; line-height: 1.1; letter-spacing: 0; }
+.topbar { display: grid; grid-template-columns: minmax(0,1fr) 76px minmax(0,1fr); align-items: center; padding: 12px 20px; gap: 16px; }
+.brand { display: contents; }
+.brand > div { grid-column: 1; grid-row: 1; min-width: 0; text-align: left; }
+.brand-logo { grid-column: 2; grid-row: 1; width: 76px; height: 76px; padding: 0; border: 0; border-radius: 8px; background: transparent; }
+h1 { font-size: 28px; line-height: 1.1; letter-spacing: 0; }
 .topbar p { margin-top: 3px; font-size: 12px; }
-.status-pill { position: static; transform: none; padding: 5px 9px; font-size: 11px; }
+.status-pill { grid-column: 3; grid-row: 1; justify-self: end; position: static; transform: none; padding: 5px 9px; font-size: 11px; }
 main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
-.method-tabs { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 10px; border-bottom: 1px solid var(--line); }
-.method-tab { flex: 0 1 auto; min-height: 40px; padding: 8px 14px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; font-size: 14px; }
+.method-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-bottom: 10px; border: 0; }
+.method-tab { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.025); font-size: 14px; }
 .method-tab small { display: inline; margin: 0 0 0 8px; font-size: 12px; }
-.method-tab.active { background: rgba(201,168,76,.07); color: var(--gold-2); border-color: var(--gold); }
-.method-tab.active small { color: var(--muted); }
-.summary-grid { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 0; margin-bottom: 10px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.02); }
-.metric-card { min-height: 76px; padding: 10px 12px; border: 0; border-right: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; min-width: 0; }
-.metric-card:last-child { border-right: 0; }
+.method-tab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+.method-tab.active small { color: rgba(8,21,41,.76); }
+.summary-grid { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; margin-bottom: 10px; border: 0; background: transparent; }
+.metric-card { min-height: 76px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(18,40,75,.68); box-shadow: none; min-width: 0; }
+.metric-card:last-child { border-right: 1px solid var(--line); }
 .metric-card span { font-size: 10px; letter-spacing: 0; }
 .metric-card strong { margin-top: 4px; font-size: 24px; line-height: 1; }
 .metric-card small { margin-top: 4px; font-size: 11px; overflow-wrap: anywhere; }
 .toolbar { gap: 8px; padding: 10px; margin-bottom: 8px; }
 .field { min-width: 0; gap: 4px; }
 .field label { font-size: 10px; letter-spacing: 0; }
-.toolbar select,.toolbar input { height: 34px; padding: 0 8px; font-size: 13px; border-radius: 4px; }
+.toolbar select,.toolbar input { height: 34px; padding: 0 8px; font-size: 13px; border-radius: 8px; }
+.table-panel { width: min(1040px,100%); margin: 0 auto; }
+.table-wrap table { width: 100%; min-width: 720px; table-layout: fixed; }
+.table-wrap th,.table-wrap td { padding: 5px 8px; }
+.table-wrap th:first-child,.table-wrap td:first-child { width: 96px; min-width: 96px; }
 .method-note-disclosure { margin-bottom: 10px; color: var(--muted); font-size: 12px; }
 .method-note-disclosure[hidden] { display: none; }
 .method-note-disclosure summary { cursor: pointer; padding: 4px 0; }
@@ -1289,9 +1294,11 @@ main { width: min(1720px, calc(100% - 32px)); padding-top: 8px; }
   .method-tab small { display: block; margin: 3px 0 0; font-size: 11px; }
 }
 @media (max-width: 540px) {
-  .topbar { padding: 10px 12px; }
+  .topbar { display: flex; flex-direction: column; padding: 12px; }
+  .brand { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .brand > div { text-align: center; }
   .status-pill { display: none; }
-  .brand-logo { width: 38px; height: 38px; }
+  .brand-logo { width: 64px; height: 64px; }
   h1 { font-size: 23px; }
   .topbar p { font-size: 11px; }
   main { width: calc(100% - 24px); }
