@@ -47,7 +47,7 @@ const BROKERS = {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_ftmo_girafa_catalogo.csv', metadata: 'data/linhas_ouro_ftmo_girafa_catalogo_meta.json', ready: true,
         detail: 'Normal - virada no 4.8 | Girafa + XAU | Ranking por assertividade historica',
-        note: 'Girafa: somente dois horarios distintos elegiveis (20h M1 e 22h M10); nao completamos cinco com horarios de retorno negativo. Varredura M1, M2, M5, M10, M15 e H4M10, janeiro a 12/10/2026 17:54 BRT. Entrada 0,050 / folga do stop 0,010 em preco. Servidor -5h antes de 08/03/2026 e -6h depois. Ranking por assertividade historica, minimo 100 fechadas e R positivo, apenas um TF por ativo/horario. XAU: cinco horarios fixos anteriores, maio a 18/09/2026 17:49 BRT, sem nova varredura ou auditoria financeira. Fora dessa cobertura, vazio significa sem dados. Outubro parcial; spreads reais sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h: 79 sessoes descartadas porque a margem ultrapassa o alvo. Canais sem expiracao; selecao retrospectiva. Validar regras e execucao em gaps na EA; nao comprova cumprimento das regras da mesa.'
+        note: 'Girafa: Top 5 por assertividade historica, entre todos os TFs ou somente o TF escolhido, sem excluir retorno negativo e sem corte minimo de amostra. Apenas um TF por ativo/horario. Quantidade de operacoes e retorno em R devem ser considerados junto da assertividade. Varredura M1, M2, M5, M10, M15 e H4M10, janeiro a 12/10/2026 17:54 BRT; H4M10 pode ter amostra menor por mudanca de horario de verao. Entrada 0,050 / folga do stop 0,010 em preco. Servidor -5h antes de 08/03/2026 e -6h depois. Ranking fixo no historico completo; meses recalculam os resultados dos mesmos horarios. XAU: cinco candidatos fixos anteriores, maio a 18/09/2026 17:49 BRT, sem nova varredura ou auditoria financeira; nao duplicamos o horario 22h para preencher cinco. Fora da cobertura, vazio significa sem dados. Outubro parcial; spreads reais sem filtro; R antes de comissao e swap, nao reais. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h exclui 79 canais em que a margem ultrapassa o alvo. Validar canais sem expiracao e execucao em gaps na EA. Selecao retrospectiva, nao comprovacao futura ou de regras da mesa.'
       },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest FTMO alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest FTMO' }
@@ -268,6 +268,14 @@ function topRankingHeaders(limit = 10) {
   return topRankingItems(limit).map(item => item.header);
 }
 
+function renderFinancialReturn(header, rows) {
+  const meta = state.rankingMetadata[header];
+  if (!meta || !Number.isFinite(meta.pnlR)) return '';
+  const value = meta.dailyR ? rows.reduce((sum, row) => sum + (meta.dailyR[parseDateBr(row.DATA).toISOString().slice(0,10)] || 0), 0) : meta.pnlR;
+  const label = meta.dailyR ? 'R do periodo, antes de comissao e swap' : 'R geral, antes de comissao e swap';
+  return '<small class="rank-return ' + (value < 0 ? 'negative' : 'positive') + '" title="' + label + '">' + (value > 0 ? '+' : '') + value.toFixed(2) + 'R' + (meta.dailyR ? '' : ' geral') + '</small>';
+}
+
 function renderRanking(rows) {
   const fixedHeaders = topRankingHeaders(5);
   const setups = fixedHeaders.map(header => ({ header, ...countResults(rows, header) }));
@@ -277,7 +285,7 @@ function renderRanking(rows) {
   els.referenceSetups.textContent = topRankingItems(5, true).map(item => displayHeader(item.header) + ' (' + percent(item.accuracy) + ')').join(' | ');
   if (!setups.length) { els.ranking.innerHTML = '<div class="empty-state"><strong>Nenhum horario elegivel neste filtro</strong><p>Sem candidatos que cumpram os criterios historicos do ranking.</p></div>'; return; }
   els.ranking.innerHTML = setups.map(item =>
-    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + '</div></div>'
+    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S | ' + item.ops + ' op.</small></div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + renderFinancialReturn(item.header, rows) + '</div></div>'
   ).join('');
 }
 
