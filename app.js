@@ -33,9 +33,9 @@ const BROKERS = {
     name: 'Hantec',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_hantec_xau_hk50.csv', ready: true,
-        detail: 'Normal - virada no 4.8 | XAU + HK50 | HK50 fuso historico corrigido',
-        note: 'Top 5 historico entre os XAU fixos anteriores e a varredura HK50, sem repetir ativo no mesmo horario. HK50 recalculado: servidor -5h antes de 08/03/2026 e -6h depois. Margens em preco: entrada 0,05 / folga do stop 0,02. Cortes: XAU ate 07/10/2026 17:59 BRT; HK50 ate 09/10/2026 09:18 BRT. XAU preservado: fuso anterior a marco ainda nao revalidado. Assertividade mede Take + Virada, nao necessariamente lucro. HK50 M5 15h: resultado financeiro -16,58R antes de comissao e swap. Execucao em gaps ainda precisa de validacao.'
+        source: 'data/linhas_ouro_hantec_girafa.csv', ready: true,
+        detail: 'Normal - virada no 4.8 | Girafa + XAU + HK50 | Ranking por assertividade historica',
+        note: 'Girafa: cinco melhores horarios por assertividade historica com retorno em R positivo, minimo 100 operacoes fechadas e apenas um TF por horario. Top 5 central compara esses horarios aos candidatos XAU e HK50 anteriores, preservados. Girafa de janeiro a 12/10/2026 17:59 BRT; entrada 0,050 / folga do stop 0,010 em preco. HK50 ate 09/10/2026 09:18 BRT; entrada 0,05 / folga do stop 0,02. Ambos: servidor -5h antes de 08/03/2026 e -6h depois. XAU ate 07/10/2026 17:59 BRT, fuso anterior a marco ainda nao revalidado. Outubro parcial. Spreads reais incluidos, sem filtro; antes de comissao e swap. Assertividade mede Take + Virada, nao necessariamente lucro. Girafa M1 20h: 74 sessoes excluidas porque a margem ultrapassa o alvo; essa regra precisa existir na EA. Selecao retrospectiva; execucao em gaps ainda nao validada na EA.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
@@ -182,7 +182,7 @@ function renderMonthOptions() {
   const months = Array.from(new Set(state.rows.map(monthKey))).sort().reverse();
   state.availableMonths = months;
   els.monthFilter.innerHTML = '<option value="TODOS">Todos os meses</option>' + months.map(key => '<option value="' + key + '">' + monthLabel(key) + '</option>').join('');
-  if (months.length) els.monthFilter.value = state.broker === 'axi' || (state.broker === 'exness' && state.method === 'linhas_ouro_lote_dobrado') ? 'TODOS' : months[0];
+  if (months.length) els.monthFilter.value = state.broker === 'axi' || (['exness', 'hantec'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'TODOS' : months[0];
 }
 
 function renderSetupOptions() {
