@@ -1231,10 +1231,16 @@ main {
   line-height: 1.5;
 }
 
+.badge,
+.badge.Take,
+.badge.Virada,
+.badge.Stop,
 .badge.Aberto {
-  background: var(--panel-2);
-  color: var(--gold-2);
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 4px;
+  font-weight: 600;
 }
 
 .operation-detail { max-width: 280px; margin: 0 auto; }
