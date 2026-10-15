@@ -34,7 +34,7 @@ const BROKERS = {
     methods: {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_hantec_jp225.csv', metadata: 'data/linhas_ouro_hantec_jp225_meta.json', ready: true,
-        detail: 'Normal - virada no 4.8 | XAU + JP225 | Ranking por assertividade historica',
+        detail: 'Normal - virada no 4.8 | XAU + JP225 + US30 | Ranking por assertividade historica',
         note: 'JP225 recalculado: servidor BRT+6 fixo conforme informado pelo usuario; fuso historico ainda nao confirmado independentemente. Pausa 18h-19h sem canal. H4M10 exige vela M10 na abertura exata do H4, sem usar vela posterior a pausa. Entrada 0,25 / folga stop 0,15 em preco; alvo principal 6,7 e virada 4,8, lote 2x. Corte 12/10/2026 17:58 BRT. Top 5 historico por assertividade, um TF por ativo/horario; meses mantem os mesmos horarios. RR principal mediano abaixo de 1:1, sem ajustar alvo ou margem. Bid/Ask reais; comissao e swap desconhecidos, nao descontados. Alvo atingido nao significa necessariamente lucro. Datas da tabela sao do canal; detalhes das entradas e saidas nos resultados. Canais sem expiracao; gaps e lote precisam de validacao na EA. XAU preservado, sem recalculo nesta atualizacao. Outubro parcial. Simulacao retrospectiva, nao comprovacao de aprovacao em mesa.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
@@ -75,6 +75,7 @@ const els = {
   methodNote: document.getElementById('methodNote'),
   methodNoteDisclosure: document.getElementById('methodNoteDisclosure'),
   totalStops: document.getElementById('totalStops'),
+  stopsMeta: document.getElementById('stopsMeta'),
   accuracy: document.getElementById('accuracy'),
   overallAccuracy: document.getElementById('overallAccuracy'),
   periodMeta: document.getElementById('periodMeta'),
@@ -91,6 +92,9 @@ const els = {
   barTakeText: document.getElementById('barTakeText'),
   barViradaText: document.getElementById('barViradaText'),
   barStopText: document.getElementById('barStopText'),
+  barFalhaRow: document.getElementById('barFalhaRow'),
+  barFalha: document.getElementById('barFalha'),
+  barFalhaText: document.getElementById('barFalhaText'),
   tableHead: document.getElementById('tableHead'),
   tableBody: document.getElementById('tableBody'),
   tableCaption: document.getElementById('tableCaption'),
@@ -156,7 +160,7 @@ function displayHeader(header) {
 }
 
 function countResults(rows, setup = 'TODOS') {
-  const totals = { Take: 0, Virada: 0, Stop: 0, empty: 0, ops: 0, wins: 0, accuracy: 0 };
+  const totals = { Take: 0, Virada: 0, Stop: 0, Falha: 0, empty: 0, ops: 0, wins: 0, accuracy: 0 };
   const setups = Array.isArray(setup) ? setup : (setup === 'TODOS' ? state.headers.slice(1) : [setup]);
   rows.forEach(row => {
     setups.forEach(key => {
@@ -165,7 +169,7 @@ function countResults(rows, setup = 'TODOS') {
       if (totals[result] !== undefined) totals[result] += 1;
     });
   });
-  totals.ops = totals.Take + totals.Virada + totals.Stop;
+  totals.ops = totals.Take + totals.Virada + totals.Stop + totals.Falha;
   totals.wins = totals.Take + totals.Virada;
   totals.accuracy = totals.ops ? totals.wins / totals.ops * 100 : 0;
   return totals;
@@ -230,7 +234,7 @@ function selectedRankingLabel() {
 function renderSummary(rows) {
   const method = currentMethod();
   els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness', 'ftmo'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
-  els.methodNote.textContent = method.note || '';
+  els.methodNote.textContent = (method.note || '') + (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado' ? ' US30 M10 08h: entrada 0,00 / folga stop 0,02 em preco; alvos 6,7 e 4,8, virada com lote 2x. MT5: 120 Takes, 39 Viradas, 40 Stops e 5 falhas de execucao apos entrada, todas incluidas nas 204 operacoes (77,94%). Historico de 02/01 a 14/10/2026 17:58 BRT; conversao servidor menos 6h assumida. Oito minutos sem ticks reais em 13/02 tiveram ticks gerados pelo MT5. Classificacao CSV/MT5 coincide em 203 de 204 canais; o painel usa o MT5, inclusive no gap de 10/04. Detalhes US30 incluem comissao e swap; os demais ativos preservam seus criterios anteriores. RR principal mediano bruto 1:0,91; apos comissao estimada 1:0,89, antes de swap e gaps adicionais. Selecao retrospectiva, nao garantia de lucro ou aprovacao.' : '');
   els.methodNote.hidden = !method.note;
   els.methodNoteDisclosure.hidden = !method.note;
   els.methodNoteDisclosure.open = false;
@@ -244,6 +248,7 @@ function renderSummary(rows) {
   els.totalOps.textContent = periodTotals.ops;
   els.totalWins.textContent = periodTotals.wins;
   els.totalStops.textContent = periodTotals.Stop;
+  els.stopsMeta.textContent = periodTotals.Falha ? 'perdas fechadas + ' + periodTotals.Falha + ' falhas de execucao' : 'perdas fechadas';
   els.accuracy.textContent = periodTotals.ops ? percent(periodTotals.accuracy) : '-';
   els.overallAccuracy.textContent = overallTotals.ops ? percent(overallTotals.accuracy) : '-';
 }
@@ -297,7 +302,7 @@ function renderRanking(rows) {
   els.referenceSetups.textContent = topRankingItems(5, true).map(item => displayHeader(item.header) + ' (' + percent(item.accuracy) + ')').join(' | ');
   if (!setups.length) { els.ranking.innerHTML = '<div class="empty-state"><strong>Nenhum horario elegivel neste filtro</strong><p>Sem candidatos que cumpram os criterios historicos do ranking.</p></div>'; return; }
   els.ranking.innerHTML = setups.map(item =>
-    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S | ' + item.ops + ' op.</small>' + renderPrincipalRR(item.header, rows) + '</div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + renderFinancialReturn(item.header, rows) + '</div></div>'
+    '<div class="rank-row"><div class="rank-name">' + displayHeader(item.header) + '<small>' + item.Take + 'T / ' + item.Virada + 'V / ' + item.Stop + 'S' + (item.Falha ? ' / ' + item.Falha + ' falhas' : '') + ' | ' + item.ops + ' op.</small>' + renderPrincipalRR(item.header, rows) + '</div><div class="track"><i style="width:' + Math.max(2, item.accuracy) + '%"></i></div><div class="rank-pct">' + percent(item.accuracy) + renderFinancialReturn(item.header, rows) + '</div></div>'
   ).join('');
 }
 
@@ -305,7 +310,7 @@ function renderDistribution(rows) {
   const setup = els.setupFilter.value || 'TODOS';
   const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
   const totals = countResults(rows, activeSetup);
-  const max = Math.max(totals.Take, totals.Virada, totals.Stop, 1);
+  const max = Math.max(totals.Take, totals.Virada, totals.Stop, totals.Falha, 1);
   els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top ' + activeSetup.length + ' fixos' : setup);
   els.barTake.style.width = (totals.Take / max * 100) + '%';
   els.barVirada.style.width = (totals.Virada / max * 100) + '%';
@@ -313,11 +318,15 @@ function renderDistribution(rows) {
   els.barTakeText.textContent = totals.Take;
   els.barViradaText.textContent = totals.Virada;
   els.barStopText.textContent = totals.Stop;
+  els.barFalhaRow.hidden = !totals.Falha;
+  els.barFalha.style.width = (totals.Falha / max * 100) + '%';
+  els.barFalhaText.textContent = totals.Falha;
 }
 
 function renderBadge(result) {
   if (!result || result === 'Sem ativacao') return '<span class="empty-cell" title="Sem entrada nesta sessao">-</span>';
   if (result === 'Aberto') return '<span class="badge Aberto" title="Operacao ainda aberta no corte dos dados">Aberto</span>';
+  if (result === 'Falha') return '<span class="badge Falha" title="Falha de execucao apos entrada; incluida na assertividade">Falha</span>';
   return '<span class="badge ' + result + '">' + result + '</span>';
 }
 
@@ -381,6 +390,10 @@ function resetEmpty(method) {
   els.totalOps.textContent = '0';
   els.totalWins.textContent = '0';
   els.totalStops.textContent = '0';
+  els.stopsMeta.textContent = 'perdas fechadas';
+  els.barFalhaRow.hidden = true;
+  els.barFalha.style.width = '0%';
+  els.barFalhaText.textContent = '0';
   els.accuracy.textContent = '0.00%';
   els.overallAccuracy.textContent = '0.00%';
   els.periodMeta.textContent = 'sem dados';

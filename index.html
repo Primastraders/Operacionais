@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=espacamento-painel-20261013">
+  <link rel="stylesheet" href="styles.css?v=us30-20261015">
 </head>
 <body>
   <header class="topbar">
@@ -43,7 +43,7 @@
       <article class=metric-card stop>
         <span>Stops</span>
         <strong id=totalStops>-</strong>
-        <small>perdas fechadas</small>
+        <small id="stopsMeta">perdas fechadas</small>
       </article>
       <article class=metric-card accuracy>
         <span>Assertividade do periodo</span>
@@ -85,6 +85,7 @@
           <option value=Take>Take</option>
           <option value=Virada>Virada</option>
           <option value=Stop>Stop</option>
+          <option value=Falha>Falha de execucao</option>
         </select>
       </div>
       <div class="field grow">
@@ -120,6 +121,7 @@
           <div class=bar-row><span>Take</span><div><i id=barTake></i></div><b id=barTakeText>-</b></div>
           <div class=bar-row><span>Virada</span><div><i id=barVirada></i></div><b id=barViradaText>-</b></div>
           <div class=bar-row><span>Stop</span><div><i id=barStop></i></div><b id=barStopText>-</b></div>
+          <div class=bar-row id=barFalhaRow hidden><span>Falha</span><div><i id=barFalha></i></div><b id=barFalhaText>-</b></div>
         </div>
       </article>
     </section>
@@ -148,7 +150,7 @@
     </div>
   </template>
 
-  <script src="app.js?v=hantec-xau-jp225-20261014"></script>
+  <script src="app.js?v=hantec-us30-mt5-20261015"></script>
 </body>
 </html>
 
