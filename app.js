@@ -154,6 +154,8 @@ function percent(value) {
 }
 
 function displayHeader(header) {
+  if (header === 'XAU H1M1_6V 10H') return 'XAU M1 (6 velas) 10H';
+  if (header === 'XAU H1M1 10H' && state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') return 'XAU M1 (4 velas) 10H';
   return header
     .replace('USTEC', 'NAS')
     .replace(/H1M(\d+)/g, 'M$1');
@@ -207,8 +209,14 @@ function renderSetupOptions() {
 }
 
 function setupParts(header) {
-  const parts = displayHeader(header).split(' ');
-  return { asset: parts[0], tf: parts[1], hour: parts.at(-1) };
+  const parts = header.replace('USTEC', 'NAS').split(' ');
+  return { asset: parts[0], tf: parts[1].replace(/^H1M/, 'M'), hour: parts.at(-1) };
+}
+
+function tfLabel(tf) {
+  if (tf === 'M1_6V') return 'M1 (6 velas)';
+  if (tf === 'M1' && state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') return 'M1 (4 velas)';
+  return tf;
 }
 
 function renderAssetOptions() {
@@ -220,15 +228,15 @@ function renderAssetOptions() {
 
 function renderTfOptions() {
   const asset = els.assetFilter.value || 'TODOS', previous = els.tfFilter.value;
-  const order = ['M1', 'M2', 'M5', 'M10', 'M15', 'H4M10'];
+  const order = ['M1', 'M1_6V', 'M2', 'M5', 'M10', 'M15', 'H4M10'];
   const tfs = [...new Set(state.headers.slice(1).map(setupParts).filter(p => asset === 'TODOS' || p.asset === asset).map(p => p.tf))].sort((a,b) => order.indexOf(a)-order.indexOf(b));
-  els.tfFilter.innerHTML = '<option value="TODOS">Todos os TFs</option>' + tfs.map(tf => '<option value="' + tf + '">' + tf + '</option>').join('');
+  els.tfFilter.innerHTML = '<option value="TODOS">Todos os TFs</option>' + tfs.map(tf => '<option value="' + tf + '">' + tfLabel(tf) + '</option>').join('');
   els.tfFilter.value = tfs.includes(previous) ? previous : 'TODOS';
 }
 
 function selectedRankingLabel() {
   const asset = els.assetFilter.value || 'TODOS', tf = els.tfFilter.value || 'TODOS';
-  return (asset === 'TODOS' ? 'Todos os ativos' : asset) + ' | ' + (tf === 'TODOS' ? 'Todos os TFs' : tf);
+  return (asset === 'TODOS' ? 'Todos os ativos' : asset) + ' | ' + (tf === 'TODOS' ? 'Todos os TFs' : tfLabel(tf));
 }
 
 function renderSummary(rows) {
@@ -236,6 +244,9 @@ function renderSummary(rows) {
   els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness', 'ftmo'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
   els.methodNote.textContent = (method.note || '') + (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado' ? ' US30 M10 08h: entrada 0,00 / folga stop 0,02 em preco; alvos 6,7 e 4,8, virada com lote 2x. MT5: 120 Takes, 39 Viradas, 40 Stops e 5 falhas de execucao apos entrada, todas incluidas nas 204 operacoes (77,94%). Historico de 02/01 a 14/10/2026 17:58 BRT; conversao servidor menos 6h assumida. Oito minutos sem ticks reais em 13/02 tiveram ticks gerados pelo MT5. Classificacao CSV/MT5 coincide em 203 de 204 canais; o painel usa o MT5, inclusive no gap de 10/04. Detalhes US30 incluem comissao e swap; os demais ativos preservam seus criterios anteriores. RR principal mediano bruto 1:0,91; apos comissao estimada 1:0,89, antes de swap e gaps adicionais. Selecao retrospectiva, nao garantia de lucro ou aprovacao.' : '');
   els.methodNote.hidden = !method.note;
+  if (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') {
+    els.methodNote.textContent += ' XAU 10h: mantidos os dois modelos, M1 com 4 velas (historico anterior preservado) e M1 com 6 velas (MT5, 192 ciclos, 109 Takes, 43 Viradas, 40 Stops, 79,17%, ate 07/10/2026). Excecao autorizada a regra de um TF por ativo/horario: ambas as formacoes podem entrar no Top 5. Seis canais nao tiveram entrada por lote minimo acima do risco nominal US$60; MT5 inclui 30/04, ausente no CSV, e gerou ticks em oito minutos sem ticks reais. Por isso as bases de contagem dos dois modelos diferem. Entrada 0,110 / folga stop 0,020 em preco; alvos 6,7 e 4,8; defesa lote 2x; KID=false. Detalhes de 6 velas incluem os custos registrados no MT5; RR principal mediano bruto 1:0,90. Os dois modelos compartilham ativo e horario: as contagens nao sao uma simulacao de carteira nem validacao de risco conjunto.';
+  }
   els.methodNoteDisclosure.hidden = !method.note;
   els.methodNoteDisclosure.open = false;
   const setup = els.setupFilter.value || 'TODOS';
@@ -265,7 +276,8 @@ function topRankingItems(limit = 10, ignoreTf = false) {
     .filter(item => item.ops > 0)
     .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops)
     .filter(item => {
-      const p = setupParts(item.header), identity = p.asset + ' ' + p.hour;
+      const p = setupParts(item.header), variant = state.rankingMetadata[item.header]?.rankingVariant || '';
+      const identity = p.asset + ' ' + p.hour + ' ' + variant;
       if (seen.has(identity)) return false;
       seen.add(identity); return true;
     })
