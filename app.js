@@ -45,9 +45,9 @@ const BROKERS = {
     name: 'FTMO',
     methods: {
       linhas_ouro_lote_dobrado: {
-        source: 'data/linhas_ouro_ftmo.csv', ready: true,
+        source: 'data/linhas_ouro_ftmo.csv', metadata: 'data/linhas_ouro_ftmo_meta.json', ready: true,
         detail: 'Normal - virada no 4.8 | XAU | Ranking por assertividade historica',
-        note: 'XAU: cinco candidatos fixos anteriores, maio a 18/09/2026 17:49 BRT, sem nova varredura ou auditoria financeira. Um TF por ativo/horario: nao duplicamos 22h para preencher cinco. Fora da cobertura, vazio significa sem dados. Ranking fixo no historico completo; meses recalculam os mesmos horarios. Assertividade mede Take + Virada, nao necessariamente lucro. Resultados antes de comissao e swap. Selecao retrospectiva, nao comprovacao futura ou de regras da mesa.'
+        note: 'XAU: nova varredura ftmo26.csv, 02/01 a 23/10/2026 17:49 BRT; outubro parcial. 240 combinacoes: 24 horarios, quatro velas M1/M2/M3/M4/M5/M6/M10/M12/M15 e seis velas M1. Top 5 historico por assertividade, minimo 150 ciclos fechados, resultado positivo e PF >= 1,15; um modelo por horario. Meses mantem os mesmos horarios. Horarios e datas em Brasilia: servidor menos 5h ate 07/03, menos 6h a partir de 08/03. Canal nas primeiras velas disponiveis da hora, entradas observadas apos o fechamento da ultima. Margem 0,11 / folga stop 0,02 em preco; alvo principal 6,7 e virada 4,8 com lote 2x. Uma virada, canais independentes sem expiracao. Spread Bid/Ask incluido; sem comissao, swap, lote minimo, margem ou regras da mesa. Assertividade = (Take + Virada) / ciclos fechados; abertas excluidas. Selecao retrospectiva no mesmo historico, sem validacao fora da amostra. Replay CSV, nao testador nativo MT5 nem simulacao de carteira.'
       },
       linhas_ouro_alvo_dobrado: { ready: false, detail: 'Aguardando backtest FTMO alvo dobrado' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest FTMO' }
@@ -154,6 +154,7 @@ function percent(value) {
 }
 
 function displayHeader(header) {
+  if (state.broker === 'ftmo') return header.replace('H1M1_6V', 'M1 (6 velas)').replace(/H1M(\d+)/g, 'M$1');
   if (header === 'XAU H1M1_6V 10H') return 'XAU M1 (6 velas) 10H';
   if (header === 'XAU H1M1 10H' && state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') return 'XAU M1 (4 velas) 10H';
   return header
@@ -228,7 +229,7 @@ function renderAssetOptions() {
 
 function renderTfOptions() {
   const asset = els.assetFilter.value || 'TODOS', previous = els.tfFilter.value;
-  const order = ['M1', 'M1_6V', 'M2', 'M5', 'M10', 'M15', 'H4M10'];
+  const order = ['M1', 'M1_6V', 'M2', 'M3', 'M4', 'M5', 'M6', 'M10', 'M12', 'M15', 'H4M10'];
   const tfs = [...new Set(state.headers.slice(1).map(setupParts).filter(p => asset === 'TODOS' || p.asset === asset).map(p => p.tf))].sort((a,b) => order.indexOf(a)-order.indexOf(b));
   els.tfFilter.innerHTML = '<option value="TODOS">Todos os TFs</option>' + tfs.map(tf => '<option value="' + tf + '">' + tfLabel(tf) + '</option>').join('');
   els.tfFilter.value = tfs.includes(previous) ? previous : 'TODOS';
@@ -274,7 +275,7 @@ function topRankingItems(limit = 10, ignoreTf = false) {
     })
     .map(header => ({ header, ...countResults(state.rows, header) }))
     .filter(item => item.ops > 0)
-    .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops)
+    .sort((a, b) => b.accuracy - a.accuracy || b.ops - a.ops || (state.broker === 'ftmo' ? (state.rankingMetadata[b.header]?.pnlR || 0) - (state.rankingMetadata[a.header]?.pnlR || 0) : 0))
     .filter(item => {
       const p = setupParts(item.header), variant = state.rankingMetadata[item.header]?.rankingVariant || '';
       const identity = p.asset + ' ' + p.hour + ' ' + variant;
