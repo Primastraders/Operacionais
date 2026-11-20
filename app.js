@@ -34,8 +34,9 @@ const BROKERS = {
     methods: {
       linhas_ouro_lote_dobrado: {
         source: 'data/linhas_ouro_hantec_jp225.csv', metadata: 'data/linhas_ouro_hantec_jp225_meta.json', ready: true,
-        detail: 'Normal - virada no 4.8 | XAU + JP225 + US30 | Ranking por assertividade historica',
-        note: 'JP225 recalculado: servidor BRT+6 fixo conforme informado pelo usuario; fuso historico ainda nao confirmado independentemente. Pausa 18h-19h sem canal. H4M10 exige vela M10 na abertura exata do H4, sem usar vela posterior a pausa. Entrada 0,25 / folga stop 0,15 em preco; alvo principal 6,7 e virada 4,8, lote 2x. Corte 12/10/2026 17:58 BRT. Top 5 historico por assertividade, um TF por ativo/horario; meses mantem os mesmos horarios. RR principal mediano abaixo de 1:1, sem ajustar alvo ou margem. Bid/Ask reais; comissao e swap desconhecidos, nao descontados. Alvo atingido nao significa necessariamente lucro. Datas da tabela sao do canal; detalhes das entradas e saidas nos resultados. Canais sem expiracao; gaps e lote precisam de validacao na EA. XAU preservado, sem recalculo nesta atualizacao. Outubro parcial. Simulacao retrospectiva, nao comprovacao de aprovacao em mesa.'
+        detail: 'Normal - virada no 4.8 | Historico desde janeiro | Cinco horarios atualizados ate novembro',
+        fixedDefaultHeaders: ['XAU H1M1_6V 10H', 'XAU H1M1 10H', 'JP225 H1M5 05H', 'US30 H1M10 08H', 'XAU H1M5 21H'],
+        note: 'Historico desde janeiro de 2026 preservado. Janeiro a 05/10: nenhuma celula alterada. Os mesmos cinco horarios do painel foram atualizados por data de canal desde 06/10 ate 19/11/2026; XAU M5 21h ate 18/11, devido ao corte efetivo em 19/11 18:59 BRT. Sobreposicao de outubro conciliada, sem duplicar operacoes. Demais candidatos mantem os dados e cortes anteriores. XAU: entrada 0,110 / folga 0,020; JP225: 0,25 / 0,15; US30: 0,00 / 0,02, em preco. Alvos 6,7 e 4,8; virada com lote 2x; KID=false. XAU 10h: quatro ou seis M1; JP225 05h: quatro M5; US30 M10 08h: dois M5; XAU M5 21h: quatro M5. Nova rodada no testador nativo Hantec com Bid/Ask reais e custos registrados pelo MT5. Lacunas iniciais do cache XAU foram recuperadas e os testes repetidos; logs finais sem aviso de ticks ausentes ou gerados. BRT: servidor menos 6h em outubro, menos 5h a partir de 01/11, seguindo a mudanca dos EUA informada pela Hantec. Valores US$ exibidos cobrem SOMENTE o novo intervalo desde 06/10, nao o historico inteiro. Banca independente US$ 10.000 por modelo, risco nominal 0,6%; nao e simulacao de carteira. Periodos anteriores preservam seus criterios e custos originais; nao somar resultados legados em R com dolares novos. RR mostrado e mediano planejado do principal, antes dos custos. Take + Virada mede alvos, nao garante lucro. Canais independentes sem expiracao. Os cinco horarios continuam fixos ao trocar o mes; filtros por ativo/TF preservam o catalogo anterior, que nao recebeu nova varredura completa. Amostra nova de 33 ciclos por modelo, 32 as 21h; selecao historica, sem validacao limpa fora da amostra nem comprovacao de aprovacao em mesa.'
       },
       linhas_ouro_alvo_dobrado: { source: 'data/linhas_ouro_hantec_alvo_dobrado.csv', ready: true, detail: 'Alvo dobrado - virada no 8.6 | MT5 +6 para BRT' },
       fimathe_raiz_pullback: { ready: false, detail: 'Aguardando backtest Hantec' }
@@ -243,11 +244,8 @@ function selectedRankingLabel() {
 function renderSummary(rows) {
   const method = currentMethod();
   els.winsLabel.textContent = state.broker === 'axi' || (['hantec', 'exness', 'ftmo'].includes(state.broker) && state.method === 'linhas_ouro_lote_dobrado') ? 'Alvos atingidos' : 'Gains';
-  els.methodNote.textContent = (method.note || '') + (state.broker === 'ftmo' && state.method === 'linhas_ouro_lote_dobrado' ? ' JP225 adicionado: FTMOJP225.csv, mesmo periodo, 240 combinacoes adicionais; entrada 0,25 / folga stop 0,15 em preco confirmadas por Camila. Alvos e virada iguais ao XAU. Todos os ativos: Top 5 combinado, sem repetir ativo/horario; o filtro de ativo mostra os cinco de cada um. XAU preservado integralmente. Datas, estatisticas e limitacoes do replay valem para ambos.' : '') + (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado' ? ' US30 M10 08h: entrada 0,00 / folga stop 0,02 em preco; alvos 6,7 e 4,8, virada com lote 2x. MT5: 120 Takes, 39 Viradas, 40 Stops e 5 falhas de execucao apos entrada, todas incluidas nas 204 operacoes (77,94%). Historico de 02/01 a 14/10/2026 17:58 BRT; conversao servidor menos 6h assumida. Oito minutos sem ticks reais em 13/02 tiveram ticks gerados pelo MT5. Classificacao CSV/MT5 coincide em 203 de 204 canais; o painel usa o MT5, inclusive no gap de 10/04. Detalhes US30 incluem comissao e swap; os demais ativos preservam seus criterios anteriores. RR principal mediano bruto 1:0,91; apos comissao estimada 1:0,89, antes de swap e gaps adicionais. Selecao retrospectiva, nao garantia de lucro ou aprovacao.' : '');
+  els.methodNote.textContent = (method.note || '') + (state.broker === 'ftmo' && state.method === 'linhas_ouro_lote_dobrado' ? ' JP225 adicionado: FTMOJP225.csv, mesmo periodo, 240 combinacoes adicionais; entrada 0,25 / folga stop 0,15 em preco confirmadas por Camila. Alvos e virada iguais ao XAU. Todos os ativos: Top 5 combinado, sem repetir ativo/horario; o filtro de ativo mostra os cinco de cada um. XAU preservado integralmente. Datas, estatisticas e limitacoes do replay valem para ambos.' : '');
   els.methodNote.hidden = !method.note;
-  if (state.broker === 'hantec' && state.method === 'linhas_ouro_lote_dobrado') {
-    els.methodNote.textContent += ' XAU 10h: mantidos os dois modelos, M1 com 4 velas (historico anterior preservado) e M1 com 6 velas (MT5, 192 ciclos, 109 Takes, 43 Viradas, 40 Stops, 79,17%, ate 07/10/2026). Excecao autorizada a regra de um TF por ativo/horario: ambas as formacoes podem entrar no Top 5. Seis canais nao tiveram entrada por lote minimo acima do risco nominal US$60; MT5 inclui 30/04, ausente no CSV, e gerou ticks em oito minutos sem ticks reais. Por isso as bases de contagem dos dois modelos diferem. Entrada 0,110 / folga stop 0,020 em preco; alvos 6,7 e 4,8; defesa lote 2x; KID=false. Detalhes de 6 velas incluem os custos registrados no MT5; RR principal mediano bruto 1:0,90. Os dois modelos compartilham ativo e horario: as contagens nao sao uma simulacao de carteira nem validacao de risco conjunto.';
-  }
   els.methodNoteDisclosure.hidden = !method.note;
   els.methodNoteDisclosure.open = false;
   const setup = els.setupFilter.value || 'TODOS';
@@ -267,11 +265,12 @@ function renderSummary(rows) {
 
 function topRankingItems(limit = 10, ignoreTf = false) {
   const asset = els.assetFilter.value || 'TODOS', tf = ignoreTf ? 'TODOS' : (els.tfFilter.value || 'TODOS');
+  const fixedHeaders = asset === 'TODOS' && tf === 'TODOS' ? currentMethod().fixedDefaultHeaders : null;
   const seen = new Set();
   return state.headers.slice(1)
     .filter(header => {
       const p = setupParts(header), meta = state.rankingMetadata[header];
-      return (asset === 'TODOS' || p.asset === asset) && (tf === 'TODOS' || p.tf === tf) && (!meta || meta.eligible);
+      return (!fixedHeaders || fixedHeaders.includes(header)) && (asset === 'TODOS' || p.asset === asset) && (tf === 'TODOS' || p.tf === tf) && (!meta || meta.eligible);
     })
     .map(header => ({ header, ...countResults(state.rows, header) }))
     .filter(item => item.ops > 0)
@@ -291,6 +290,15 @@ function topRankingHeaders(limit = 10) {
 
 function renderFinancialReturn(header, rows) {
   const meta = state.rankingMetadata[header];
+  if (meta?.nativeAudit) {
+    const dates = rows.map(row => parseDateBr(row.DATA).toISOString().slice(0, 10));
+    const covered = dates.filter(date => Object.prototype.hasOwnProperty.call(meta.nativeDailyUsd, date));
+    if (!covered.length) return '';
+    const value = covered.reduce((sum, date) => sum + meta.nativeDailyUsd[date], 0);
+    const label = 'Lucro liquido nativo apenas dos canais desde 06/10/2026 neste filtro; historico anterior nao incluido. Banca US$ 10 mil independente, risco 0,6%. Nao e carteira conjunta.';
+    const partial = dates.some(date => date < meta.nativeAudit.start);
+    return '<small class="rank-return ' + (value < 0 ? 'negative' : 'positive') + '" title="' + label + '">US$ ' + value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + (partial ? ' desde 06/10' : '') + '</small>';
+  }
   if (!meta || !Number.isFinite(meta.pnlR)) return '';
   const value = meta.dailyR ? rows.reduce((sum, row) => sum + (meta.dailyR[parseDateBr(row.DATA).toISOString().slice(0,10)] || 0), 0) : meta.pnlR;
   const label = meta.dailyR ? 'R do periodo, antes de comissao e swap' : 'R geral, antes de comissao e swap';
