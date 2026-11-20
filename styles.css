@@ -1346,3 +1346,20 @@ main { width: min(1120px, calc(100% - 32px)); padding-top: 8px; }
 }
 .bar-row[hidden] { display: none; }
 #barFalha { background: rgba(255, 255, 255, 0.6); }
+.bank-panel { margin: 16px 0; min-width: 0; }
+.bank-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; flex-wrap: wrap; }
+.bank-composition { display: grid; gap: 5px; max-width: 100%; }
+.bank-composition label,.bank-metrics dt,.bank-period,.bank-note { color: #a9bbcf; font-size: 13px; }
+.bank-composition select { max-width: 100%; padding: 10px; background: #0b1728; color: #eef5ff; border: 1px solid #354860; border-radius: 6px; }
+.bank-growth { display: block; color: #78b8ff; font-size: 30px; margin-top: 12px; }
+.bank-period { margin: 4px 0 16px; }
+.bank-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; margin: 0 0 14px; }
+.bank-metrics dd { margin: 5px 0 0; font-size: 18px; font-weight: 600; overflow-wrap: anywhere; }
+.bank-frame { position: relative; height: 260px; width: 100%; }
+#bank-canvas { width: 100%; height: 100%; display: block; }
+.bank-tooltip { position: absolute; top: 8px; background: #0b1728; border: 1px solid #547497; border-radius: 4px; padding: 8px; font-size: 12px; max-width: calc(100% - 12px); pointer-events: none; }
+.bank-note { line-height: 1.5; margin: 12px 0 0; }
+.bank-empty { padding: 22px 0; color: #a9bbcf; }
+.bank-panel [hidden] { display: none; }
+.bank-panel.is-negative .bank-growth { color: #f19489; }
+@media(max-width:680px) { .bank-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); } .bank-frame { height: 220px; } .bank-head > div { min-width: 0; } }

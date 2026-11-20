@@ -206,8 +206,19 @@ function renderMonthOptions() {
 
 function renderSetupOptions() {
   const topHeaders = topRankingHeaders(5);
-  els.setupFilter.innerHTML = '<option value="TODOS">' + (topHeaders.length ? 'Top ' + topHeaders.length + ' melhores horarios' : 'Nenhum horario elegivel') + '</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
+  const previous = els.setupFilter.value;
+  els.setupFilter.innerHTML = '<option value="TODOS">' + (topHeaders.length ? 'Top ' + topHeaders.length + ' melhores horarios' : 'Nenhum horario elegivel') + '</option><option value="TOP3"' + (topHeaders.length < 3 ? ' disabled' : '') + '>Top 3 melhores horarios</option>' + topHeaders.map(header => '<option value="' + header + '">' + displayHeader(header) + '</option>').join('');
   els.setupFilter.value = 'TODOS';
+  if (topHeaders.includes(previous) || (previous === 'TOP3' && topHeaders.length >= 3)) els.setupFilter.value = previous;
+}
+
+function isGroupSelection(value) { return value === 'TODOS' || value === 'TOP3'; }
+function activeSetupHeaders() {
+  const value = els.setupFilter.value || 'TODOS';
+  return isGroupSelection(value) ? topRankingHeaders(value === 'TOP3' ? 3 : 5) : [value];
+}
+function activeSelectionLabel() {
+  return isGroupSelection(els.setupFilter.value || 'TODOS') ? 'Top ' + activeSetupHeaders().length + ' fixos' : displayHeader(els.setupFilter.value);
 }
 
 function setupParts(header) {
@@ -249,12 +260,12 @@ function renderSummary(rows) {
   els.methodNoteDisclosure.hidden = !method.note;
   els.methodNoteDisclosure.open = false;
   const setup = els.setupFilter.value || 'TODOS';
-  const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
+  const activeSetup = activeSetupHeaders();
   const periodTotals = countResults(rows, activeSetup);
   const overallTotals = countResults(state.rows, activeSetup);
   if (els.methodName) els.methodName.textContent = method.name;
   if (els.methodMeta) els.methodMeta.textContent = currentBroker().name + ' | ' + method.detail + ' | colunas em BRT';
-  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top ' + activeSetup.length + ' fixos' : setup);
+  els.periodMeta.textContent = selectedPeriodLabel() + ' | ' + activeSelectionLabel();
   els.totalOps.textContent = periodTotals.ops;
   els.totalWins.textContent = periodTotals.wins;
   els.totalStops.textContent = periodTotals.Stop;
@@ -315,9 +326,9 @@ function renderPrincipalRR(header, rows) {
 }
 
 function renderRanking(rows) {
-  const fixedHeaders = topRankingHeaders(5);
+  const fixedHeaders = activeSetupHeaders();
   const setups = fixedHeaders.map(header => ({ header, ...countResults(rows, header) }));
-  els.rankingLabel.textContent = 'Top ' + fixedHeaders.length + ' | ' + selectedRankingLabel() + ' | ' + selectedPeriodLabel() + ' | BRT';
+  els.rankingLabel.textContent = activeSelectionLabel() + ' | ' + selectedRankingLabel() + ' | ' + selectedPeriodLabel() + ' | BRT';
   els.rankReference.hidden = !els.tfFilter.value || els.tfFilter.value === 'TODOS';
   els.referenceTitle.textContent = 'Ranking geral - ' + (els.assetFilter.value === 'TODOS' ? 'Todos os ativos' : els.assetFilter.value);
   els.referenceSetups.textContent = topRankingItems(5, true).map(item => displayHeader(item.header) + ' (' + percent(item.accuracy) + ')').join(' | ');
@@ -329,10 +340,10 @@ function renderRanking(rows) {
 
 function renderDistribution(rows) {
   const setup = els.setupFilter.value || 'TODOS';
-  const activeSetup = setup === 'TODOS' ? topRankingHeaders(5) : setup;
+  const activeSetup = activeSetupHeaders();
   const totals = countResults(rows, activeSetup);
   const max = Math.max(totals.Take, totals.Virada, totals.Stop, totals.Falha, 1);
-  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + (setup === 'TODOS' ? 'top ' + activeSetup.length + ' fixos' : setup);
+  els.distributionLabel.textContent = selectedPeriodLabel() + ' | ' + activeSelectionLabel();
   els.barTake.style.width = (totals.Take / max * 100) + '%';
   els.barVirada.style.width = (totals.Virada / max * 100) + '%';
   els.barStop.style.width = (totals.Stop / max * 100) + '%';
@@ -361,7 +372,7 @@ function renderOperationCell(header, row) {
 
 function visibleTableRows(rows, setup, selectedResult, visibleSetups) {
   return rows.filter(row => {
-    const setups = setup === 'TODOS' ? visibleSetups : [setup];
+    const setups = isGroupSelection(setup) ? visibleSetups : [setup];
     if (selectedResult === 'TODOS') return true;
     return setups.some(header => row[header] === selectedResult);
   });
@@ -376,18 +387,18 @@ function renderMonthTabs() {
 }
 
 function topTableHeaders() {
-  return topRankingHeaders(5);
+  return activeSetupHeaders();
 }
 
 function renderTable(rows) {
   const setup = els.setupFilter.value || 'TODOS';
   const selectedResult = els.resultFilter.value;
-  const visibleSetups = setup === 'TODOS' ? topTableHeaders() : [setup];
+  const visibleSetups = activeSetupHeaders();
   const visibleHeaders = ['DATA', ...visibleSetups];
   const visibleRows = visibleTableRows(rows, setup, selectedResult, visibleSetups);
   els.tableHead.innerHTML = '<tr>' + visibleHeaders.map(header => '<th>' + displayHeader(header) + '</th>').join('') + '</tr>';
   els.tableBody.innerHTML = visibleSetups.length ? visibleRows.map(row => '<tr>' + visibleHeaders.map(header => '<td>' + (header === 'DATA' ? row[header] : renderOperationCell(header,row)) + '</td>').join('') + '</tr>').join('') : '<tr><td>Nenhum horario elegivel neste filtro.</td></tr>';
-  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + (visibleSetups.length ? visibleRows.length + ' datas exibidas' : 'Nenhum horario elegivel') + ' | ' + selectedPeriodLabel() + (setup === 'TODOS' && visibleSetups.length ? ' | top ' + visibleSetups.length + ' fixos dos melhores' : '') + '</span>';
+  els.tableCaption.innerHTML = renderMonthTabs() + '<span>' + (visibleSetups.length ? visibleRows.length + ' datas exibidas' : 'Nenhum horario elegivel') + ' | ' + selectedPeriodLabel() + ' | ' + activeSelectionLabel() + '</span>';
   Array.from(document.querySelectorAll('.month-tab')).forEach(btn => {
     btn.addEventListener('click', () => {
       els.monthFilter.value = btn.dataset.month;
@@ -431,6 +442,7 @@ function resetEmpty(method) {
   els.barViradaText.textContent = '0';
   els.barStopText.textContent = '0';
   els.tableCaption.textContent = 'Aguardando CSV ou Supabase';
+  renderBankGrowth([]);
 }
 
 async function loadMethod(methodKey) {
@@ -464,6 +476,19 @@ function renderAll() {
   renderRanking(rows);
   renderDistribution(rows);
   renderTable(rows);
+  renderBankGrowth(rows);
+}
+
+let bankChart;
+function renderBankGrowth(rows) {
+  if (!bankChart) {
+    const elements = {};
+    ['canvas', 'tooltip', 'frame', 'empty', 'metrics', 'panel', 'percent', 'label', 'period', 'note', 'initial', 'final', 'profit', 'drawdown'].forEach(key => {
+      elements[key] = document.getElementById('bank-' + key);
+    });
+    bankChart = BankGrowth.mount(elements);
+  }
+  bankChart.render(BankGrowth.buildSeries({ rows, headers: activeSetupHeaders(), metadata: state.rankingMetadata, mode: document.getElementById('bank-mode').value }), activeSelectionLabel() + ' | ' + selectedPeriodLabel() + ' | BRT');
 }
 
 async function copyTable() {
@@ -489,6 +514,7 @@ els.assetFilter.addEventListener('change', () => { renderTfOptions(); renderSetu
 els.tfFilter.addEventListener('change', () => { renderSetupOptions(); renderAll(); });
 els.resetTfBtn.addEventListener('click', () => { els.tfFilter.value = 'TODOS'; renderSetupOptions(); renderAll(); });
 els.setupFilter.addEventListener('change', renderAll);
+document.getElementById('bank-mode').addEventListener('change', renderAll);
 els.resultFilter.addEventListener('change', renderAll);
 els.searchInput.addEventListener('input', renderAll);
 els.copyBtn.addEventListener('click', () => copyTable().catch(showError));

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=ftmo-jp225-layout-20261024">
+  <link rel="stylesheet" href="styles.css?v=top3-banca-20261120">
 </head>
 <body>
   <header class="topbar">
@@ -126,6 +126,24 @@
       </article>
     </section>
 
+    <section class="panel bank-panel" id="bank-panel">
+      <div class="panel-head bank-head">
+        <div><h2>Crescimento da banca</h2><p id="bank-label">-</p></div>
+        <div class="bank-composition"><label for="bank-mode">Composicao da banca</label><select id="bank-mode"><option value="single">Banca unica de US$ 10 mil (projecao)</option><option value="separate">Contas independentes de US$ 10 mil</option></select></div>
+      </div>
+      <strong class="bank-growth" id="bank-percent">-</strong>
+      <p class="bank-period" id="bank-period"></p>
+      <dl class="bank-metrics" id="bank-metrics" hidden>
+        <div><dt>Saldo inicial</dt><dd id="bank-initial">-</dd></div>
+        <div><dt>Saldo final</dt><dd id="bank-final">-</dd></div>
+        <div><dt>Lucro liquido</dt><dd id="bank-profit">-</dd></div>
+        <div><dt>Drawdown do saldo</dt><dd id="bank-drawdown">-</dd></div>
+      </dl>
+      <div class="bank-frame" id="bank-frame" hidden><canvas id="bank-canvas" tabindex="0" role="img" aria-label="Crescimento da banca"></canvas><output id="bank-tooltip" class="bank-tooltip" hidden></output></div>
+      <p id="bank-empty" class="bank-empty">Sem lancamentos financeiros.</p>
+      <p id="bank-note" class="bank-note"></p>
+    </section>
+
     <section class="panel table-panel">
       <div class="panel-head table-head">
         <div>
@@ -150,7 +168,8 @@
     </div>
   </template>
 
-  <script src="app.js?v=hantec-substituto-22h-20261120"></script>
+  <script src="bank-growth.js?v=top3-banca-20261120"></script>
+  <script src="app.js?v=top3-banca-20261120"></script>
 </body>
 </html>
 

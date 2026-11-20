@@ -136,7 +136,653 @@
       "scope": "USD amounts cover ONLY this new interval, not the preserved January-October legacy results. Independent accounts, not portfolio.",
       "timezoneSource": "https://hmarkets.com/tools/markets-holiday-calendar/",
       "legacyFinancialFields": "pnlR and dailyR retained as the previous historical snapshot; not combined with nativeDailyUsd or displayed as refreshed totals."
-    }
+    },
+    "nativeCashflows": [
+      {
+        "timeBrt": "2026-10-06 22:00:55",
+        "channelDate": "2026-10-06",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-06 23:07:22",
+        "channelDate": "2026-10-06",
+        "netUsd": 41.52,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-07 21:54:02",
+        "channelDate": "2026-10-07",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-07 22:02:36",
+        "channelDate": "2026-10-07",
+        "netUsd": 50.0,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 22:15:36",
+        "channelDate": "2026-10-08",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 22:40:11",
+        "channelDate": "2026-10-08",
+        "netUsd": 53.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 09:20:52",
+        "channelDate": "2026-10-11",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 00:25:21",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 12:28:59",
+        "channelDate": "2026-10-12",
+        "netUsd": -43.54,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 12:28:59",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 22:44:57",
+        "channelDate": "2026-10-13",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 23:11:53",
+        "channelDate": "2026-10-13",
+        "netUsd": -54.18,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 23:11:53",
+        "channelDate": "2026-10-13",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 02:53:33",
+        "channelDate": "2026-10-13",
+        "netUsd": -55.68,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 07:27:24",
+        "channelDate": "2026-10-12",
+        "netUsd": 80.75,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 09:30:03",
+        "channelDate": "2026-10-11",
+        "netUsd": 40.38,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 10:17:34",
+        "channelDate": "2026-10-14",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 23:27:37",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 23:51:55",
+        "channelDate": "2026-10-15",
+        "netUsd": 52.2,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-18 22:07:14",
+        "channelDate": "2026-10-18",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 04:00:48",
+        "channelDate": "2026-10-18",
+        "netUsd": -62.91,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 04:00:48",
+        "channelDate": "2026-10-18",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 04:52:27",
+        "channelDate": "2026-10-18",
+        "netUsd": -65.94,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 22:05:01",
+        "channelDate": "2026-10-19",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 23:25:21",
+        "channelDate": "2026-10-19",
+        "netUsd": -48.48,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 23:25:21",
+        "channelDate": "2026-10-19",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 02:35:33",
+        "channelDate": "2026-10-19",
+        "netUsd": -50.34,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 22:05:17",
+        "channelDate": "2026-10-14",
+        "netUsd": -60.16,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 22:05:17",
+        "channelDate": "2026-10-14",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 02:28:42",
+        "channelDate": "2026-10-20",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 03:51:42",
+        "channelDate": "2026-10-20",
+        "netUsd": -49.14,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 03:51:42",
+        "channelDate": "2026-10-20",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 04:21:31",
+        "channelDate": "2026-10-20",
+        "netUsd": -49.14,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 08:42:01",
+        "channelDate": "2026-10-14",
+        "netUsd": -59.0,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 22:01:46",
+        "channelDate": "2026-10-21",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 00:25:01",
+        "channelDate": "2026-10-21",
+        "netUsd": 41.64,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 22:11:49",
+        "channelDate": "2026-10-22",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 22:55:58",
+        "channelDate": "2026-10-22",
+        "netUsd": 41.7,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 00:12:51",
+        "channelDate": "2026-10-25",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 11:04:31",
+        "channelDate": "2026-10-26",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 11:07:28",
+        "channelDate": "2026-10-25",
+        "netUsd": 52.43,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 14:34:45",
+        "channelDate": "2026-10-26",
+        "netUsd": 28.9,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 22:34:53",
+        "channelDate": "2026-10-27",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 01:57:35",
+        "channelDate": "2026-10-27",
+        "netUsd": 48.39,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 02:55:48",
+        "channelDate": "2026-10-28",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 00:10:06",
+        "channelDate": "2026-10-28",
+        "netUsd": 29.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 00:10:06",
+        "channelDate": "2026-10-29",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 04:49:04",
+        "channelDate": "2026-10-29",
+        "netUsd": 51.54,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-01 22:06:33",
+        "channelDate": "2026-11-01",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-01 23:52:30",
+        "channelDate": "2026-11-01",
+        "netUsd": -60.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-01 23:52:31",
+        "channelDate": "2026-11-01",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 00:06:28",
+        "channelDate": "2026-11-01",
+        "netUsd": -60.0,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 21:37:23",
+        "channelDate": "2026-11-02",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 21:44:50",
+        "channelDate": "2026-11-02",
+        "netUsd": -47.22,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 21:44:50",
+        "channelDate": "2026-11-02",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 21:52:05",
+        "channelDate": "2026-11-02",
+        "netUsd": -47.52,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 21:27:06",
+        "channelDate": "2026-11-03",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 22:13:55",
+        "channelDate": "2026-11-03",
+        "netUsd": -55.3,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 22:14:02",
+        "channelDate": "2026-11-03",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 22:17:55",
+        "channelDate": "2026-11-03",
+        "netUsd": 101.6,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 21:30:27",
+        "channelDate": "2026-11-04",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 22:14:28",
+        "channelDate": "2026-11-04",
+        "netUsd": 47.38,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 22:30:12",
+        "channelDate": "2026-11-05",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-08 21:42:24",
+        "channelDate": "2026-11-08",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-08 21:59:40",
+        "channelDate": "2026-11-05",
+        "netUsd": -47.1,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-08 21:59:41",
+        "channelDate": "2026-11-05",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-09 17:00:40",
+        "channelDate": "2026-11-08",
+        "netUsd": 40.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-09 23:32:51",
+        "channelDate": "2026-11-09",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 06:00:22",
+        "channelDate": "2026-11-09",
+        "netUsd": 39.18,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 06:38:28",
+        "channelDate": "2026-11-05",
+        "netUsd": -47.35,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 21:51:39",
+        "channelDate": "2026-11-10",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 22:31:57",
+        "channelDate": "2026-11-10",
+        "netUsd": -58.56,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 22:31:57",
+        "channelDate": "2026-11-10",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 22:41:36",
+        "channelDate": "2026-11-10",
+        "netUsd": 107.64,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-11 22:01:08",
+        "channelDate": "2026-11-11",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 03:47:06",
+        "channelDate": "2026-11-11",
+        "netUsd": -54.72,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 03:47:06",
+        "channelDate": "2026-11-11",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 05:42:20",
+        "channelDate": "2026-11-11",
+        "netUsd": 102.2,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 22:17:10",
+        "channelDate": "2026-11-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 00:00:39",
+        "channelDate": "2026-11-12",
+        "netUsd": 38.92,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-15 22:00:34",
+        "channelDate": "2026-11-15",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 02:46:23",
+        "channelDate": "2026-11-15",
+        "netUsd": 44.8,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 22:03:38",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 22:41:24",
+        "channelDate": "2026-11-16",
+        "netUsd": -55.44,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 22:41:24",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 00:08:30",
+        "channelDate": "2026-11-16",
+        "netUsd": 103.84,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 21:31:12",
+        "channelDate": "2026-11-17",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 22:00:45",
+        "channelDate": "2026-11-17",
+        "netUsd": 37.94,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 21:40:21",
+        "channelDate": "2026-11-18",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 23:43:57",
+        "channelDate": "2026-11-18",
+        "netUsd": -47.67,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 23:43:57",
+        "channelDate": "2026-11-18",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 23:56:03",
+        "channelDate": "2026-11-18",
+        "netUsd": 86.46,
+        "kind": "defense",
+        "event": "exit"
+      }
+    ]
   },
   "XAU H1M15 14H": {
     "pnlR": null,
@@ -283,7 +929,625 @@
       "scope": "USD amounts cover ONLY this new interval, not the preserved January-October legacy results. Independent accounts, not portfolio.",
       "timezoneSource": "https://hmarkets.com/tools/markets-holiday-calendar/",
       "legacyFinancialFields": "pnlR and dailyR retained as the previous historical snapshot; not combined with nativeDailyUsd or displayed as refreshed totals."
-    }
+    },
+    "nativeCashflows": [
+      {
+        "timeBrt": "2026-10-06 10:18:13",
+        "channelDate": "2026-10-06",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-06 10:39:45",
+        "channelDate": "2026-10-06",
+        "netUsd": 51.57,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-07 11:18:39",
+        "channelDate": "2026-10-07",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-07 14:08:02",
+        "channelDate": "2026-10-07",
+        "netUsd": 42.81,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 10:08:09",
+        "channelDate": "2026-10-08",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 11:34:13",
+        "channelDate": "2026-10-08",
+        "netUsd": 53.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-09 10:17:01",
+        "channelDate": "2026-10-09",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-09 10:31:22",
+        "channelDate": "2026-10-09",
+        "netUsd": 48.72,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 10:06:30",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 11:17:33",
+        "channelDate": "2026-10-12",
+        "netUsd": -55.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 11:17:33",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 11:23:16",
+        "channelDate": "2026-10-12",
+        "netUsd": -56.96,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 10:30:38",
+        "channelDate": "2026-10-13",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 10:44:44",
+        "channelDate": "2026-10-13",
+        "netUsd": -54.48,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 10:44:44",
+        "channelDate": "2026-10-13",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 11:21:40",
+        "channelDate": "2026-10-13",
+        "netUsd": 101.68,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 21:00:12",
+        "channelDate": "2026-10-14",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 21:22:01",
+        "channelDate": "2026-10-14",
+        "netUsd": 54.58,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 10:04:41",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 10:12:34",
+        "channelDate": "2026-10-15",
+        "netUsd": -58.1,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 10:12:34",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 10:15:25",
+        "channelDate": "2026-10-15",
+        "netUsd": 110.46,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 10:18:25",
+        "channelDate": "2026-10-16",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 10:38:14",
+        "channelDate": "2026-10-16",
+        "netUsd": -53.55,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 10:38:15",
+        "channelDate": "2026-10-16",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 10:51:31",
+        "channelDate": "2026-10-16",
+        "netUsd": 102.0,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 10:39:52",
+        "channelDate": "2026-10-19",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 10:46:15",
+        "channelDate": "2026-10-19",
+        "netUsd": 47.76,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 10:40:34",
+        "channelDate": "2026-10-20",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 11:24:12",
+        "channelDate": "2026-10-20",
+        "netUsd": 43.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 11:09:05",
+        "channelDate": "2026-10-21",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 12:25:39",
+        "channelDate": "2026-10-21",
+        "netUsd": -51.44,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 12:25:39",
+        "channelDate": "2026-10-21",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 13:10:33",
+        "channelDate": "2026-10-21",
+        "netUsd": -53.04,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 10:35:50",
+        "channelDate": "2026-10-22",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 11:08:41",
+        "channelDate": "2026-10-22",
+        "netUsd": 39.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-23 10:45:35",
+        "channelDate": "2026-10-23",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-23 11:12:01",
+        "channelDate": "2026-10-23",
+        "netUsd": 49.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 10:14:56",
+        "channelDate": "2026-10-26",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-26 10:33:11",
+        "channelDate": "2026-10-26",
+        "netUsd": 48.58,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 11:10:26",
+        "channelDate": "2026-10-27",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 12:42:01",
+        "channelDate": "2026-10-27",
+        "netUsd": 39.12,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 10:37:57",
+        "channelDate": "2026-10-28",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 13:02:25",
+        "channelDate": "2026-10-28",
+        "netUsd": 54.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 10:34:24",
+        "channelDate": "2026-10-29",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 11:09:38",
+        "channelDate": "2026-10-29",
+        "netUsd": -56.8,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 11:09:38",
+        "channelDate": "2026-10-29",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 11:17:44",
+        "channelDate": "2026-10-29",
+        "netUsd": -56.4,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 10:06:44",
+        "channelDate": "2026-10-30",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 10:33:28",
+        "channelDate": "2026-10-30",
+        "netUsd": 45.0,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 10:30:37",
+        "channelDate": "2026-11-02",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 10:38:00",
+        "channelDate": "2026-11-02",
+        "netUsd": 53.52,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 10:13:49",
+        "channelDate": "2026-11-03",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 10:29:29",
+        "channelDate": "2026-11-03",
+        "netUsd": 48.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 10:30:35",
+        "channelDate": "2026-11-04",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 11:38:46",
+        "channelDate": "2026-11-04",
+        "netUsd": -62.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 11:38:46",
+        "channelDate": "2026-11-04",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 11:51:18",
+        "channelDate": "2026-11-04",
+        "netUsd": -67.04,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 10:30:14",
+        "channelDate": "2026-11-05",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 10:47:19",
+        "channelDate": "2026-11-05",
+        "netUsd": -49.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 10:47:19",
+        "channelDate": "2026-11-05",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 11:38:28",
+        "channelDate": "2026-11-05",
+        "netUsd": -50.72,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-06 10:30:01",
+        "channelDate": "2026-11-06",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-06 10:30:02",
+        "channelDate": "2026-11-06",
+        "netUsd": 36.0,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-09 13:29:35",
+        "channelDate": "2026-11-09",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-09 14:41:05",
+        "channelDate": "2026-11-09",
+        "netUsd": 47.52,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:02",
+        "channelDate": "2026-11-10",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:06",
+        "channelDate": "2026-11-10",
+        "netUsd": 13.83,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-11 10:37:18",
+        "channelDate": "2026-11-11",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-11 11:32:35",
+        "channelDate": "2026-11-11",
+        "netUsd": 53.04,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:07:35",
+        "channelDate": "2026-11-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:09:17",
+        "channelDate": "2026-11-12",
+        "netUsd": -67.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:09:17",
+        "channelDate": "2026-11-12",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:14:34",
+        "channelDate": "2026-11-12",
+        "netUsd": 100.56,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 10:16:51",
+        "channelDate": "2026-11-13",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:07",
+        "channelDate": "2026-11-13",
+        "netUsd": -61.18,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:07",
+        "channelDate": "2026-11-13",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:55",
+        "channelDate": "2026-11-13",
+        "netUsd": -70.28,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 11:36:27",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 12:23:19",
+        "channelDate": "2026-11-16",
+        "netUsd": -52.14,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 12:23:19",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 15:03:38",
+        "channelDate": "2026-11-16",
+        "netUsd": 91.74,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 10:15:07",
+        "channelDate": "2026-11-17",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 10:32:17",
+        "channelDate": "2026-11-17",
+        "netUsd": 52.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 10:11:58",
+        "channelDate": "2026-11-18",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 10:51:38",
+        "channelDate": "2026-11-18",
+        "netUsd": 44.86,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-19 11:53:08",
+        "channelDate": "2026-11-19",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-19 12:29:38",
+        "channelDate": "2026-11-19",
+        "netUsd": 54.54,
+        "kind": "main",
+        "event": "exit"
+      }
+    ]
   },
   "XAU H1M1 12H": {
     "pnlR": null,
@@ -423,7 +1687,429 @@
       "scope": "USD covers only this interval, not preserved January legacy. Independent accounts, not portfolio.",
       "timezoneSource": "https://hmarkets.com/tools/markets-holiday-calendar/",
       "legacyFinancialFields": "pnlR retained as legacy snapshot; not combined with nativeDailyUsd."
-    }
+    },
+    "nativeCashflows": [
+      {
+        "timeBrt": "2026-10-07 01:58:53",
+        "channelDate": "2026-10-06",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-07 06:41:37",
+        "channelDate": "2026-10-06",
+        "netUsd": 36.5,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 22:21:56",
+        "channelDate": "2026-10-07",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-09 02:31:20",
+        "channelDate": "2026-10-07",
+        "netUsd": 38.83,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 02:30:01",
+        "channelDate": "2026-10-11",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 22:48:00",
+        "channelDate": "2026-10-11",
+        "netUsd": 31.3,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 00:59:31",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 14:00:45",
+        "channelDate": "2026-10-12",
+        "netUsd": -38.64,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 14:00:45",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 00:17:07",
+        "channelDate": "2026-10-12",
+        "netUsd": -38.32,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 09:30:04",
+        "channelDate": "2026-10-13",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 10:12:48",
+        "channelDate": "2026-10-13",
+        "netUsd": 40.07,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 10:17:20",
+        "channelDate": "2026-10-14",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 23:56:10",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 11:16:22",
+        "channelDate": "2026-10-14",
+        "netUsd": 26.94,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 10:42:48",
+        "channelDate": "2026-10-18",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 10:46:17",
+        "channelDate": "2026-10-15",
+        "netUsd": -56.45,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 10:46:17",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 21:32:05",
+        "channelDate": "2026-10-18",
+        "netUsd": 46.3,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 22:15:03",
+        "channelDate": "2026-10-15",
+        "netUsd": 104.19,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 11:25:25",
+        "channelDate": "2026-10-19",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 20:17:45",
+        "channelDate": "2026-10-19",
+        "netUsd": -32.86,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 20:17:45",
+        "channelDate": "2026-10-19",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 08:23:12",
+        "channelDate": "2026-10-19",
+        "netUsd": -32.44,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 19:00:09",
+        "channelDate": "2026-10-20",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 00:15:03",
+        "channelDate": "2026-10-20",
+        "netUsd": -38.14,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 00:15:03",
+        "channelDate": "2026-10-20",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 00:25:43",
+        "channelDate": "2026-10-21",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 02:44:37",
+        "channelDate": "2026-10-21",
+        "netUsd": 40.42,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 02:45:23",
+        "channelDate": "2026-10-20",
+        "netUsd": 70.2,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 09:30:30",
+        "channelDate": "2026-10-25",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 11:04:31",
+        "channelDate": "2026-10-26",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 12:42:07",
+        "channelDate": "2026-10-26",
+        "netUsd": 27.9,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 12:42:33",
+        "channelDate": "2026-10-25",
+        "netUsd": 40.37,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 15:33:04",
+        "channelDate": "2026-10-27",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 15:42:07",
+        "channelDate": "2026-10-27",
+        "netUsd": -38.2,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 15:42:07",
+        "channelDate": "2026-10-27",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 15:46:48",
+        "channelDate": "2026-10-27",
+        "netUsd": -37.9,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 04:05:13",
+        "channelDate": "2026-10-29",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 10:04:18",
+        "channelDate": "2026-10-29",
+        "netUsd": 30.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 10:41:43",
+        "channelDate": "2026-11-01",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 00:33:33",
+        "channelDate": "2026-11-02",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 05:43:27",
+        "channelDate": "2026-11-02",
+        "netUsd": 27.24,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 02:35:52",
+        "channelDate": "2026-11-01",
+        "netUsd": 39.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 06:00:14",
+        "channelDate": "2026-11-09",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 08:01:59",
+        "channelDate": "2026-11-08",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:02",
+        "channelDate": "2026-11-09",
+        "netUsd": 49.76,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 13:34:49",
+        "channelDate": "2026-11-08",
+        "netUsd": 50.5,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-11 13:39:53",
+        "channelDate": "2026-11-10",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 04:32:40",
+        "channelDate": "2026-11-11",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 05:21:53",
+        "channelDate": "2026-11-10",
+        "netUsd": 48.65,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:24:06",
+        "channelDate": "2026-11-11",
+        "netUsd": 40.09,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 21:23:37",
+        "channelDate": "2026-11-15",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 21:55:30",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 02:05:55",
+        "channelDate": "2026-11-17",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 03:18:24",
+        "channelDate": "2026-11-15",
+        "netUsd": 53.7,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 05:13:34",
+        "channelDate": "2026-11-16",
+        "netUsd": 53.11,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 14:51:30",
+        "channelDate": "2026-11-17",
+        "netUsd": 46.47,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 23:56:58",
+        "channelDate": "2026-11-18",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-19 12:56:02",
+        "channelDate": "2026-11-18",
+        "netUsd": 38.2,
+        "kind": "main",
+        "event": "exit"
+      }
+    ]
   },
   "JP225 H1M1 19H": {
     "ops": 202,
@@ -35101,7 +36787,653 @@
       "scope": "USD amounts cover ONLY this new interval, not the preserved January-October legacy results. Independent accounts, not portfolio.",
       "timezoneSource": "https://hmarkets.com/tools/markets-holiday-calendar/",
       "legacyFinancialFields": "pnlR and dailyR retained as the previous historical snapshot; not combined with nativeDailyUsd or displayed as refreshed totals."
-    }
+    },
+    "nativeCashflows": [
+      {
+        "timeBrt": "2026-10-06 08:22:57",
+        "channelDate": "2026-10-06",
+        "netUsd": -0.22,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-06 16:09:05",
+        "channelDate": "2026-10-06",
+        "netUsd": -60.51,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-06 16:09:06",
+        "channelDate": "2026-10-06",
+        "netUsd": -0.43,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-06 22:30:02",
+        "channelDate": "2026-10-06",
+        "netUsd": 111.11,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-07 06:53:29",
+        "channelDate": "2026-10-07",
+        "netUsd": -0.33,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-07 09:15:45",
+        "channelDate": "2026-10-07",
+        "netUsd": 54.58,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 11:27:42",
+        "channelDate": "2026-10-08",
+        "netUsd": -0.15,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 13:50:13",
+        "channelDate": "2026-10-08",
+        "netUsd": -60.55,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 13:50:14",
+        "channelDate": "2026-10-08",
+        "netUsd": -0.31,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 14:05:42",
+        "channelDate": "2026-10-08",
+        "netUsd": 114.15,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-09 07:50:04",
+        "channelDate": "2026-10-09",
+        "netUsd": -0.24,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 05:45:59",
+        "channelDate": "2026-10-12",
+        "netUsd": -0.42,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 09:32:26",
+        "channelDate": "2026-10-12",
+        "netUsd": 55.46,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 10:30:24",
+        "channelDate": "2026-10-09",
+        "netUsd": 53.29,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 09:46:22",
+        "channelDate": "2026-10-13",
+        "netUsd": -0.32,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 10:38:09",
+        "channelDate": "2026-10-13",
+        "netUsd": -61.09,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 10:38:09",
+        "channelDate": "2026-10-13",
+        "netUsd": -0.63,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 11:59:26",
+        "channelDate": "2026-10-13",
+        "netUsd": -60.67,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 09:30:43",
+        "channelDate": "2026-10-14",
+        "netUsd": -0.2,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 12:03:56",
+        "channelDate": "2026-10-14",
+        "netUsd": 55.23,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 12:03:38",
+        "channelDate": "2026-10-15",
+        "netUsd": -0.13,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 02:00:53",
+        "channelDate": "2026-10-15",
+        "netUsd": 54.8,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 06:57:43",
+        "channelDate": "2026-10-16",
+        "netUsd": -0.38,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 10:35:28",
+        "channelDate": "2026-10-16",
+        "netUsd": 55.62,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 07:38:41",
+        "channelDate": "2026-10-19",
+        "netUsd": -0.28,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 12:37:15",
+        "channelDate": "2026-10-19",
+        "netUsd": 54.48,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 11:00:52",
+        "channelDate": "2026-10-20",
+        "netUsd": -0.18,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 11:28:39",
+        "channelDate": "2026-10-20",
+        "netUsd": 55.0,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 20:45:55",
+        "channelDate": "2026-10-21",
+        "netUsd": -0.16,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 21:12:14",
+        "channelDate": "2026-10-21",
+        "netUsd": -61.3,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 21:12:15",
+        "channelDate": "2026-10-21",
+        "netUsd": -0.33,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 21:17:03",
+        "channelDate": "2026-10-21",
+        "netUsd": -60.8,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 09:10:42",
+        "channelDate": "2026-10-22",
+        "netUsd": -0.25,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 11:35:49",
+        "channelDate": "2026-10-22",
+        "netUsd": -61.0,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 11:35:49",
+        "channelDate": "2026-10-22",
+        "netUsd": -0.51,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 16:00:04",
+        "channelDate": "2026-10-22",
+        "netUsd": 113.56,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-23 09:07:16",
+        "channelDate": "2026-10-23",
+        "netUsd": -0.16,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-23 11:42:00",
+        "channelDate": "2026-10-23",
+        "netUsd": -60.34,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-23 11:42:00",
+        "channelDate": "2026-10-23",
+        "netUsd": -0.31,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-23 12:10:00",
+        "channelDate": "2026-10-23",
+        "netUsd": -61.1,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 06:05:23",
+        "channelDate": "2026-10-26",
+        "netUsd": -0.17,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-26 20:58:32",
+        "channelDate": "2026-10-26",
+        "netUsd": 54.24,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 07:47:06",
+        "channelDate": "2026-10-27",
+        "netUsd": -0.13,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 20:58:15",
+        "channelDate": "2026-10-27",
+        "netUsd": 54.32,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 15:35:58",
+        "channelDate": "2026-10-28",
+        "netUsd": -0.19,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 17:01:00",
+        "channelDate": "2026-10-28",
+        "netUsd": 56.02,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 12:30:28",
+        "channelDate": "2026-10-29",
+        "netUsd": -0.14,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 17:04:15",
+        "channelDate": "2026-10-29",
+        "netUsd": -60.93,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 17:04:15",
+        "channelDate": "2026-10-29",
+        "netUsd": -0.27,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 21:43:00",
+        "channelDate": "2026-10-29",
+        "netUsd": 113.3,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 06:01:07",
+        "channelDate": "2026-10-30",
+        "netUsd": -0.25,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 06:45:56",
+        "channelDate": "2026-10-30",
+        "netUsd": -60.88,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 06:45:56",
+        "channelDate": "2026-10-30",
+        "netUsd": -0.51,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 08:42:33",
+        "channelDate": "2026-10-30",
+        "netUsd": 114.02,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 10:37:02",
+        "channelDate": "2026-11-02",
+        "netUsd": -0.25,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 12:25:17",
+        "channelDate": "2026-11-02",
+        "netUsd": 55.29,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 06:51:11",
+        "channelDate": "2026-11-03",
+        "netUsd": -0.3,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 09:24:50",
+        "channelDate": "2026-11-03",
+        "netUsd": 55.57,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 07:32:18",
+        "channelDate": "2026-11-04",
+        "netUsd": -0.11,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 21:01:23",
+        "channelDate": "2026-11-04",
+        "netUsd": -60.7,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 21:01:24",
+        "channelDate": "2026-11-04",
+        "netUsd": -0.22,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 22:19:00",
+        "channelDate": "2026-11-04",
+        "netUsd": 114.03,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 11:30:24",
+        "channelDate": "2026-11-05",
+        "netUsd": -0.19,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 11:37:21",
+        "channelDate": "2026-11-05",
+        "netUsd": 55.23,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-06 05:47:11",
+        "channelDate": "2026-11-06",
+        "netUsd": -0.11,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-08 22:07:12",
+        "channelDate": "2026-11-06",
+        "netUsd": 53.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-09 07:26:20",
+        "channelDate": "2026-11-09",
+        "netUsd": -0.14,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-09 11:35:10",
+        "channelDate": "2026-11-09",
+        "netUsd": 55.27,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:06",
+        "channelDate": "2026-11-10",
+        "netUsd": -0.16,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 11:58:32",
+        "channelDate": "2026-11-10",
+        "netUsd": -68.41,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 11:58:33",
+        "channelDate": "2026-11-10",
+        "netUsd": -0.33,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 12:45:10",
+        "channelDate": "2026-11-10",
+        "netUsd": -62.06,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-11 07:32:37",
+        "channelDate": "2026-11-11",
+        "netUsd": -0.28,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-11 08:23:11",
+        "channelDate": "2026-11-11",
+        "netUsd": 54.99,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 06:32:01",
+        "channelDate": "2026-11-12",
+        "netUsd": -0.29,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:08:13",
+        "channelDate": "2026-11-12",
+        "netUsd": -60.63,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:08:14",
+        "channelDate": "2026-11-12",
+        "netUsd": -0.57,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 11:36:15",
+        "channelDate": "2026-11-12",
+        "netUsd": -63.17,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 05:33:56",
+        "channelDate": "2026-11-13",
+        "netUsd": -0.27,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 06:36:12",
+        "channelDate": "2026-11-13",
+        "netUsd": -60.97,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 06:36:14",
+        "channelDate": "2026-11-13",
+        "netUsd": -0.53,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:39",
+        "channelDate": "2026-11-13",
+        "netUsd": 111.68,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 09:04:26",
+        "channelDate": "2026-11-16",
+        "netUsd": -0.2,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 15:34:52",
+        "channelDate": "2026-11-16",
+        "netUsd": 54.75,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 06:01:27",
+        "channelDate": "2026-11-17",
+        "netUsd": -0.28,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 06:19:47",
+        "channelDate": "2026-11-17",
+        "netUsd": 55.42,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 11:36:32",
+        "channelDate": "2026-11-18",
+        "netUsd": -0.11,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 21:42:58",
+        "channelDate": "2026-11-18",
+        "netUsd": -60.83,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 21:42:58",
+        "channelDate": "2026-11-18",
+        "netUsd": -0.22,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 22:26:50",
+        "channelDate": "2026-11-18",
+        "netUsd": -63.66,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-19 12:14:57",
+        "channelDate": "2026-11-19",
+        "netUsd": -0.19,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-19 12:29:01",
+        "channelDate": "2026-11-19",
+        "netUsd": 55.65,
+        "kind": "main",
+        "event": "exit"
+      }
+    ]
   },
   "JP225 H1M15 05H": {
     "ops": 201,
@@ -74713,7 +77045,723 @@
       "scope": "USD amounts cover ONLY this new interval, not the preserved January-October legacy results. Independent accounts, not portfolio.",
       "timezoneSource": "https://hmarkets.com/tools/markets-holiday-calendar/",
       "legacyFinancialFields": "pnlR and dailyR retained as the previous historical snapshot; not combined with nativeDailyUsd or displayed as refreshed totals."
-    }
+    },
+    "nativeCashflows": [
+      {
+        "timeBrt": "2026-10-06 08:16:46",
+        "channelDate": "2026-10-06",
+        "netUsd": -0.99,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-06 08:44:14",
+        "channelDate": "2026-10-06",
+        "netUsd": 54.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-07 08:30:44",
+        "channelDate": "2026-10-07",
+        "netUsd": -0.62,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-07 09:27:46",
+        "channelDate": "2026-10-07",
+        "netUsd": 49.72,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 08:40:50",
+        "channelDate": "2026-10-08",
+        "netUsd": -0.5,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 10:01:04",
+        "channelDate": "2026-10-08",
+        "netUsd": 54.85,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-09 10:36:06",
+        "channelDate": "2026-10-09",
+        "netUsd": -0.48,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-09 12:12:56",
+        "channelDate": "2026-10-09",
+        "netUsd": 53.59,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 08:48:48",
+        "channelDate": "2026-10-12",
+        "netUsd": -1.08,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 09:14:11",
+        "channelDate": "2026-10-12",
+        "netUsd": 55.84,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 09:08:30",
+        "channelDate": "2026-10-13",
+        "netUsd": -0.14,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 11:01:12",
+        "channelDate": "2026-10-13",
+        "netUsd": -58.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 11:01:12",
+        "channelDate": "2026-10-13",
+        "netUsd": -0.28,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 08:19:20",
+        "channelDate": "2026-10-14",
+        "netUsd": -0.85,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 08:56:16",
+        "channelDate": "2026-10-14",
+        "netUsd": -61.46,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 08:56:16",
+        "channelDate": "2026-10-14",
+        "netUsd": -1.7,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 09:00:59",
+        "channelDate": "2026-10-14",
+        "netUsd": -69.28,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 14:22:16",
+        "channelDate": "2026-10-13",
+        "netUsd": 108.06,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 09:30:05",
+        "channelDate": "2026-10-15",
+        "netUsd": -0.46,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 09:39:11",
+        "channelDate": "2026-10-15",
+        "netUsd": -62.93,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 09:39:12",
+        "channelDate": "2026-10-15",
+        "netUsd": -0.92,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 10:25:16",
+        "channelDate": "2026-10-15",
+        "netUsd": -59.62,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 10:38:02",
+        "channelDate": "2026-10-16",
+        "netUsd": -0.21,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 12:56:04",
+        "channelDate": "2026-10-16",
+        "netUsd": -57.93,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 12:56:04",
+        "channelDate": "2026-10-16",
+        "netUsd": -0.42,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 14:04:34",
+        "channelDate": "2026-10-16",
+        "netUsd": 109.7,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 12:23:15",
+        "channelDate": "2026-10-19",
+        "netUsd": -0.35,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 09:03:04",
+        "channelDate": "2026-10-20",
+        "netUsd": -0.37,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 09:27:50",
+        "channelDate": "2026-10-19",
+        "netUsd": -64.07,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 09:27:50",
+        "channelDate": "2026-10-19",
+        "netUsd": -0.7,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 09:43:09",
+        "channelDate": "2026-10-19",
+        "netUsd": -61.46,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 10:33:15",
+        "channelDate": "2026-10-20",
+        "netUsd": -58.76,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 10:33:15",
+        "channelDate": "2026-10-20",
+        "netUsd": -0.74,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 10:39:16",
+        "channelDate": "2026-10-20",
+        "netUsd": 108.93,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 08:26:50",
+        "channelDate": "2026-10-21",
+        "netUsd": -0.76,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 09:32:27",
+        "channelDate": "2026-10-21",
+        "netUsd": 55.63,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 08:36:15",
+        "channelDate": "2026-10-22",
+        "netUsd": -1.01,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 09:33:45",
+        "channelDate": "2026-10-22",
+        "netUsd": 54.74,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-23 09:49:16",
+        "channelDate": "2026-10-23",
+        "netUsd": -0.25,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-23 11:16:32",
+        "channelDate": "2026-10-23",
+        "netUsd": 55.93,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 08:53:19",
+        "channelDate": "2026-10-26",
+        "netUsd": -0.6,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-26 09:40:17",
+        "channelDate": "2026-10-26",
+        "netUsd": -61.38,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 09:40:17",
+        "channelDate": "2026-10-26",
+        "netUsd": -1.2,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-26 10:00:37",
+        "channelDate": "2026-10-26",
+        "netUsd": -60.36,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 10:04:14",
+        "channelDate": "2026-10-27",
+        "netUsd": -0.42,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 10:53:05",
+        "channelDate": "2026-10-27",
+        "netUsd": 54.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 08:33:27",
+        "channelDate": "2026-10-28",
+        "netUsd": -1.17,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 09:00:30",
+        "channelDate": "2026-10-28",
+        "netUsd": -61.19,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 09:00:31",
+        "channelDate": "2026-10-28",
+        "netUsd": -2.34,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 09:02:30",
+        "channelDate": "2026-10-28",
+        "netUsd": -60.26,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 08:38:19",
+        "channelDate": "2026-10-29",
+        "netUsd": -0.52,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 10:30:01",
+        "channelDate": "2026-10-29",
+        "netUsd": 56.52,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 08:50:07",
+        "channelDate": "2026-10-30",
+        "netUsd": -0.59,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 10:23:17",
+        "channelDate": "2026-10-30",
+        "netUsd": 55.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 09:03:43",
+        "channelDate": "2026-11-02",
+        "netUsd": -0.74,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 09:35:37",
+        "channelDate": "2026-11-02",
+        "netUsd": 54.91,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 08:22:05",
+        "channelDate": "2026-11-03",
+        "netUsd": -0.49,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 10:26:32",
+        "channelDate": "2026-11-03",
+        "netUsd": -60.42,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 10:26:32",
+        "channelDate": "2026-11-03",
+        "netUsd": -0.98,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 10:27:27",
+        "channelDate": "2026-11-03",
+        "netUsd": -61.54,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 09:00:05",
+        "channelDate": "2026-11-04",
+        "netUsd": -0.75,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 09:09:19",
+        "channelDate": "2026-11-04",
+        "netUsd": -71.1,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 09:09:19",
+        "channelDate": "2026-11-04",
+        "netUsd": -1.5,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 09:17:37",
+        "channelDate": "2026-11-04",
+        "netUsd": -59.7,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 08:21:13",
+        "channelDate": "2026-11-05",
+        "netUsd": -0.54,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 09:21:51",
+        "channelDate": "2026-11-05",
+        "netUsd": -61.18,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 09:21:51",
+        "channelDate": "2026-11-05",
+        "netUsd": -1.08,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 09:49:07",
+        "channelDate": "2026-11-05",
+        "netUsd": -62.42,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-06 11:28:59",
+        "channelDate": "2026-11-06",
+        "netUsd": -0.39,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-06 11:30:46",
+        "channelDate": "2026-11-06",
+        "netUsd": -60.96,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-06 11:30:46",
+        "channelDate": "2026-11-06",
+        "netUsd": -0.78,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-06 11:31:53",
+        "channelDate": "2026-11-06",
+        "netUsd": -68.48,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-09 08:17:20",
+        "channelDate": "2026-11-09",
+        "netUsd": -0.67,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-09 09:00:49",
+        "channelDate": "2026-11-09",
+        "netUsd": -61.84,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-09 09:00:49",
+        "channelDate": "2026-11-09",
+        "netUsd": -1.34,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-09 09:05:17",
+        "channelDate": "2026-11-09",
+        "netUsd": -63.38,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:01",
+        "channelDate": "2026-11-10",
+        "netUsd": -0.67,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:02",
+        "channelDate": "2026-11-10",
+        "netUsd": 4.49,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-11 08:22:00",
+        "channelDate": "2026-11-11",
+        "netUsd": -0.99,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-11 08:55:13",
+        "channelDate": "2026-11-11",
+        "netUsd": 54.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 08:56:36",
+        "channelDate": "2026-11-12",
+        "netUsd": -0.61,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:07:36",
+        "channelDate": "2026-11-12",
+        "netUsd": -81.62,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:07:36",
+        "channelDate": "2026-11-12",
+        "netUsd": -1.22,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:07:37",
+        "channelDate": "2026-11-12",
+        "netUsd": -136.4,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 08:25:39",
+        "channelDate": "2026-11-13",
+        "netUsd": -1.06,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 09:59:41",
+        "channelDate": "2026-11-13",
+        "netUsd": -61.27,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 09:59:45",
+        "channelDate": "2026-11-13",
+        "netUsd": -2.12,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 10:21:51",
+        "channelDate": "2026-11-13",
+        "netUsd": 111.83,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 08:27:32",
+        "channelDate": "2026-11-16",
+        "netUsd": -1.42,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 08:39:10",
+        "channelDate": "2026-11-16",
+        "netUsd": -60.85,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 08:39:10",
+        "channelDate": "2026-11-16",
+        "netUsd": -2.84,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 08:40:31",
+        "channelDate": "2026-11-16",
+        "netUsd": -67.59,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 08:38:50",
+        "channelDate": "2026-11-17",
+        "netUsd": -0.38,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 09:31:13",
+        "channelDate": "2026-11-17",
+        "netUsd": -59.77,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 09:31:14",
+        "channelDate": "2026-11-17",
+        "netUsd": -0.76,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 10:38:43",
+        "channelDate": "2026-11-17",
+        "netUsd": 111.87,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 08:52:47",
+        "channelDate": "2026-11-18",
+        "netUsd": -0.54,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 09:41:42",
+        "channelDate": "2026-11-18",
+        "netUsd": 57.62,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-19 08:30:43",
+        "channelDate": "2026-11-19",
+        "netUsd": -1.15,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-19 09:10:41",
+        "channelDate": "2026-11-19",
+        "netUsd": -60.72,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-19 09:10:42",
+        "channelDate": "2026-11-19",
+        "netUsd": -2.3,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-19 09:25:33",
+        "channelDate": "2026-11-19",
+        "netUsd": 115.46,
+        "kind": "defense",
+        "event": "exit"
+      }
+    ]
   },
   "XAU H1M1_6V 10H": {
     "ops": 192,
@@ -75270,6 +78318,638 @@
       "scope": "USD amounts cover ONLY this new interval, not the preserved January-October legacy results. Independent accounts, not portfolio.",
       "timezoneSource": "https://hmarkets.com/tools/markets-holiday-calendar/",
       "legacyFinancialFields": "pnlR and dailyR retained as the previous historical snapshot; not combined with nativeDailyUsd or displayed as refreshed totals."
-    }
+    },
+    "nativeCashflows": [
+      {
+        "timeBrt": "2026-10-06 10:19:01",
+        "channelDate": "2026-10-06",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-06 10:40:58",
+        "channelDate": "2026-10-06",
+        "netUsd": 47.46,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-07 11:18:39",
+        "channelDate": "2026-10-07",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-07 14:08:02",
+        "channelDate": "2026-10-07",
+        "netUsd": 42.81,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 10:11:43",
+        "channelDate": "2026-10-08",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 12:14:51",
+        "channelDate": "2026-10-08",
+        "netUsd": -54.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-08 12:14:51",
+        "channelDate": "2026-10-08",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-08 13:17:17",
+        "channelDate": "2026-10-08",
+        "netUsd": -54.48,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-09 10:17:17",
+        "channelDate": "2026-10-09",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-09 10:51:49",
+        "channelDate": "2026-10-09",
+        "netUsd": 46.65,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 10:26:21",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 11:17:33",
+        "channelDate": "2026-10-12",
+        "netUsd": -49.2,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-12 11:17:33",
+        "channelDate": "2026-10-12",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-12 11:37:08",
+        "channelDate": "2026-10-12",
+        "netUsd": -51.28,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-13 11:03:22",
+        "channelDate": "2026-10-13",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-13 14:52:37",
+        "channelDate": "2026-10-13",
+        "netUsd": 47.97,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-14 21:00:18",
+        "channelDate": "2026-10-14",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-14 21:23:37",
+        "channelDate": "2026-10-14",
+        "netUsd": 28.01,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 10:17:02",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 13:13:22",
+        "channelDate": "2026-10-15",
+        "netUsd": -42.54,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-15 13:13:22",
+        "channelDate": "2026-10-15",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-15 14:44:31",
+        "channelDate": "2026-10-15",
+        "netUsd": -42.0,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 10:18:25",
+        "channelDate": "2026-10-16",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 10:38:14",
+        "channelDate": "2026-10-16",
+        "netUsd": -53.55,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-16 10:38:15",
+        "channelDate": "2026-10-16",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-16 10:51:31",
+        "channelDate": "2026-10-16",
+        "netUsd": 102.0,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-19 10:39:52",
+        "channelDate": "2026-10-19",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-19 10:46:15",
+        "channelDate": "2026-10-19",
+        "netUsd": 47.76,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-20 10:40:34",
+        "channelDate": "2026-10-20",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-20 11:24:12",
+        "channelDate": "2026-10-20",
+        "netUsd": 43.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 11:09:09",
+        "channelDate": "2026-10-21",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 12:27:39",
+        "channelDate": "2026-10-21",
+        "netUsd": -59.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-21 12:27:39",
+        "channelDate": "2026-10-21",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-21 13:10:33",
+        "channelDate": "2026-10-21",
+        "netUsd": -62.32,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-22 10:35:50",
+        "channelDate": "2026-10-22",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-22 11:08:41",
+        "channelDate": "2026-10-22",
+        "netUsd": 39.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-23 10:45:35",
+        "channelDate": "2026-10-23",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-23 11:12:01",
+        "channelDate": "2026-10-23",
+        "netUsd": 49.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-26 10:14:56",
+        "channelDate": "2026-10-26",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-26 10:33:11",
+        "channelDate": "2026-10-26",
+        "netUsd": 48.58,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-27 11:10:26",
+        "channelDate": "2026-10-27",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-27 12:42:01",
+        "channelDate": "2026-10-27",
+        "netUsd": 39.12,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-28 10:37:57",
+        "channelDate": "2026-10-28",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-28 13:02:25",
+        "channelDate": "2026-10-28",
+        "netUsd": 54.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 10:35:03",
+        "channelDate": "2026-10-29",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 11:09:38",
+        "channelDate": "2026-10-29",
+        "netUsd": -55.04,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-29 11:09:38",
+        "channelDate": "2026-10-29",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-29 11:17:53",
+        "channelDate": "2026-10-29",
+        "netUsd": -55.12,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-10-30 10:33:22",
+        "channelDate": "2026-10-30",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-10-30 11:03:56",
+        "channelDate": "2026-10-30",
+        "netUsd": 41.76,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-02 10:30:37",
+        "channelDate": "2026-11-02",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-02 10:38:00",
+        "channelDate": "2026-11-02",
+        "netUsd": 53.52,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-03 10:26:27",
+        "channelDate": "2026-11-03",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-03 10:29:40",
+        "channelDate": "2026-11-03",
+        "netUsd": 43.44,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 10:33:41",
+        "channelDate": "2026-11-04",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 11:38:46",
+        "channelDate": "2026-11-04",
+        "netUsd": -55.11,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-04 11:38:46",
+        "channelDate": "2026-11-04",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-04 11:52:48",
+        "channelDate": "2026-11-04",
+        "netUsd": -58.86,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 10:30:14",
+        "channelDate": "2026-11-05",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 10:47:19",
+        "channelDate": "2026-11-05",
+        "netUsd": -49.4,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-05 10:47:19",
+        "channelDate": "2026-11-05",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-05 11:38:28",
+        "channelDate": "2026-11-05",
+        "netUsd": -50.72,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-06 10:30:01",
+        "channelDate": "2026-11-06",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-06 10:30:03",
+        "channelDate": "2026-11-06",
+        "netUsd": 46.83,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-09 13:29:35",
+        "channelDate": "2026-11-09",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-09 14:41:05",
+        "channelDate": "2026-11-09",
+        "netUsd": 47.52,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:02",
+        "channelDate": "2026-11-10",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-10 10:30:06",
+        "channelDate": "2026-11-10",
+        "netUsd": 13.83,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-11 10:39:14",
+        "channelDate": "2026-11-11",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-11 11:33:02",
+        "channelDate": "2026-11-11",
+        "netUsd": 47.7,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:07:35",
+        "channelDate": "2026-11-12",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:09:17",
+        "channelDate": "2026-11-12",
+        "netUsd": -67.68,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-12 10:09:17",
+        "channelDate": "2026-11-12",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-12 10:14:34",
+        "channelDate": "2026-11-12",
+        "netUsd": 100.56,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 10:16:51",
+        "channelDate": "2026-11-13",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:07",
+        "channelDate": "2026-11-13",
+        "netUsd": -53.28,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:07",
+        "channelDate": "2026-11-13",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-13 10:30:55",
+        "channelDate": "2026-11-13",
+        "netUsd": -60.24,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 11:36:27",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 12:23:19",
+        "channelDate": "2026-11-16",
+        "netUsd": -52.14,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-16 12:23:19",
+        "channelDate": "2026-11-16",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-16 15:03:38",
+        "channelDate": "2026-11-16",
+        "netUsd": 91.74,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-17 10:15:07",
+        "channelDate": "2026-11-17",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-17 10:32:17",
+        "channelDate": "2026-11-17",
+        "netUsd": 52.15,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 10:12:00",
+        "channelDate": "2026-11-18",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 13:20:46",
+        "channelDate": "2026-11-18",
+        "netUsd": -52.22,
+        "kind": "main",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-18 13:20:51",
+        "channelDate": "2026-11-18",
+        "netUsd": 0.0,
+        "kind": "defense",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-18 21:49:11",
+        "channelDate": "2026-11-18",
+        "netUsd": -49.06,
+        "kind": "defense",
+        "event": "exit"
+      },
+      {
+        "timeBrt": "2026-11-19 12:15:09",
+        "channelDate": "2026-11-19",
+        "netUsd": 0.0,
+        "kind": "main",
+        "event": "entry"
+      },
+      {
+        "timeBrt": "2026-11-19 12:52:25",
+        "channelDate": "2026-11-19",
+        "netUsd": 39.92,
+        "kind": "main",
+        "event": "exit"
+      }
+    ]
   }
 }
