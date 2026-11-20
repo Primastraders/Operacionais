@@ -34,7 +34,7 @@
       status: 'ready', points, initial: initialCents / 100, final: balance / 100,
       profit: (balance - initialCents) / 100, percent: 100 * (balance - initialCents) / initialCents,
       drawdown: drawdown / 100, drawdownPct, flows: flows.length,
-      partial: rows.some(row => row.DATA.split('/').reverse().join('-') < coverageStart),
+      coverageStart, nativeWarnings: headers.some(header => metadata[header].nativeAudit.tickWarnings?.length), partial: rows.some(row => row.DATA.split('/').reverse().join('-') < coverageStart),
       negativeBalance: points.some(point => point.balance <= 0), mode
     };
   }
@@ -136,7 +136,7 @@
         elements.label.textContent = label;
         if (!ready) {
           elements.empty.textContent = next.status === 'missing' || next.status === 'incompatible' ? 'Historico financeiro incompleto para esta selecao.' : 'Sem lancamentos financeiros no periodo selecionado.';
-          elements.period.textContent = 'Estatisticas historicas preservadas. Curva financeira disponivel desde 06/10/2026 para os modelos auditados da Hantec.';
+          elements.period.textContent = 'A curva exige lancamentos financeiros nativos de todos os horarios selecionados. Estatisticas historicas preservadas.';
           elements.note.textContent = 'Take, Virada e Stop nao foram convertidos em lucro estimado.';
           canvas.setAttribute('aria-label', 'Sem curva financeira disponivel para esta selecao.');
           return;
@@ -144,8 +144,8 @@
         elements.initial.textContent = usd(next.initial); elements.final.textContent = usd(next.final);
         elements.profit.textContent = usd(next.profit);
         elements.drawdown.textContent = usd(next.drawdown) + ' (' + next.drawdownPct.toFixed(2).replace('.', ',') + '%)';
-        elements.period.textContent = dateLabel(next.points[0].time) + ' a ' + dateLabel(next.points.at(-1).time) + '/2026 - ' + next.flows + ' lancamentos' + (next.partial ? ' - financeiro somente desde 06/10' : '');
-        elements.note.textContent = (next.mode === 'single' ? 'Projecao de banca unica com lotes originais e risco nominal fixo de US$ 60 por entrada. Margem conjunta e simultaneidade nao validadas.' : 'Capital agregado de contas independentes de US$ 10 mil por horario, com os lotes originais.') + ' Saldo realizado, sem juros compostos; nao e equity intratrade. Ciclos selecionados, ordenados pela execucao real em BRT; saidas podem ultrapassar o mes do canal.' + (next.negativeBalance ? ' A projecao ficou sem saldo; operacoes posteriores nao foram bloqueadas nesta soma.' : '');
+        elements.period.textContent = dateLabel(next.points[0].time) + ' a ' + dateLabel(next.points.at(-1).time) + '/2026 - ' + next.flows + ' lancamentos' + (next.partial ? ' - financeiro somente desde ' + next.coverageStart.split('-').reverse().join('/') : '');
+        elements.note.textContent = (next.mode === 'single' ? 'Projecao de banca unica com lotes originais e risco nominal fixo de US$ 60 por entrada. Margem conjunta e simultaneidade nao validadas.' : 'Capital agregado de contas independentes de US$ 10 mil por horario, com os lotes originais.') + ' Saldo realizado, sem juros compostos; nao e equity intratrade. Ciclos selecionados, ordenados pela execucao real em BRT; saidas podem ultrapassar o mes do canal.' + (next.nativeWarnings ? ' Cobertura nativa de 99%: oito minutos de 13/02 com ticks gerados. Detalhes nas premissas.' : '') + (next.negativeBalance ? ' A projecao ficou sem saldo; operacoes posteriores nao foram bloqueadas nesta soma.' : '');
         canvas.setAttribute('aria-label', label + '. Saldo realizado de ' + usd(next.initial) + ' para ' + usd(next.final) + '. Crescimento ' + next.percent.toFixed(2) + ' por cento.');
         draw();
       }
